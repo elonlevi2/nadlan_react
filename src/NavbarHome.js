@@ -29,7 +29,7 @@ function NavbarHome() {
     path === "/add-ads" ? `url(${addAdsImage})`: path === "/properties_rent" ? `url(${propertiesSale})`: path === "/edit-ads" ? `url(${editImage})`: path === "/my-tips" ? `url(${tipsImage})`:
     path === "/brokers" ? `url(${brokersImage})`: path === "/contact" ? `url(${contactImage})`: "none",
     height: path === "/" ? "100vh": path === "/tips" ? '100vh': path === "/properties_sale" ? '100vh': path === "/my-properties"? '100vh': path === "/add-ads"? '100vh': path === "/properties_rent" ? '100vh':
-    path === "/edit-ads" ? '100vh': path === "/my-tips" ? '100vh': path === "/edit-tips" ? '100vh': path === "/brokers" ? '100vh': path === "/contact" ? '100vh': "50",
+    path === "/edit-ads" ? '100vh': path === "/my-tips" ? '100vh': path === "/edit-tips" ? '100vh': path === "/brokers" ? '100vh': path === "/contact" ? '100vh': "0",
     backgroundRepeat:"no-repeat",
     backgroundSize:"cover",
     backgroundPosition:"center center",
