@@ -1,0 +1,70 @@
+.div-all-page {
+    height: 100vh;
+
+}
+
+.div-all-page {
+    height: 100vh;
+    background-size: cover;
+}
+
+.div-of-card-form-login {
+    width: 1000px;
+    height: 600px;
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:rgb(151, 217, 235);
+    border-radius: 20px;
+    direction: rtl;
+    opacity: 0.8;
+    text-align: center;
+
+}
+.div-title-card-form-login {
+    text-align: center;
+}
+
+.div-title-card-form-login h2 {
+    font-family:monospace;
+    font-size: 54px;
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.div-input-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
+    padding: 3rem;
+    gap: 1rem; 
+}
+
+.div-input-login input{
+    width: 400px;
+    height: 40px;
+    border-radius: 6px;
+    border: none;
+    
+}
+
+.div-input-login input:focus{
+    border: none;
+    outline: none;
+
+}
+
+.btn-submit-login {
+    justify-content: center;
+    align-items: center;  
+}
+
+.link-login-to-signup {
+    color: black;
+}
+
+.link-login-to-signup:hover {
+    color: darkgoldenrod;
+}

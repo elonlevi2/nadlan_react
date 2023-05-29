@@ -1,0 +1,135 @@
+.about {
+    display: flex;
+    height: 100vh;
+}
+
+
+.image {
+    width:550px; 
+    height:500px;
+    margin: 5rem;
+}
+
+.box {
+    margin: 5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.title {
+    font-family:'Times New Roman', Times, serif;
+    font-size: 54px;
+    font-weight: bold;
+}
+
+.content {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    direction: rtl;
+
+}
+
+.sending-to-the-site {
+    height: 70vh;
+    background-color: darkslategray;
+}
+
+.title-sending-to-the-site {
+    padding-top: 10rem;
+    text-align: center;
+    font-size: 55px;
+    font-family:'Times New Roman', Times, serif;
+    direction: ltr;
+}
+
+.div-button-to-site {
+    display: flex;
+    gap: 2rem;
+    margin: 3rem;
+    padding-left: 10%;
+}
+
+.div-details {
+    height: 40vh;
+    direction: rtl;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    gap: 7rem;
+    
+}
+
+.div-details-contact {
+    margin: 3rem;
+    color: white;
+}
+
+.div-details-contact-img {
+    margin: 3rem;
+    direction: ltr;
+    justify-content: left;
+    align-items:flex-end;
+    padding-right: 40%;
+}
+
+.div-details-contact-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.links {
+    font-size: 13px;
+    text-decoration: none;
+    color: white;
+}
+
+.links:hover{
+    color: gray;
+}
+
+.dropbtn {
+    color: white;
+    font-size: 13px;
+    border: none;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+  }
+  
+  .dropdown-content a {
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+    direction: rtl;
+  }
+
+  .dropdown-content a:hover {
+    color: gray;
+  }
+
+
+  .dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+
+
+}
+
+.dropbtn:hover {
+    color: gray;
+}

@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useEffect, useState } from "react";
+import NavbarHome from "./NavbarHome";
+import HomePage from "./components/HomePage";
+import MyCard from "./components/MyCard";
+import SiteRoutes from "./siteroutes/SiteRoutes";
+import { validateToken } from "./client/connectionClient";
+import { useNavigate } from "react-router-dom";
+
+export const AppContext = createContext(null)
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [onlogged, setOnlogged] = useState(localStorage.token && localStorage.token !== 'undefined' ? true : false )
+  const [username, setUsername] = useState('')
+  const [idUser, setIduser] = useState('')
+
+  const nav = useNavigate()
+
+  useEffect(()=>{
+    validateToken().then((response)=>{
+      if (response) {
+        setOnlogged(true)
+        setUsername(response.user)
+      } else {
+        localStorage.removeItem("token");
+        setOnlogged(false)
+        nav('/');
+
+      }
+    })
+  },[])
+
+  return (<>
+  <AppContext.Provider value={{onlogged, setOnlogged, setUsername, username}}>
+      <NavbarHome/>
+      <SiteRoutes/>
+  </AppContext.Provider>
+    </>);
 }
 
 export default App;

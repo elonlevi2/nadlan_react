@@ -1,0 +1,33 @@
+.div-about-the-page {
+    height: 40vh;
+    background-color:lemonchiffon;
+}
+
+.div-title-about-the-page {
+    flex-direction: column;
+    text-align: center;
+    padding: 4rem;
+}
+
+.div-title-about-the-page h2 {
+    font-family:monospace;
+    font-size: 54px;
+    font-weight: bold;
+    direction: rtl;
+}
+
+.div-context-about-the-page {
+    text-align: center;
+    direction: rtl;
+}
+
+.div-context-about-the-page p {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.div-of-all-cards{
+    text-align: center;
+    background-color:rosybrown;
+    padding: 2rem;
+}

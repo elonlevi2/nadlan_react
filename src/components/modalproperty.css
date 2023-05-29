@@ -1,0 +1,26 @@
+.div-of-title {
+    text-align: center;
+    font-family: monospace;
+    direction: rtl;
+}
+
+.div-of-title h2{
+    text-align: center;
+}
+
+.div-of-details {
+    text-align: center;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    direction: rtl;
+}
+
+.div-of-contact {
+    text-align: center;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    direction: rtl;
+}
+
+.div-of-photo {
+    align-items: center;
+    
+}

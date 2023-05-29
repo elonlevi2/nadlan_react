@@ -1,0 +1,48 @@
+.div-of-filter-properties{
+    display: flex;
+    flex-direction: row;
+    direction: rtl;
+}
+
+.div-of-filter {
+    background-color: black;
+    width: 30%;
+}
+
+.div-of-title {
+    text-align: center ;
+    padding: 4rem;
+
+}
+
+.div-of-title h2{
+    font-family:Monospace;
+    font-size: 54px;
+    /* font-weight: bold; */
+    direction: rtl;
+
+}
+
+
+.div-of-all-properties {
+    direction: ltr;
+    padding-left: 2.5rem;
+}
+
+.div-of-title-properites {
+    width: 70%;
+}
+
+.div-all-options{
+    color: white;
+    padding: 4rem;
+}
+
+.div-all-options p{
+    font-size: 22px;
+}
+
+.div-all-options select{
+    font-size: 17px;
+    width: 200px;
+}
