@@ -15,7 +15,7 @@
 }
 
 .tab-content {
-    height: 75vh;
+    height: 100vh;
 }
 
 .div-main-add-tip {
@@ -41,14 +41,11 @@
 .form textarea{
     height: 300px;
     width: 600px;
-    border-radius: 10px;
 }
 
 .form input[type=text] {
     width: 300px;
     height: 50px;
-    border-radius: 10px;
-
 }
 
 .div-main-add-property {
@@ -61,26 +58,76 @@
 }
 
 .form-property {
-    display: flex;
+    display:flex;
     flex-direction: column;
     gap: 0.7rem;
+    direction: rtl;
 }
 
-.form-property input {
-    border-radius: 10px;
-    height: 32px;
+.div-in-form-property {
+    display:flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 1rem;
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* text-align: center; */
+}
+
+.div-main-in-form-property {
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.form-property-text-number {
+    width: 50%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
 }
 
 .form-property textarea{
     height: 200px;
-    width: 600px;
-    border-radius: 10px;
+    width: 50%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
 }
 
 .form-property select{
-    width: 100px;
-    height: 42px;
+    width: 20%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+
+
+}
+
+.files-input::file-selector-button {
+    border: none;
+    background: #084cdf;
+    padding: 12px;
     border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
 
+.files-input::file-selector-button:hover {
+    background: #0d45a5;
+  }
 
+.submit {
+    width: 30%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    position: absolute;
+    right: 37%;
+    top: 170%;
 }

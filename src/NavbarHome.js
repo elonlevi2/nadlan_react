@@ -48,7 +48,7 @@ function NavbarHome() {
             id={`offcanvasNavbar-expand-${false}`}
             aria-labelledby={`offcanvasNavbarLabel-expand-${false}`}
             placement="end"
-            style={{backgroundColor: "black", color: "white", opacity:'0.6'}}
+            style={{backgroundColor: "black", color: "white", opacity:'0.8'}}
           >
             <Offcanvas.Header closeButton closeVariant='white'>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${false}`}>
@@ -56,7 +56,7 @@ function NavbarHome() {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className="justify-content-end flex-grow-1 pe-3">
+              <Nav className="justify-content-end flex-grow-1 pe-3" style={{direction:'rtl'}}>
                 <Nav.Link href='#' className='color'>אודות</Nav.Link>
                 <Nav.Link as={Link} to='/properties_sale'>נכסים למכירה</Nav.Link>
                 <Nav.Link as={Link} to='/properties_rent'>נכסים לשכירות</Nav.Link>
@@ -89,7 +89,7 @@ function NavbarHome() {
                   <Button variant='success' onClick={()=>{nav('/login')}}>login</Button>
                   }
 
-                <NavDropdown
+                {/* <NavDropdown
                   title="Dropdown"
                   id={`offcanvasNavbarDropdown-expand-${false}`}
                 >
@@ -101,7 +101,7 @@ function NavbarHome() {
                   <NavDropdown.Item href="#action5">
                     Something else here
                   </NavDropdown.Item>
-                </NavDropdown>
+                </NavDropdown> */}
               </Nav>
               {/* <Form className="d-flex">
                 <Form.Control

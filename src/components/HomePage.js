@@ -86,7 +86,7 @@ function HomePage() {
           <div className='dropdown'>
             <Link className='dropbtn'>נכסים</Link>
             <br/>
-            <div class="dropdown-content">
+            <div className="dropdown-content">
               <Link to="/properties_sale">נכסים למכירה</Link>
               <Link to="/properties_rent">נכסים לשכירות</Link>
             </div>

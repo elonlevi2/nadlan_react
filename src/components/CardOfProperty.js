@@ -14,11 +14,12 @@ function CardOfProperty({property}) {
   const location = useLocation()
   const path = location.pathname
   const [show, setShow] = useState(false);
-  const [images, setImages] = useState()
+  const [images, setImages] = useState('')
 
   useEffect(()=>{
     async function fetchData() {
       const res = await PhotoFetch(property.id)
+      console.log(res.data)
       setImages(res.data[0].image)}
     fetchData()
   },[])

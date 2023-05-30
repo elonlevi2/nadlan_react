@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap';
-import CarouselImages from './CarouselImages';
-import { UserFetch } from '../client/axiosToApiProperies';
+// import CarouselImages from './CarouselImages';
+import { PhotoFetch, UserFetch } from '../client/axiosToApiProperies';
 
 function ModalProperty({property, show, setShow, images}) {
     const handleClose = () => setShow(false);
@@ -9,6 +9,8 @@ function ModalProperty({property, show, setShow, images}) {
 
     const [realEstate, setRealEstate] = useState()
     const [lastname, setLastname] = useState()
+    const [photo, setPhoto] = useState([])
+
 
     useEffect(()=>{
         async function User() {
@@ -16,8 +18,22 @@ function ModalProperty({property, show, setShow, images}) {
             setRealEstate(res.data[0].first_name)
             setLastname(res.data[0].last_name)
         }
-          User()
+        async function fetchData() {
+          const res = await PhotoFetch(property.id)
+          console.log(res.data)
+          setPhoto(res.data)
+        }
+        User()
+        fetchData()
     }, [])
+
+    // useEffect(()=>{
+    //   async function fetchData() {
+    //     const res = await PhotoFetch(property.id)
+    //     console.log(res.data)
+    //     setPhoto(res.data[0].image)}
+    //   fetchData()
+    // },[])
 
   return (
     <>
@@ -47,7 +63,8 @@ function ModalProperty({property, show, setShow, images}) {
             </div>
 
             <div className='div-of-photo'>
-                <CarouselImages property_id={property.id}/>
+            {photo && photo.map((p)=>{return <img key={p.id} style={{width:"200px", height:"200px"}} src={`http://127.0.0.1:8000${p.image}`}/>})}
+                {/* <CarouselImages property_id={property.id}/> */}
             </div>
 
             
