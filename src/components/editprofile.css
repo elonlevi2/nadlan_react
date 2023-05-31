@@ -1,0 +1,29 @@
+.div-main {
+    height: 100vh;
+}
+
+.form-user {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    direction: rtl;
+}
+
+.form-user-input {
+    width: 30%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.user-submit {
+    width: 30%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    position: absolute;
+    right: 37%;
+    top: 140%;
+}

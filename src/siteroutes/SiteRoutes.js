@@ -16,6 +16,7 @@ import TipsOfUser from '../components/TipsOfUser'
 import EditTips from '../components/EditTips'
 import Brokers from '../components/Brokers'
 import Contact from '../components/Contact'
+import EditProfile from '../components/EditProfile'
 
 function SiteRoutes() {
     const {onlogged} = useContext(AppContext)
@@ -36,6 +37,7 @@ function SiteRoutes() {
         <Route path={'/edit-ads'} element={<EditAds/>}/>
         <Route path={'/edit-tips'} element={<EditTips/>}/>
         <Route path={'/brokers'} element={<Brokers/>}/>
+        <Route path={'/edit-profile'} element={<EditProfile/>}/>
         <Route path='/photo' element={<PhotoLoader/>}/>
         <Route path='/contact' element={<Contact/>}/>
     </Routes>

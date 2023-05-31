@@ -29,7 +29,7 @@ function NavbarHome() {
     path === "/add-ads" ? `url(${addAdsImage})`: path === "/properties_rent" ? `url(${propertiesSale})`: path === "/edit-ads" ? `url(${editImage})`: path === "/my-tips" ? `url(${tipsImage})`:
     path === "/brokers" ? `url(${brokersImage})`: path === "/contact" ? `url(${contactImage})`: "none",
     height: path === "/" ? "100vh": path === "/tips" ? '100vh': path === "/properties_sale" ? '100vh': path === "/my-properties"? '100vh': path === "/add-ads"? '100vh': path === "/properties_rent" ? '100vh':
-    path === "/edit-ads" ? '100vh': path === "/my-tips" ? '100vh': path === "/edit-tips" ? '100vh': path === "/brokers" ? '100vh': path === "/contact" ? '100vh': "0",
+    path === "/edit-ads" ? '100vh': path === "/my-tips" ? '100vh': path === "/edit-tips" ? '100vh': path === "/brokers" ? '100vh': path === "/contact" ? '100vh': path === "/edit-profile" ? '100' : "0",
     backgroundRepeat:"no-repeat",
     backgroundSize:"cover",
     backgroundPosition:"center center",
@@ -74,6 +74,7 @@ function NavbarHome() {
                   <NavDropdown.Item as={Link} to='/my-properties'>הדירות שלי</NavDropdown.Item>
                   <NavDropdown.Item as={Link} to='/my-tips'>הטיפים שלי</NavDropdown.Item>
                   < NavDropdown.Item as={Link} to='/add-ads'>העלאת מודעה</NavDropdown.Item>
+                  < NavDropdown.Item as={Link} to='/edit-profile'>עריכת הפרופיל שלי</NavDropdown.Item>
                   </NavDropdown>
                   {/* <Nav.Link as={Link} to='/my_properties' style={{color: 'darkgreen'}}>הדירות שלי</Nav.Link>
                   <Nav.Link as={Link} to='/add_post' style={{color: isHover ? 'white' : 'darkgreen' ,backgroundColor: isHover ? 'darkgreen' : 'black'}} onMouseOver={()=>{setIsHover(true)}}

@@ -9,7 +9,7 @@ const backgroundimage = process.env.PUBLIC_URL + '/login.jpg'
 
 
 function Login() {
-    const {username, setUsername, onlogged, setOnlogged} = useContext(AppContext)
+    const {username, setUsername, onlogged, setOnlogged, setIduser} = useContext(AppContext)
     const [password, setPassword] = useState('')
 
     const nav = useNavigate();
@@ -22,6 +22,7 @@ function Login() {
         if (token) {
             setOnlogged(true);
             const data = await validateToken();
+            setIduser(data.id)
             setUsername(data.user);
             nav("/");
           } else {

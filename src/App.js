@@ -12,13 +12,14 @@ export const AppContext = createContext(null)
 function App() {
   const [onlogged, setOnlogged] = useState(localStorage.token && localStorage.token !== 'undefined' ? true : false )
   const [username, setUsername] = useState('')
-  const [idUser, setIduser] = useState('')
+  const [idUser, setIduser] = useState()
 
   const nav = useNavigate()
 
   useEffect(()=>{
     validateToken().then((response)=>{
       if (response) {
+        setIduser(response.id)
         setOnlogged(true)
         setUsername(response.user)
       } else {
@@ -31,7 +32,7 @@ function App() {
   },[])
 
   return (<>
-  <AppContext.Provider value={{onlogged, setOnlogged, setUsername, username}}>
+  <AppContext.Provider value={{onlogged, setOnlogged, setUsername, username, idUser, setIduser}}>
       <NavbarHome/>
       <SiteRoutes/>
   </AppContext.Provider>

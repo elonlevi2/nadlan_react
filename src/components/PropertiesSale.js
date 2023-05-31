@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import '../client/axiosToApiProperies'
-import { PhotoFetch, propertiesSaleFetch, propertiesSaleFetchRooms } from '../client/axiosToApiProperies'
+import { PhotoFetch, propertiesSaleFetch, propertiesSaleFetchRooms, propertiesSaleFilterFetch } from '../client/axiosToApiProperies'
 import CardOfProperty from './CardOfProperty'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
@@ -10,12 +10,28 @@ function PropertiesSale() {
     const [properties, setProperties] = useState([])
     const [pagenum, setPagenum] = useState(0)
     const [hasmore, setHasmore] = useState(true)
-    const [action, setAction] = useState('sale')
     const [rooms, setRooms] = useState("")
-    const [filters, setFilters] = useState({})
+    const [city, setCity] = useState("")
+    const [filter, setFilter] = useState(false)
 
+    
     const addProperties = async ()=> {
-        const res = await propertiesSaleFetch(action, pagenum, 10, rooms)
+        const res = await propertiesSaleFetch(pagenum, 10)
+        if (!res.has_more) {
+            setHasmore(false)
+        }
+        setPagenum((prev) => {
+          return prev + 1;
+        });
+
+        const newProperties = [...properties, ...res.data]
+
+        setProperties(newProperties)
+      }
+
+
+      const addPropertiesFilter = async ()=> {
+        const res = await propertiesSaleFilterFetch(pagenum, 10, rooms, city)
         if (!res.has_more) {
             setHasmore(false)
         }
@@ -31,16 +47,17 @@ function PropertiesSale() {
 
       const handelsubmit = (e)=> {
         e.preventDefault()
-        addProperties(); 
+        addPropertiesFilter()
+        
       }
 
-      const resetfilters = ()=> {
-        setAction('all')
-        setRooms('')
-        setPagenum(0)
-        setProperties([])
-        addProperties()
-      }
+      // const resetfilters = ()=> {
+      //   setFilter(false)
+      //   setPagenum(0)
+      //   setProperties([])
+      //   addProperties()
+
+      // }
 
   return (<>
 
@@ -55,16 +72,21 @@ function PropertiesSale() {
           <form onSubmit={handelsubmit}>
             <input type='number' placeholder='מספר חדרים דוגמא 4' onChange={(e)=>{
               setProperties([]);
-              setRooms(e.target.value);
-              setAction('filters');
               setPagenum(0);
-            }}/>{/*set properties to [] onchange and doing new axios*/}
+              setRooms(e.target.value);
+            }}/>
             {rooms}
+            <input type='text' placeholder='עיר' onChange={(e)=>{
+              setProperties([])
+              setPagenum(0)
+              setCity(e.target.value);
+            }}/>
+            {city}
             <br/>
 
             <Button variant='danger' type='submit'>החל</Button>
           </form>
-          <Button variant='success' onClick={resetfilters}>איפוס הסינון</Button>
+          {/* <Button variant='success' onClick={resetfilters}>איפוס הסינון</Button> */}
 
           {/* <select name="days" id="days">
             <option value="#">שכונה?</option>
@@ -84,13 +106,13 @@ function PropertiesSale() {
         <div className='div-of-all-properties'>
 
         <InfiniteScroll
-          loadMore={addProperties}
+          loadMore={filter ? addPropertiesFilter : addProperties}
           hasMore={hasmore}
           loader={<div key={0}>loading...</div>}
           >
           {properties && properties.map((p)=>{return <CardOfProperty key={p.id} property={p}/>})}
 
-          </InfiniteScroll>
+        </InfiniteScroll>
         </div>
 
       </div>
