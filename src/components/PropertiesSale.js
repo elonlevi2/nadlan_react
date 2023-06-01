@@ -10,13 +10,13 @@ function PropertiesSale() {
     const [properties, setProperties] = useState([])
     const [pagenum, setPagenum] = useState(0)
     const [hasmore, setHasmore] = useState(true)
-    const [rooms, setRooms] = useState("")
-    const [city, setCity] = useState("")
+    const [rooms, setRooms] = useState(null)
+    const [city, setCity] = useState(null)
     const [filter, setFilter] = useState(false)
 
     
     const addProperties = async ()=> {
-        const res = await propertiesSaleFetch(pagenum, 10)
+        const res = await propertiesSaleFetch(pagenum, 10, rooms, city)
         if (!res.has_more) {
             setHasmore(false)
         }
@@ -30,34 +30,36 @@ function PropertiesSale() {
       }
 
 
-      const addPropertiesFilter = async ()=> {
-        const res = await propertiesSaleFilterFetch(pagenum, 10, rooms, city)
-        if (!res.has_more) {
-            setHasmore(false)
-        }
-        setPagenum((prev) => {
-          return prev + 1;
-        });
+      // const addPropertiesFilter = async ()=> {
+      //   const res = await propertiesSaleFilterFetch(pagenum, 10, rooms, city)
+      //   if (!res.has_more) {
+      //       setHasmore(false)
+      //   }
+      //   setPagenum((prev) => {
+      //     return prev + 1;
+      //   });
 
-        const newProperties = [...properties, ...res.data]
+      //   const newProperties = [...properties, ...res.data]
 
-        setProperties(newProperties)
-      }
-
-
-      const handelsubmit = (e)=> {
-        e.preventDefault()
-        addPropertiesFilter()
-        
-      }
-
-      // const resetfilters = ()=> {
-      //   setFilter(false)
-      //   setPagenum(0)
-      //   setProperties([])
-      //   addProperties()
-
+      //   setProperties(newProperties)
       // }
+
+
+      const handelsubmit = async (e)=> {
+        e.preventDefault()
+        setProperties([])
+        setPagenum(0)
+        if (filter) {
+          setFilter(false)
+        } else {
+          setFilter(true)
+        }
+
+      }
+
+      useEffect(()=>{
+        addProperties()
+      }, [filter])
 
   return (<>
 
@@ -71,14 +73,10 @@ function PropertiesSale() {
           <p>חיפוש נכס:</p>
           <form onSubmit={handelsubmit}>
             <input type='number' placeholder='מספר חדרים דוגמא 4' onChange={(e)=>{
-              setProperties([]);
-              setPagenum(0);
               setRooms(e.target.value);
             }}/>
             {rooms}
             <input type='text' placeholder='עיר' onChange={(e)=>{
-              setProperties([])
-              setPagenum(0)
               setCity(e.target.value);
             }}/>
             {city}
@@ -106,7 +104,7 @@ function PropertiesSale() {
         <div className='div-of-all-properties'>
 
         <InfiniteScroll
-          loadMore={filter ? addPropertiesFilter : addProperties}
+          loadMore={addProperties}
           hasMore={hasmore}
           loader={<div key={0}>loading...</div>}
           >
