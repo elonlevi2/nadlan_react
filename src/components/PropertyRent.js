@@ -10,12 +10,12 @@ function PropertiesRent() {
     const [properties, setProperties] = useState([])
     const [pagenum, setPagenum] = useState(0)
     const [hasmore, setHasmore] = useState(true)
-    const [action, setAction] = useState('rent')
-    const [rooms, setRooms] = useState("")
-    const [filters, setFilters] = useState({})
+    const [rooms, setRooms] = useState(null)
+    const [city, setCity] = useState(null)
+    const [filter, setFilter] = useState(false)
 
     const addProperties = async ()=> {
-        const res = await propertiesRentFetch(action, pagenum, 10, rooms)
+        const res = await propertiesRentFetch(pagenum, 10, rooms, city)
         if (!res.has_more) {
             setHasmore(false)
         }
@@ -31,15 +31,29 @@ function PropertiesRent() {
 
       const handelsubmit = (e)=> {
         e.preventDefault()
-        addProperties(); 
+        setProperties([])
+        setPagenum(0)
+        if (filter) {
+          setFilter(false)
+        } else {
+          setFilter(true)
+        }
       }
 
-      const resetfilters = ()=> {
-        setAction('all')
-        setRooms('')
-        setPagenum(0)
-        setProperties([])
+      useEffect(()=>{
         addProperties()
+      }, [filter])
+
+      const resetfilter = ()=> {
+        setProperties([])
+        setPagenum(0)
+        setRooms(null)
+        setCity(null)
+        if (filter) {
+          setFilter(false)
+        } else {
+          setFilter(true)
+        }
       }
 
   return (<>
@@ -51,20 +65,21 @@ function PropertiesRent() {
       <div className='div-of-filter'>
 
         <div className='div-all-options'>
-          <p>חיפוש נכס:</p>
+        <p>חיפוש נכס:</p>
           <form onSubmit={handelsubmit}>
             <input type='number' placeholder='מספר חדרים דוגמא 4' onChange={(e)=>{
-              setProperties([]);
-              setRooms(e.target.value);
-              setAction('filters');
-              setPagenum(0);
-            }}/>{/*set properties to [] onchange and doing new axios*/}
+              setRooms(e.target.value === '' ? null : e.target.value);              
+            }}/>
             {rooms}
+            <input type='text' placeholder='עיר' onChange={(e)=>{
+              setCity(e.target.value === '' ? null : e.target.value);
+            }}/>
+            {city}
             <br/>
 
             <Button variant='danger' type='submit'>החל</Button>
           </form>
-          <Button variant='success' onClick={resetfilters}>איפוס הסינון</Button>
+          <Button variant='success' onClick={resetfilter}>איפוס הסינון</Button>
 
           {/* <select name="days" id="days">
             <option value="#">שכונה?</option>

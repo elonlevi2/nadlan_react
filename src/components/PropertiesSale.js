@@ -61,6 +61,22 @@ function PropertiesSale() {
         addProperties()
       }, [filter])
 
+      useEffect(()=>{
+        console.log(rooms)
+      }, [rooms])
+
+      const resetfilter = ()=> {
+        setProperties([])
+        setPagenum(0)
+        setRooms(null)
+        setCity(null)
+        if (filter) {
+          setFilter(false)
+        } else {
+          setFilter(true)
+        }
+      }
+
   return (<>
 
     <div className='div-of-filter-properties'>
@@ -73,18 +89,18 @@ function PropertiesSale() {
           <p>חיפוש נכס:</p>
           <form onSubmit={handelsubmit}>
             <input type='number' placeholder='מספר חדרים דוגמא 4' onChange={(e)=>{
-              setRooms(e.target.value);
+              setRooms(e.target.value === '' ? null : e.target.value);              
             }}/>
             {rooms}
             <input type='text' placeholder='עיר' onChange={(e)=>{
-              setCity(e.target.value);
+              setCity(e.target.value === '' ? null : e.target.value);
             }}/>
             {city}
             <br/>
 
             <Button variant='danger' type='submit'>החל</Button>
           </form>
-          {/* <Button variant='success' onClick={resetfilters}>איפוס הסינון</Button> */}
+          <Button variant='success' onClick={resetfilter}>איפוס הסינון</Button>
 
           {/* <select name="days" id="days">
             <option value="#">שכונה?</option>

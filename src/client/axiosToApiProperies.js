@@ -13,20 +13,9 @@ export async function propertiesSaleFetch(page_num, page_size, rooms, city) {
     
 }
 
-export async function propertiesSaleFilterFetch(page_num, page_size, rooms, city) {
-    const url = `http://127.0.0.1:8000/api/properties_sale/filters?page_size=${page_size}&page_num=${page_num}&rooms=${rooms}&city=${city}`
-    try {
-        const response = await axios.get(url)
-        console.assert(response.status == 200)
-        return response.data
-    } catch (error){
-        console.error("error:", error)
-    }
-    
-}
 
-export async function propertiesRentFetch(action, page_num, page_size, rooms) {
-    const url = `http://127.0.0.1:8000/api/properties_sale/${action}?page_size=${page_size}&page_num=${page_num}&rooms=${rooms}`
+export async function propertiesRentFetch(page_num, page_size, rooms, city) {
+    const url = `http://127.0.0.1:8000/api/properties_sale/rent/${rooms}/${city}?page_size=${page_size}&page_num=${page_num}`
     try {
         const response = await axios.get(url)
         console.assert(response.status == 200)
