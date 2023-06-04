@@ -17,6 +17,7 @@ import EditTips from '../components/EditTips'
 import Brokers from '../components/Brokers'
 import Contact from '../components/Contact'
 import EditProfile from '../components/EditProfile'
+import Map from '../components/Map'
 
 function SiteRoutes() {
     const {onlogged} = useContext(AppContext)
@@ -40,6 +41,7 @@ function SiteRoutes() {
         <Route path={'/edit-profile'} element={<EditProfile/>}/>
         <Route path='/photo' element={<PhotoLoader/>}/>
         <Route path='/contact' element={<Contact/>}/>
+        <Route path='/map' element={<Map/>}/>
     </Routes>
     </>)
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap';
 // import CarouselImages from './CarouselImages';
 import { PhotoFetch, UserFetch } from '../client/axiosToApiProperies';
+import ModalMailToBroker from './ModalMailToBroker';
 
 function ModalProperty({property, show, setShow, images}) {
     const handleClose = () => setShow(false);
@@ -10,6 +11,9 @@ function ModalProperty({property, show, setShow, images}) {
     const [realEstate, setRealEstate] = useState()
     const [lastname, setLastname] = useState()
     const [photo, setPhoto] = useState([])
+    const [showEmail, setShowEmail] = useState(false);
+    const [email, setEmail] = useState(false);
+
 
 
     useEffect(()=>{
@@ -17,6 +21,7 @@ function ModalProperty({property, show, setShow, images}) {
             const res = await UserFetch(property.real_estate)
             setRealEstate(res.data[0].first_name)
             setLastname(res.data[0].last_name)
+            setEmail(res.data[0].email)
         }
         async function fetchData() {
           const res = await PhotoFetch(property.id)
@@ -59,6 +64,9 @@ function ModalProperty({property, show, setShow, images}) {
             <div className='div-of-contact'>
                 <p>ליצירת קשר:</p>
                 <p>{realEstate} {lastname} - {property.phone}</p>
+                <Button variant='success' onClick={()=>{setShowEmail(true)}}>שלח מייל למתווך</Button>
+                <ModalMailToBroker show={showEmail} setShow={setShowEmail} emailBroker={email}/>
+
 
             </div>
 

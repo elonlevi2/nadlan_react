@@ -1,6 +1,6 @@
 .div-about-the-page {
     height: 40vh;
-    background-color:lemonchiffon;
+    background-color:rgba(156, 156, 11, 0.581);
 }
 
 .div-title-about-the-page {
@@ -28,6 +28,6 @@
 
 .div-of-all-cards{
     text-align: center;
-    background-color:rosybrown;
+    background-color:darkslategray;
     padding: 2rem;
 }

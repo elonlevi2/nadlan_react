@@ -51,7 +51,7 @@
 }
 
 .div-details {
-    height: 40vh;
+    height: 80vh;
     direction: rtl;
     background-color: black;
     display: flex;
@@ -133,3 +133,4 @@
 .dropbtn:hover {
     color: gray;
 }
+

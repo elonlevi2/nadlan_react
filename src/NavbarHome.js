@@ -9,6 +9,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AppContext } from './App';
 
+
  const homePageImage = process.env.PUBLIC_URL + '/homet.jpg'
  const tipsImage = process.env.PUBLIC_URL + '/tips.jpeg'
  const propertiesSale = process.env.PUBLIC_URL + '/properties_sale.jpeg'
@@ -16,6 +17,7 @@ import { AppContext } from './App';
  const editImage = process.env.PUBLIC_URL + '/editimage.jpg'
  const brokersImage = process.env.PUBLIC_URL + '/brokers.jpg'
  const contactImage = process.env.PUBLIC_URL + '/contact.jpg'
+ const editprofile = process.env.PUBLIC_URL + '/editprofile.jpg'
 
 function NavbarHome() {
   const nav = useNavigate()
@@ -27,9 +29,10 @@ function NavbarHome() {
   const stylenavbar = {
     backgroundImage: path === "/" ? `url(${homePageImage})`: path === "/tips" ? `url(${tipsImage})`: path === "/properties_sale" ? `url(${propertiesSale})`: path === "/my-properties" ? `url(${propertiesSale})` :
     path === "/add-ads" ? `url(${addAdsImage})`: path === "/properties_rent" ? `url(${propertiesSale})`: path === "/edit-ads" ? `url(${editImage})`: path === "/my-tips" ? `url(${tipsImage})`:
-    path === "/brokers" ? `url(${brokersImage})`: path === "/contact" ? `url(${contactImage})`: "none",
-    height: path === "/" ? "100vh": path === "/tips" ? '100vh': path === "/properties_sale" ? '100vh': path === "/my-properties"? '100vh': path === "/add-ads"? '100vh': path === "/properties_rent" ? '100vh':
-    path === "/edit-ads" ? '100vh': path === "/my-tips" ? '100vh': path === "/edit-tips" ? '100vh': path === "/brokers" ? '100vh': path === "/contact" ? '100vh': path === "/edit-profile" ? '100' : "0",
+    path === "/brokers" ? `url(${brokersImage})`: path === "/contact" ? `url(${contactImage})`: path === "/edit-profile" ? `url(${editprofile})`: "none",
+    height: "100vh", 
+    // path === "/" ? "100vh": path === "/tips" ? '100vh': path === "/properties_sale" ? '100vh': path === "/my-properties"? '100vh': path === "/add-ads"? '100vh': path === "/properties_rent" ? '100vh':
+    // path === "/edit-ads" ? '100vh': path === "/my-tips" ? '100vh': path === "/edit-tips" ? '100vh': path === "/brokers" ? '100vh': path === "/contact" ? '100vh': path === "/edit-profile" ? '100' : "0",
     backgroundRepeat:"no-repeat",
     backgroundSize:"cover",
     backgroundPosition:"center center",
@@ -57,12 +60,13 @@ function NavbarHome() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3" style={{direction:'rtl'}}>
-                <Nav.Link href='#' className='color'>אודות</Nav.Link>
-                <Nav.Link as={Link} to='/properties_sale'>נכסים למכירה</Nav.Link>
-                <Nav.Link as={Link} to='/properties_rent'>נכסים לשכירות</Nav.Link>
-                <Nav.Link as={Link} to='/tips' >טיפים לרכישת נכס</Nav.Link>
-                <Nav.Link as={Link} to='/brokers' >השותפים שלנו</Nav.Link>
-                <Nav.Link as={Link} to='/contact'>יצירת קשר</Nav.Link>
+                <Nav.Link href='#' className='link-mains'>אודות</Nav.Link>
+                <Nav.Link className='link-mains' as={Link} to='/properties_sale'>נכסים למכירה</Nav.Link>
+                <Nav.Link className='link-mains' as={Link} to='/properties_rent'>נכסים לשכירות</Nav.Link>
+                <Nav.Link className='link-mains' as={Link} to='/map'>מפת נכסים</Nav.Link>
+                <Nav.Link className='link-mains' as={Link} to='/tips' >טיפים לרכישת נכס</Nav.Link>
+                <Nav.Link className='link-mains' as={Link} to='/brokers' >השותפים שלנו</Nav.Link>
+                <Nav.Link className='link-mains' as={Link} to='/contact'>יצירת קשר</Nav.Link>
 
                 {onlogged ? 
                   <>

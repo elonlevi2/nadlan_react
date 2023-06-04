@@ -12,10 +12,11 @@ function PropertiesRent() {
     const [hasmore, setHasmore] = useState(true)
     const [rooms, setRooms] = useState(null)
     const [city, setCity] = useState(null)
+    const [balcony, setBalcony] = useState(null)
     const [filter, setFilter] = useState(false)
 
     const addProperties = async ()=> {
-        const res = await propertiesRentFetch(pagenum, 10, rooms, city)
+        const res = await propertiesRentFetch(pagenum, 10, rooms, city, balcony)
         if (!res.has_more) {
             setHasmore(false)
         }
@@ -49,6 +50,7 @@ function PropertiesRent() {
         setPagenum(0)
         setRooms(null)
         setCity(null)
+        setBalcony(null)
         if (filter) {
           setFilter(false)
         } else {
@@ -75,6 +77,11 @@ function PropertiesRent() {
               setCity(e.target.value === '' ? null : e.target.value);
             }}/>
             {city}
+            <select onChange={(e)=> {setBalcony(e.target.value === '' ? null : e.target.value)}} name="balcony" id="balcony">
+              <option value="null">מרפסת?</option>
+              <option value="yes">כן</option>
+              <option value="no">לא</option>
+            </select>
             <br/>
 
             <Button variant='danger' type='submit'>החל</Button>

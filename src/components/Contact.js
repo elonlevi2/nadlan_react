@@ -25,7 +25,8 @@ function Contact() {
     };
 
   return (<>
-  <StyledContactForm>
+  <div style={{direction:"rtl"}}>
+  <StyledContactForm style={{direction:"rtl"}}>
     <form ref={form} onSubmit={sendEmail}>
       <label>Name</label>
       <input type="text" name="username" onChange={(e)=>{Setname(e.target.value)}} />
@@ -36,6 +37,7 @@ function Contact() {
       <input type="submit" value="Send" />
     </form>
     </StyledContactForm>
+    </div>
   </>)
 }
 

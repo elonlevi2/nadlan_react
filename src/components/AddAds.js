@@ -63,7 +63,7 @@ function AddAds() {
         fetch(`http://127.0.0.1:8000/api/photo?id=${res.id}`, options)
         .then((res) => {
              res.json().then((resJ) => {
-                 console.log(resJ) })                
+                 console.log(resJ) })        
        }).catch((e)=>{window.alert(`photo save Error: ${e}`)})
 
     }

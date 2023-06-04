@@ -10,4 +10,8 @@
 .my-div {
     background-image: url(${process.env.PUBLIC_URL}/yyy.PNG);
   } */
+
+  .link-mains:hover{
+    color: green;
+  }
   

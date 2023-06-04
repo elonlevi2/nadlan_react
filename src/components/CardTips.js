@@ -23,7 +23,7 @@ function CardTips({tip}) {
   },[])
 
   return (<>
-    <Card style={{width:"18rem", display:'inline-table', marginInline:'5rem', marginBottom:'3rem', border:'black dashed 2px'}}>
+    <Card style={{backgroundColor: "floralwhite" , width:"18rem", display:'inline-table', marginInline:'5rem', marginBottom:'3rem', border:'black solid 2px'}}>
       <Card.Header as="h5">הטיפ של {realEstate}</Card.Header>
       <Card.Body>
         <Card.Title>{tip.title}</Card.Title>

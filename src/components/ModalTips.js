@@ -10,11 +10,13 @@ function ModalTips(props) {
     <>
       <Modal fullscreen={true} show={props.show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
         <Modal.Header closeButton>
-          <Modal.Title>{props.title}</Modal.Title>
+          <Modal.Title style={{alignItems:"center"}}>{props.title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <p>{props.content}</p>
-            <p>{props.status}</p>
+          <div className='div-of-details'>
+            <p style={{fontSize:"34px"}}>{props.title}:</p>
+            <p style={{fontSize:"24px"}}>{props.content}</p>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

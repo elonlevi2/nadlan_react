@@ -8,6 +8,7 @@ import { CiFacebook } from "react-icons/ci";
 import DropdownContext from 'react-bootstrap/esm/DropdownContext';
 import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
+import Contact from './Contact';
 
 
 function HomePage() {
@@ -48,6 +49,10 @@ function HomePage() {
         <Button variant='outline-dark' size='lg' as={Link} to={"/properties_rent"} style={{width:"330px"}}>נכסים להשכרה</Button>
         <Button variant='outline-dark' size='lg' as={Link} to={"/tips"} style={{width:"330px"}}>טיפים לרכישת דירה</Button>
       </div>
+      <div className='div-button-to-site'>
+        <Button variant='outline-dark' size='lg' as={Link} to={"/brokers"} style={{width:"330px"}} >השותפים שלנו</Button>
+        <Button variant='outline-dark' size='lg' as={Link} to={"/contact"} style={{width:"330px"}}>יצירת קשר</Button>
+      </div>
 
       
     </div>
@@ -55,11 +60,13 @@ function HomePage() {
     <div className='div-details'>
 
       <div className='div-details-contact'>
-        <h6>יצירת קשר</h6>  
+        <h6>יצירת קשר</h6>
+        <Contact/>
+        <br/>  
 
         <div className='div-details-contact-icons'>
           <span style={{fontSize:"13px"}}><BsFillEnvelopeAtFill/> name@gmail.com</span>
-          <span style={{fontSize:"13px"}}><BsFillGeoAltFill/> הר חומה, ירושלים </span>
+          {/* <span style={{fontSize:"13px"}}><BsFillGeoAltFill/> הר חומה, ירושלים </span> */}
           <span style={{fontSize:"13px"}}><AiOutlinePhone/> 050-0000000</span>
           <span style={{fontSize:"13px"}}><CiFacebook/> Profil</span>
           <span style={{fontSize:"13px"}}><BsInstagram/> Profil</span>

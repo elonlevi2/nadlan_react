@@ -14,6 +14,7 @@ import "./components/modalproperty.css"
 import "./components/editads.css"
 import "./components/brokers.css"
 import "./components/editprofile.css"
+import "./components/map.css"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
