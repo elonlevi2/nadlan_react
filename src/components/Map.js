@@ -64,7 +64,7 @@ function Map() {
         />
 
         <MarkerClusterGroup>
-            {/* {properties && properties.map(async(p) => {
+            {properties && properties.map(async(p) => {
               const loc = `${p.location}`;
               const res = await addressToGeocode(loc);
               setGeocode(res);
@@ -72,7 +72,7 @@ function Map() {
                 <Marker position={[31.55555, 32.555555]} icon={customIcon}>
                     <Popup>h</Popup>
                 </Marker>
-              })} */}
+              })}
 
               {/* <Marker position={[properties.lat, properties.lng]} icon={customIcon}>
                   <Popup>jj</Popup>
