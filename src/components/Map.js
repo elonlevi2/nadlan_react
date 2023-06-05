@@ -33,6 +33,7 @@ function Map() {
     useEffect(()=> {
       async function data() {
         const res = await propertiesToMap()
+        console.log(res)
         setProperties(res)        
       }
       data()
@@ -55,7 +56,6 @@ function Map() {
 
   return (
     <div style={{height:"100vh"}}>
-
       <button onClick={()=>{console.log(properties)}}>gg</button>
     <MapContainer center={[31.774216454298205, 35.21035281594243]} zoom={13}>
         <TileLayer
@@ -64,7 +64,7 @@ function Map() {
         />
 
         <MarkerClusterGroup>
-            {properties && properties.map(async(p) => {
+            {/* {properties && properties.map(async(p) => {
               const loc = `${p.location}`;
               const res = await addressToGeocode(loc);
               setGeocode(res);
@@ -72,7 +72,7 @@ function Map() {
                 <Marker position={[31.55555, 32.555555]} icon={customIcon}>
                     <Popup>h</Popup>
                 </Marker>
-              })}
+              })} */}
 
               {/* <Marker position={[properties.lat, properties.lng]} icon={customIcon}>
                   <Popup>jj</Popup>
