@@ -27,15 +27,15 @@ function NavbarHome() {
   const {username, onlogged, setOnlogged, superuser, setSuperUser} = useContext(AppContext)
 
 
-  // useEffect(()=>{
-  //   validateToken().then((response)=>{
-  //     if (response.superuser){
-  //       setSuperUser(true)
-  //     } else {
-  //       setSuperUser(false)
-  //     }
-  //   })
-  // },[])
+  useEffect(()=>{
+    validateToken().then((response)=>{
+      if (response.superuser){
+        setSuperUser(true)
+      } else {
+        setSuperUser(false)
+      }
+    })
+  },[])
 
   const stylenavbar = {
     backgroundImage: path === "/" ? `url(${homePageImage})`: path === "/tips" ? `url(${tipsImage})`: path === "/properties_sale" ? `url(${propertiesSale})`: path === "/my-properties" ? `url(${propertiesSale})` :
@@ -86,17 +86,14 @@ function NavbarHome() {
                   <NavDropdown
                   title="התוספות שלי"
                   id={`offcanvasNavbarDropdown-expand-${false}`}
-                  style={{color: 'darkgreen'}}
+                  style={{color: 'darkgreen', direction:"rtl"}}
                   >
-                  <NavDropdown.Item as={Link} to='/my-properties'>הדירות שלי</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to='/my-tips'>הטיפים שלי</NavDropdown.Item>
-                  < NavDropdown.Item as={Link} to='/add-ads'>העלאת מודעה</NavDropdown.Item>
-                  < NavDropdown.Item as={Link} to='/edit-profile'>עריכת הפרופיל שלי</NavDropdown.Item>
+                  <NavDropdown.Item className="link-dropdown" as={Link} to='/my-properties'>הדירות שלי</NavDropdown.Item>
+                  <NavDropdown.Item className="link-dropdown" as={Link} to='/my-tips'>הטיפים שלי</NavDropdown.Item>
+                  <NavDropdown.Item className="link-dropdown" as={Link} to='/add-ads'>העלאת מודעה</NavDropdown.Item>
+                  <NavDropdown.Item className="link-dropdown" as={Link} to='/edit-profile'>עריכת הפרופיל שלי</NavDropdown.Item>
                   </NavDropdown>
-                  {/* <Nav.Link as={Link} to='/my_properties' style={{color: 'darkgreen'}}>הדירות שלי</Nav.Link>
-                  <Nav.Link as={Link} to='/add_post' style={{color: isHover ? 'white' : 'darkgreen' ,backgroundColor: isHover ? 'darkgreen' : 'black'}} onMouseOver={()=>{setIsHover(true)}}
-                  onMouseLeave={()=>{setIsHover(false)}}
-                  >העלאת מודעה</Nav.Link> */}
+
                   <Button variant='outline-danger' onClick={()=>{
                   localStorage.removeItem("token");
                   setOnlogged(false);

@@ -18,20 +18,21 @@ function App() {
 
   const nav = useNavigate()
 
-  // useEffect(()=>{
-  //   validateToken().then((response)=>{
-  //     if (response) {
-  //       setIduser(response.id)
-  //       setOnlogged(true)
-  //       setUsername(response.user)
-  //     } else {
-  //       localStorage.removeItem("token");
-  //       setOnlogged(false)
-  //       nav('/');
+  useEffect(()=>{
+    validateToken().then((response)=>{
+      if (response) {
+        setIduser(response.id)
+        setOnlogged(true)
+        setUsername(response.user)
+      } 
+      // else {
+      //   localStorage.removeItem("token");
+      //   setOnlogged(false)
+      //   nav('/');
 
-  //     }
-  //   })
-  // },[])
+      // }
+    })
+  },[])
 
   return (<>
   <AppContext.Provider value={{onlogged, setOnlogged, setUsername, username, idUser, setIduser, superuser, setSuperUser}}>

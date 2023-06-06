@@ -44,7 +44,6 @@ function Map() {
         for (const p of properties) {
           const loc = `${p.location}`;
           const res = await addressToGeocode(loc);
-          console.log(res.lat)
           setGeocode((prevList) => [{geocode:res, property:p}]);
           // console.log(res);
         }      
@@ -67,7 +66,7 @@ function Map() {
         url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'
         />
 
-        <MarkerClusterGroup>
+        {/* <MarkerClusterGroup> */}
 
           {/* {geocode.map((g)=> {
             const geo = [parseFloat(g.geocode.lat), parseFloat(g.geocode.lng)]
@@ -77,14 +76,19 @@ function Map() {
             </Marker>
           })} */}
 
-
-          {geocode.map((g)=> (
-            <Marker key={g.property.id} position={g.geocode} icon={customIcon}>
+          {geocode.map((g) => {
+            return (<Marker key={g.property.id} position={g.geocode} icon={customIcon}>
               <Popup><div>{g.property.address}, {g.property.type}</div></Popup>
-            </Marker>
-          ))}
+            </Marker>)
+          })}
+          
+          {/* {markers.map((marker) => {
+            return (<Marker position={marker.geocode} icon={customIcon}>
+              <Popup>hg</Popup>
+            </Marker>)
+          })} */}
 
-        </MarkerClusterGroup>
+        {/* </MarkerClusterGroup> */}
 
     </MapContainer>
     </div>

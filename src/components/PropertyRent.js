@@ -68,24 +68,24 @@ function PropertiesRent() {
 
         <div className='div-all-options'>
         <p>חיפוש נכס:</p>
-          <form onSubmit={handelsubmit}>
-            <input type='number' placeholder='מספר חדרים דוגמא 4' onChange={(e)=>{
+          <form style={{display:"flex", flexDirection:"column" ,gap:"0.5rem"}} onSubmit={handelsubmit}>
+            <input className='input-filter' type='number' placeholder='מספר חדרים דוגמא 4' onChange={(e)=>{
               setRooms(e.target.value === '' ? null : e.target.value);              
             }}/>
             {rooms}
-            <input type='text' placeholder='עיר' onChange={(e)=>{
+            <input className='input-filter' type='text' placeholder='עיר' onChange={(e)=>{
               setCity(e.target.value === '' ? null : e.target.value);
             }}/>
             {city}
-            <select onChange={(e)=> {setBalcony(e.target.value === '' ? null : e.target.value)}} name="balcony" id="balcony">
+            <select style={{width:"60%"}} className='input-filter' onChange={(e)=> {setBalcony(e.target.value === '' ? null : e.target.value)}} name="balcony" id="balcony">
               <option value="null">מרפסת?</option>
               <option value="yes">כן</option>
               <option value="no">לא</option>
             </select>
-            <br/>
 
-            <Button variant='danger' type='submit'>החל</Button>
+            <Button style={{width:"20%"}} variant='danger' type='submit'>החל</Button>
           </form>
+          <br/>
           <Button variant='success' onClick={resetfilter}>איפוס הסינון</Button>
 
           {/* <select name="days" id="days">

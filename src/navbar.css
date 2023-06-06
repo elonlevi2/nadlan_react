@@ -1,17 +1,7 @@
-/* .image-home {
-    background-image: url(${process.env.PUBLIC_URL}/yyy.PNG);
-    height: 40vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-
-}
-
-.my-div {
-    background-image: url(${process.env.PUBLIC_URL}/yyy.PNG);
-  } */
-
-  .link-mains:hover{
+.link-mains:hover{
     color: green;
   }
-  
+
+.link-dropdown {
+  text-align: start;
+} 
