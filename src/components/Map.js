@@ -10,43 +10,46 @@ import { propertiesToMap } from '../client/axiosToApiProperies';
 function Map() {
 
     const [properties, setProperties] = useState([])
-    const [geocode, setGeocode] = useState({})
+    const [geocode, setGeocode] = useState([])
+    const [change, setChange] = useState(false)
 
 
 
-
-    // const markers = [
-    //     {
-    //       geocode: [31.768056693526876, 35.21272329493379],
-    //       popUp: <div style={{color:"red"}}>hey</div>
-    //     },
-    //     {
-    //       geocode: [31.768056693526876, 35.21272329493379],
-    //       popUp: "Hello, I am pop up 2"
-    //     },
-    //     {
-    //       geocode: [31.768056696526876, 35.21282329493379],
-    //       popUp: "Hello, I am pop up 3"
-    //     }
-    //   ];
+    const markers = [
+        {
+          geocode: [31.768056693526876, 35.21272329493379],
+          popUp: <div style={{color:"red"}}>hey</div>
+        },
+        {
+          geocode: [31.768056693526876, 35.21272329493379],
+          popUp: "Hello, I am pop up 2"
+        },
+        {
+          geocode: [31.768056696526876, 35.21282329493379],
+          popUp: "Hello, I am pop up 3"
+        }
+      ];
 
     useEffect(()=> {
       async function data() {
         const res = await propertiesToMap()
-        console.log(res)
-        setProperties(res)        
+        setProperties(res)
+        setChange(true)        
       }
       data()
     },[])
 
-    
-
-    // const res = async ()=>{
-    //    const r = await addressToGeocode(loc);
-    //    console.log(r.lat)
-    //    setProperties({lat: r.lat, lng: r.lng})
-    //   }
-  
+    useEffect(()=> {
+      async function data() {
+        for (const p of properties) {
+          const loc = `${p.location}`;
+          const res = await addressToGeocode(loc);
+          setGeocode((prevList) => [{geocode: res, property:p}]);
+          // console.log(res);
+        }      
+      }
+      data()
+    },[change])
 
     const customIcon = new Icon({
     iconUrl: "https://cdn-icons-png.flaticon.com/512/447/447031.png",
@@ -54,9 +57,27 @@ function Map() {
     iconSize: [38, 38] // size of the icon
     });
 
+
+
+    // const promises = properties.map(async (p) => {
+    //   const loc = `${p.location}`;
+    //   const res = await addressToGeocode(loc);
+    //   return res;
+    // });
+    
+    // Promise.all(promises)
+    //   .then((results) => {
+    //     // עכשיו יש לך את כל התוצאות של הפרומיסים
+    //     results.forEach((res) => {
+    //       setGeocode(res);
+    //       console.log(res);
+    //       return geocode
+    //     });
+    //   })
+
   return (
     <div style={{height:"100vh"}}>
-      <button onClick={()=>{console.log(properties)}}>gg</button>
+      <button onClick={()=>{console.log(properties, geocode)}}>gg</button>
     <MapContainer center={[31.774216454298205, 35.21035281594243]} zoom={13}>
         <TileLayer
         attribution='&copy; <a href="https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Israel.svg">OpenStreetMap</a> contributors'
@@ -64,21 +85,19 @@ function Map() {
         />
 
         <MarkerClusterGroup>
-            {/* {properties && properties.map(async(p) => {
-              const loc = `${p.location}`;
-              const res = await addressToGeocode(loc);
-              setGeocode(res);
-              console.log(res);
-                <Marker position={[31.55555, 32.555555]} icon={customIcon}>
-                    <Popup>h</Popup>
-                </Marker>
-              })} */}
 
-              {/* <Marker position={[properties.lat, properties.lng]} icon={customIcon}>
-                  <Popup>jj</Popup>
-              </Marker> */}
-
+          {geocode.map((g)=>{
+            const geo = [parseFloat(g.geocode.lat), parseFloat(g.geocode.lng)]
+            console.log(geo);
+            <Marker position={[parseFloat(g.geocode.lat), parseFloat(g.geocode.lng)]} icon={customIcon}>
+              <Popup><div>{g.property.address}</div></Popup>
+            </Marker>
+          })}
+            {/* <Marker position={[31.78003, 35.21873]} icon={customIcon}>
+              <Popup>h</Popup>
+            </Marker> */}
         </MarkerClusterGroup>
+
     </MapContainer>
     </div>
   )
