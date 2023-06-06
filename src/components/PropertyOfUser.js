@@ -34,7 +34,7 @@ function PropertyOfUser() {
 
       <div className='div-of-filter'>
 
-        <div className='div-all-options'>
+        {/* <div className='div-all-options'>
           <p>חיפוש נכס:</p>
           <form>
             <input type='number' placeholder='מספר חדרים דוגמא 4' onChange={(e)=>{setRooms(e.target.value)}}/>
@@ -43,10 +43,10 @@ function PropertyOfUser() {
 
             <Button variant='danger' type='submit'>החל</Button>
           </form>
-          {/* <select name="days" id="days">
+          <select name="days" id="days">
             <option value="#">שכונה?</option>
-          </select> */}
-        </div>
+          </select>
+        </div> */}
 
         
 

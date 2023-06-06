@@ -44,7 +44,8 @@ function Map() {
         for (const p of properties) {
           const loc = `${p.location}`;
           const res = await addressToGeocode(loc);
-          setGeocode((prevList) => [{geocode: res, property:p}]);
+          console.log(res.lat)
+          setGeocode((prevList) => [{geocode:res, property:p}]);
           // console.log(res);
         }      
       }
@@ -57,28 +58,10 @@ function Map() {
     iconSize: [38, 38] // size of the icon
     });
 
-
-
-    // const promises = properties.map(async (p) => {
-    //   const loc = `${p.location}`;
-    //   const res = await addressToGeocode(loc);
-    //   return res;
-    // });
-    
-    // Promise.all(promises)
-    //   .then((results) => {
-    //     // עכשיו יש לך את כל התוצאות של הפרומיסים
-    //     results.forEach((res) => {
-    //       setGeocode(res);
-    //       console.log(res);
-    //       return geocode
-    //     });
-    //   })
-
   return (
     <div style={{height:"100vh"}}>
       <button onClick={()=>{console.log(properties, geocode)}}>gg</button>
-    <MapContainer center={[31.774216454298205, 35.21035281594243]} zoom={13}>
+    <MapContainer center={[31.774216454298205, 35.21035281594243]} zoom={10}>
         <TileLayer
         attribution='&copy; <a href="https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Israel.svg">OpenStreetMap</a> contributors'
         url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -86,16 +69,21 @@ function Map() {
 
         <MarkerClusterGroup>
 
-          {geocode.map((g)=>{
+          {/* {geocode.map((g)=> {
             const geo = [parseFloat(g.geocode.lat), parseFloat(g.geocode.lng)]
             console.log(geo);
-            <Marker position={[parseFloat(g.geocode.lat), parseFloat(g.geocode.lng)]} icon={customIcon}>
+            <Marker position={geo} icon={customIcon}>
               <Popup><div>{g.property.address}</div></Popup>
             </Marker>
-          })}
-            {/* <Marker position={[31.78003, 35.21873]} icon={customIcon}>
-              <Popup>h</Popup>
-            </Marker> */}
+          })} */}
+
+
+          {geocode.map((g)=> (
+            <Marker key={g.property.id} position={g.geocode} icon={customIcon}>
+              <Popup><div>{g.property.address}, {g.property.type}</div></Popup>
+            </Marker>
+          ))}
+
         </MarkerClusterGroup>
 
     </MapContainer>

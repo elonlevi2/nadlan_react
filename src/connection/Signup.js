@@ -41,6 +41,9 @@ function Signup() {
 
         if (res === 'UNIQUE constraint failed: auth_user.username') {
             window.alert(res)
+            setError("username בשימוש")
+        } else {
+            setError(false)
         }
 
         if (res.status === 'success') {

@@ -9,8 +9,9 @@ const backgroundimage = process.env.PUBLIC_URL + '/login.jpg'
 
 
 function Login() {
-    const {username, setUsername, onlogged, setOnlogged, setIduser} = useContext(AppContext)
+    const {username, setUsername, setOnlogged, setIduser, setSuperUser} = useContext(AppContext)
     const [password, setPassword] = useState('')
+    
 
     const nav = useNavigate();
 
@@ -24,6 +25,12 @@ function Login() {
             const data = await validateToken();
             setIduser(data.id)
             setUsername(data.user);
+            if (data.superuser){
+                setSuperUser(true)
+            } else {
+                setSuperUser(false)
+            }
+
             nav("/");
           } else {
             window.alert('error at login');
@@ -45,7 +52,7 @@ function Login() {
                     <input type='password' placeholder='סיסמא' value={password} onChange={(e)=> {setPassword(e.target.value)}}/>
                 </div>
 
-                <Button size='lg' variant="outline-success" type='submit' className='btn-submit-login'>הרשמה</Button>
+                <Button size='lg' variant="outline-success" type='submit' className='btn-submit-login'>התחבר</Button>
                 <br/>
                 <br/>
                 <Link to='/signup' variant="danger" className='link-login-to-signup'>רשום? לחץ כאן להרשמה</Link>

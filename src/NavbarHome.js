@@ -8,6 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AppContext } from './App';
+import { validateToken } from './client/connectionClient';
 
 
  const homePageImage = process.env.PUBLIC_URL + '/homet.jpg'
@@ -23,8 +24,18 @@ function NavbarHome() {
   const nav = useNavigate()
   const location = useLocation()
   const path = location.pathname
-  const {username, setUsername, onlogged, setOnlogged} = useContext(AppContext)
-  const [isHover ,setIsHover] = useState(false)
+  const {username, onlogged, setOnlogged, superuser, setSuperUser} = useContext(AppContext)
+
+
+  // useEffect(()=>{
+  //   validateToken().then((response)=>{
+  //     if (response.superuser){
+  //       setSuperUser(true)
+  //     } else {
+  //       setSuperUser(false)
+  //     }
+  //   })
+  // },[])
 
   const stylenavbar = {
     backgroundImage: path === "/" ? `url(${homePageImage})`: path === "/tips" ? `url(${tipsImage})`: path === "/properties_sale" ? `url(${propertiesSale})`: path === "/my-properties" ? `url(${propertiesSale})` :
@@ -68,6 +79,8 @@ function NavbarHome() {
                 <Nav.Link className='link-mains' as={Link} to='/brokers' >השותפים שלנו</Nav.Link>
                 <Nav.Link className='link-mains' as={Link} to='/contact'>יצירת קשר</Nav.Link>
 
+                {superuser && <div>superuser</div>}
+
                 {onlogged ? 
                   <>
                   <NavDropdown
@@ -87,6 +100,7 @@ function NavbarHome() {
                   <Button variant='outline-danger' onClick={()=>{
                   localStorage.removeItem("token");
                   setOnlogged(false);
+                  setSuperUser(false)
                   nav('/login');
                   nav('/login');}}>logout</Button>
                   </> 
