@@ -64,8 +64,8 @@ function NavbarHome() {
             placement="end"
             style={{backgroundColor: "black", color: "white", opacity:'0.8'}}
           >
-            <Offcanvas.Header closeButton closeVariant='white'>
-              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${false}`}>
+            <Offcanvas.Header closeButton closeVariant='white' className='title-offcanvas'>
+              <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${false}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                 זירת הנדלן
               </Offcanvas.Title>
             </Offcanvas.Header>

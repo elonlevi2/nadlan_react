@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import './Home.css'
-import { Button, Dropdown, ListGroup } from 'react-bootstrap'
+import { Button, Card, Dropdown, ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { BsFillEnvelopeAtFill, BsFillGeoAltFill, BsInstagram } from "react-icons/bs";
 import { AiOutlinePhone } from "react-icons/ai";
@@ -9,14 +9,44 @@ import DropdownContext from 'react-bootstrap/esm/DropdownContext';
 import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 import Contact from './Contact';
+import CarouselImages from './CarouselImages';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+import CardOfProperty from './CardOfProperty';
 
 
 function HomePage() {
+  const handleDragStart = (e) => e.preventDefault();
+
+  const items = [
+    <Card style={{width:"50rem", height:"30rem"}}>
+    <Card.Header as="h5">הטיפ של</Card.Header>
+    <Card.Body>
+      <Card.Title></Card.Title>
+      {/* <Card.Text>
+        {tip.content}
+      </Card.Text> */}
+    </Card.Body>
+    </Card>,
+    <Card style={{width:"50rem", height:"30rem"}}>
+    <Card.Header as="h5">הטיפ של</Card.Header>
+    <Card.Body>
+      <Card.Title></Card.Title>
+      {/* <Card.Text>
+        {tip.content}
+      </Card.Text> */}
+    </Card.Body>
+    </Card>,
+
+    // <img style={{width:"100px", height:"100px"}} src="https://ae01.alicdn.com/kf/S11274e60e4fd41ab86b00b5f5e086f1df/10-20pcs-Nuubu-Detox-Foot-Patches-Pads-Natural-Detoxification-Treat-Body-Toxins-Cleansing-Stress-Relief-Feet.jpg_Q90.jpg_.webp" onDragStart={handleDragStart} role="presentation" />,
+    // <img style={{width:"100px", height:"100px"}} src="https://ae01.alicdn.com/kf/S11274e60e4fd41ab86b00b5f5e086f1df/10-20pcs-Nuubu-Detox-Foot-Patches-Pads-Natural-Detoxification-Treat-Body-Toxins-Cleansing-Stress-Relief-Feet.jpg_Q90.jpg_.webp" onDragStart={handleDragStart} role="presentation" />,
+    // <img style={{width:"100px", height:"100px"}} src="https://ae01.alicdn.com/kf/S11274e60e4fd41ab86b00b5f5e086f1df/10-20pcs-Nuubu-Detox-Foot-Patches-Pads-Natural-Detoxification-Treat-Body-Toxins-Cleansing-Stress-Relief-Feet.jpg_Q90.jpg_.webp" onDragStart={handleDragStart} role="presentation" />,
+  ];
 
   return (
     <>
     <div className='about'>
-      <img src='https://scholarlykitchen.sspnet.org/wp-content/uploads/2018/11/iStock-857146092.jpg' className='image'/>
+      {/* <img src='https://scholarlykitchen.sspnet.org/wp-content/uploads/2018/11/iStock-857146092.jpg' className='image'/>
 
       <div className='box'>
 
@@ -38,7 +68,10 @@ function HomePage() {
           פאר תיווך נכסים גאה לשווק נכסים ומגרשים ברמה גבוהה למכירה והשכרה בכל הארץ. אנו מאמינים כי עסקת נדל"ן היא בין ההחלטות המשמעותיות והמשפיעות שתקבלו בחייכם ואנחנו יודעים כיצד לתרגם את החלום שלכם לעסקה המתאימה והמדויקת ביותר עבורכם. נעניק לכם ייעוץ וליווי לאורך כל תהליך הפרויקט, תוך הקפדה על רמת אמינות ושקיפות גבוהות ומקצועיות בלתי מתפשרת, כך שתוכלו להרגיש שקטים, רגועים ושבעי רצון. אנו מזמינים אתכם לפגישת ייעוץ ללא התחייבות
           </p>
         </div>
-      </div>
+      </div> */}
+
+    <AliceCarousel mouseTracking items={items} paddingLeft={320} />
+
     </div>
     <div className='sending-to-the-site'>
 

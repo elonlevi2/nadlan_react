@@ -9,14 +9,15 @@ function CardTips({tip}) {
   const path = location.pathname
   const [show, setShow] = useState(false);
   const [realEstate, setRealEstate] = useState("");
+  const [email, setEmail] = useState("")
 
 
 
   useEffect(()=>{
     async function fetch(){
       const res = await UserFetch(tip.real_estate)
-      console.log(res.data[0])
       setRealEstate(res.data[0].first_name)
+      setEmail(res.data[0].email)
     }
     fetch()
     
@@ -39,7 +40,7 @@ function CardTips({tip}) {
       </Card.Body>
     </Card>
 
-    <ModalTips title={tip.title} content={tip.content} show={show} setShow={setShow}/>
+    <ModalTips title={tip.title} content={tip.content} show={show} setShow={setShow} email={email}/>
 
     </>)
 }

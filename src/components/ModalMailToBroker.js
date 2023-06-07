@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import emailjs from '@emailjs/browser';
 import styled from "styled-components";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 function ModalMailToBroker({show, setShow, emailBroker}) {
@@ -23,6 +24,9 @@ function ModalMailToBroker({show, setShow, emailBroker}) {
       emailjs.sendForm('service_gaogezg', 'template_43gzuyf', form.current, 'Dnd0vTpr7StPYM2Fw')
         .then((result) => {
             console.log(result.text);
+            if (result.text) {
+              window.alert("המייל נשלח")
+            }
         }, (error) => {
             console.log(error.text);
         });
