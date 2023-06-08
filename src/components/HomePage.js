@@ -8,7 +8,9 @@ import { CiFacebook } from "react-icons/ci";
 import Contact from './Contact';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import { propertiesToHome } from '../client/axiosToApiProperies';
+import { PhotoFetch, propertiesToHome } from '../client/axiosToApiProperies';
+import Carousel from 'react-bootstrap/Carousel';
+
 
 
 function HomePage() {
@@ -16,18 +18,32 @@ function HomePage() {
   const [properties, setProperties] = useState([])
   const [items, setItems] = useState([])
 
-  // useEffect(()=>{
-  //   async function fetch() {
-  //     const res = await propertiesToHome()
-  //     setProperties([...res])
-  //   }
-  //   fetch()
-  // },[])
+  useEffect(()=>{
+    async function fetch() {
+      const res = await propertiesToHome()
+      setProperties([...res])
+    }
+    fetch()
+  },[])
+
+  useEffect(()=>{
+    async function image() {
+      for (let i = 0; i < properties.length; i++) {
+        const res = await PhotoFetch(properties[i].id)
+        const resJ = res.data[0].image
+        console.log(resJ)
+        setItems((prev)=>[...prev ,resJ])
+      }
+    }
+    image()
+  },[properties])
+
+  
 
   return (
     <>
     <div className='about'>
-      <img src='https://scholarlykitchen.sspnet.org/wp-content/uploads/2018/11/iStock-857146092.jpg' className='image'/>
+      {/* <img src='https://scholarlykitchen.sspnet.org/wp-content/uploads/2018/11/iStock-857146092.jpg' className='image'/>
 
       <div className='box'>
 
@@ -49,9 +65,69 @@ function HomePage() {
           פאר תיווך נכסים גאה לשווק נכסים ומגרשים ברמה גבוהה למכירה והשכרה בכל הארץ. אנו מאמינים כי עסקת נדל"ן היא בין ההחלטות המשמעותיות והמשפיעות שתקבלו בחייכם ואנחנו יודעים כיצד לתרגם את החלום שלכם לעסקה המתאימה והמדויקת ביותר עבורכם. נעניק לכם ייעוץ וליווי לאורך כל תהליך הפרויקט, תוך הקפדה על רמת אמינות ושקיפות גבוהות ומקצועיות בלתי מתפשרת, כך שתוכלו להרגיש שקטים, רגועים ושבעי רצון. אנו מזמינים אתכם לפגישת ייעוץ ללא התחייבות
           </p>
         </div>
-      </div>
+      </div> */}
 
-    {/* <AliceCarousel mouseTracking items={items} paddingLeft={320} /> */}
+        <Carousel variant='dark' style={{height:"30rem", width:"75rem", position:"absolute", left:"8%", top:"120%"}}>
+        <Carousel.Item style={{paddingLeft:"12.5rem"}}>
+          <Card style={{width: '50rem'}}>
+          <Card.Img style={{width:'800px', height:'250px'}} variant="top" src={items && `http://localhost:8000${items[0]}`}/>
+          <Card.Body>
+              <Card.Text>
+                
+                <div style={{display:'flex', flexDirection:"column" ,gap:'1rem', direction:'rtl', textAlign:'center'}}>
+
+                  {/* <div style={{fontSize:'18px'}}>
+                    דירת {properties[0].rooms} חדרים ב{properties[0].address}<br/>
+                    מיקום:{properties[0].location}
+                  </div> */}
+
+                </div>
+                
+              </Card.Text>
+          </Card.Body>
+          </Card>
+        </Carousel.Item>
+
+        <Carousel.Item style={{paddingLeft:"12.5rem"}}>
+        <Card style={{width: '50rem'}}>
+          <Card.Img style={{width:'800px', height:'250px'}} variant="top" src={items && `http://localhost:8000${items[1]}`}/>
+          <Card.Body>
+              <Card.Text>
+                
+                <div style={{display:'flex', flexDirection:"column" ,gap:'1rem', direction:'rtl', textAlign:'center'}}>
+                
+                  {/* <div style={{fontSize:'18px'}}>
+                    דירת {properties[0].rooms} חדרים ב{properties[0].address}<br/>
+                    מיקום:{properties[0].location}
+                  </div> */}
+
+                </div>
+                
+              </Card.Text>
+          </Card.Body>
+          </Card>
+        </Carousel.Item>
+
+        <Carousel.Item style={{paddingLeft:"12.5rem"}}>
+        <Card style={{width: '50rem'}}>
+          <Card.Img style={{width:'800px', height:'250px'}} variant="top" src={items && `http://localhost:8000${items[1]}`}/>
+          <Card.Body>
+              <Card.Text>
+                
+                <div style={{display:'flex', flexDirection:"column" ,gap:'1rem', direction:'rtl', textAlign:'center'}}>
+                
+                  {/* <div style={{fontSize:'18px'}}>
+                    דירת {properties[0].rooms} חדרים ב{properties[0].address}<br/>
+                    מיקום:{properties[0].location}
+                  </div> */}
+
+                </div>
+                
+              </Card.Text>
+          </Card.Body>
+          </Card>
+        </Carousel.Item>
+      </Carousel>
 
     </div>
     <div className='sending-to-the-site'>

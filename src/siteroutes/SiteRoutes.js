@@ -18,6 +18,7 @@ import Brokers from '../components/Brokers'
 import Contact from '../components/Contact'
 import EditProfile from '../components/EditProfile'
 import Map from '../components/Map'
+import About from '../components/About'
 
 function SiteRoutes() {
     const {onlogged} = useContext(AppContext)
@@ -26,6 +27,7 @@ function SiteRoutes() {
 
     <Routes>
         <Route path='/' element={<HomePage/>}/>
+        <Route path='/about' element={<About/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/card' element={<MyCard/>}/>

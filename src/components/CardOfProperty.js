@@ -31,7 +31,8 @@ function CardOfProperty({property}) {
           <Card.Title>
             <div style={{height: "35px", padding:'0.5rem', backgroundColor:'black', color: 'white', display:'inline-block', width:'100%', fontFamily:'ariel', textAlign:'center'}}>
             מחיר: {property.price}₪
-            </div></Card.Title>
+            </div>
+          </Card.Title>
           <Card.Text>
             
             <div style={{display:'flex', flexDirection:"column" ,gap:'1rem', direction:'rtl', textAlign:'center'}}>

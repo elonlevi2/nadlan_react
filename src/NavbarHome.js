@@ -71,7 +71,7 @@ function NavbarHome() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3" style={{direction:'rtl'}}>
-                <Nav.Link href='#' className='link-mains'>אודות</Nav.Link>
+                <Nav.Link className='link-mains' as={Link} to='/about'>אודות</Nav.Link>
                 <Nav.Link className='link-mains' as={Link} to='/properties_sale'>נכסים למכירה</Nav.Link>
                 <Nav.Link className='link-mains' as={Link} to='/properties_rent'>נכסים לשכירות</Nav.Link>
                 <Nav.Link className='link-mains' as={Link} to='/map'>מפת נכסים</Nav.Link>
