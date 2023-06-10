@@ -41,7 +41,6 @@ function SiteRoutes() {
         <Route path={'/edit-tips'} element={<EditTips/>}/>
         <Route path={'/brokers'} element={<Brokers/>}/>
         <Route path={'/edit-profile'} element={<EditProfile/>}/>
-        <Route path='/photo' element={<PhotoLoader/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/map' element={<Map/>}/>
     </Routes>

@@ -67,19 +67,19 @@ function HomePage() {
         </div>
       </div> */}
 
-        <Carousel variant='dark' style={{height:"30rem", width:"75rem", position:"absolute", left:"8%", top:"120%"}}>
+        <Carousel variant='dark' style={{height:"33rem", width:"75rem", position:"absolute", left:"8%", top:"120%"}}>
         <Carousel.Item style={{paddingLeft:"12.5rem"}}>
           <Card style={{width: '50rem'}}>
-          <Card.Img style={{width:'800px', height:'250px'}} variant="top" src={items && `http://localhost:8000${items[0]}`}/>
+          <Card.Img style={{width:'800px', height:'400px'}} variant="top" src={items && `http://localhost:8000${items[0]}`}/>
           <Card.Body>
               <Card.Text>
                 
                 <div style={{display:'flex', flexDirection:"column" ,gap:'1rem', direction:'rtl', textAlign:'center'}}>
 
-                  {/* <div style={{fontSize:'18px'}}>
-                    דירת {properties[0].rooms} חדרים ב{properties[0].address}<br/>
-                    מיקום:{properties[0].location}
-                  </div> */}
+                  <div style={{fontSize:'18px'}}>
+                    דירת {properties.length > 0 && properties[0].rooms} חדרים ב{properties.length > 0 && properties[0].address}<br/>
+                    מיקום:{properties.length > 0 && properties[0].location}
+                  </div>
 
                 </div>
                 
@@ -90,16 +90,16 @@ function HomePage() {
 
         <Carousel.Item style={{paddingLeft:"12.5rem"}}>
         <Card style={{width: '50rem'}}>
-          <Card.Img style={{width:'800px', height:'250px'}} variant="top" src={items && `http://localhost:8000${items[1]}`}/>
+          <Card.Img style={{width:'800px', height:'400px'}} variant="top" src={items && `http://localhost:8000${items[1]}`}/>
           <Card.Body>
               <Card.Text>
                 
                 <div style={{display:'flex', flexDirection:"column" ,gap:'1rem', direction:'rtl', textAlign:'center'}}>
                 
-                  {/* <div style={{fontSize:'18px'}}>
-                    דירת {properties[0].rooms} חדרים ב{properties[0].address}<br/>
-                    מיקום:{properties[0].location}
-                  </div> */}
+                  <div style={{fontSize:'18px'}}>
+                    דירת {properties.length > 0 && properties[1].rooms} חדרים ב{properties.length > 0 && properties[1].address}<br/>
+                    מיקום:{properties.length > 0 && properties[1].location}
+                  </div>
 
                 </div>
                 
@@ -110,16 +110,16 @@ function HomePage() {
 
         <Carousel.Item style={{paddingLeft:"12.5rem"}}>
         <Card style={{width: '50rem'}}>
-          <Card.Img style={{width:'800px', height:'250px'}} variant="top" src={items && `http://localhost:8000${items[1]}`}/>
+          <Card.Img style={{width:'800px', height:'400px'}} variant="top" src={items && `http://localhost:8000${items[1]}`}/>
           <Card.Body>
               <Card.Text>
                 
                 <div style={{display:'flex', flexDirection:"column" ,gap:'1rem', direction:'rtl', textAlign:'center'}}>
                 
-                  {/* <div style={{fontSize:'18px'}}>
-                    דירת {properties[0].rooms} חדרים ב{properties[0].address}<br/>
-                    מיקום:{properties[0].location}
-                  </div> */}
+                  <div style={{fontSize:'18px'}}>
+                    דירת {properties.length > 0 && properties[2].rooms} חדרים ב{properties.length > 0 && properties[2].address}<br/>
+                    מיקום:{properties.length > 0 && properties[2].location}
+                  </div>
 
                 </div>
                 
@@ -178,16 +178,17 @@ function HomePage() {
         <h6>נכסים</h6>
 
         <div className='div-details-contact-icons'>
-          <Link className='links' to="#">כל הנכסים</Link>
+          <Link className='links' to="/properties_sale">נכסים למכירה</Link>
+          <Link className='links' to="/properties_rent">נכסים לשכירות</Link>
 
-          <div className='dropdown'>
+          {/* <div className='dropdown'>
             <Link className='dropbtn'>נכסים</Link>
             <br/>
             <div className="dropdown-content">
               <Link to="/properties_sale">נכסים למכירה</Link>
               <Link to="/properties_rent">נכסים לשכירות</Link>
             </div>
-          </div>
+          </div> */}
 
 
 
