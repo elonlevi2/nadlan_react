@@ -14,6 +14,7 @@ import "./components/editads.css"
 import "./components/brokers.css"
 import "./components/editprofile.css"
 import "./components/map.css"
+import "./components/dashbord.css"
 import "react-alice-carousel/lib/alice-carousel.css";
 
 

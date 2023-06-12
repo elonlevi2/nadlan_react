@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
-import { GetTipToEdit } from '../client/axiosToApiTips'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { GetTipToEdit, axiosDeleteTip } from '../client/axiosToApiTips'
 import { Button } from 'react-bootstrap'
 import { addTipFetch, editTipFetch } from '../client/axiosToAddAds'
 
@@ -8,6 +8,7 @@ function EditTips() {
     const locationPath = useLocation()
     const search = new URLSearchParams(locationPath.search)
     const id = search.get("id")
+    const nav = useNavigate()
 
     useEffect(()=>{
         fetch = async ()=>{
@@ -33,8 +34,15 @@ function EditTips() {
             setError(false)
         }
         const res = await editTipFetch(title, content, id);
+        nav('/my-tips')
         window.alert('הטיפ נערך בהצלחה')            
 
+    }
+
+    const deleteTip = async ()=>{
+      const res = await axiosDeleteTip(id)
+      nav('/my-tips')
+      window.alert(res)
     }
 
   return (<>
@@ -48,6 +56,7 @@ function EditTips() {
 
                 <Button variant='success' type='submit'>ערוך</Button>
             </form>
+            <Button variant='warning' onClick={deleteTip}>delete tip</Button>
         </div>
     </div>
   </>)

@@ -67,7 +67,7 @@ function PropertyOfUser() {
           >
           {properties && properties.map((p)=>{return <CardOfProperty key={p.id} property={p}/>})}
 
-          </InfiniteScroll>
+        </InfiniteScroll>
         </div>
 
       </div>

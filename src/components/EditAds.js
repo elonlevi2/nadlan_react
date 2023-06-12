@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
-import { GetPropertyToEdit } from '../client/axiosToApiProperies'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { GetPropertyToEdit, axiosDeleteProperty } from '../client/axiosToApiProperies'
 import { Button } from 'react-bootstrap'
 import { EditPropertyFetch } from '../client/axiosToAddAds'
 
@@ -9,6 +9,7 @@ function EditAds() {
     const locationPath = useLocation()
     const search = new URLSearchParams(locationPath.search)
     const id = search.get("id")
+    const nav = useNavigate()
 
     useEffect(()=>{
       fetch = async ()=>{
@@ -57,7 +58,14 @@ function EditAds() {
         }
         
       const res = await EditPropertyFetch(location, address, price, size, rooms, balcony, description, type, phone, id);
-      window.alert('הדירה נערכה בהצלחה')            
+      nav('/my-properties')            
+      window.alert('הדירה נערכה בהצלחה')
+    }
+
+    const deleteAds = async ()=>{
+      const res = await axiosDeleteProperty(id)
+      nav('/my-properties')
+      window.alert(res)
     }
 
   return (<>
@@ -91,6 +99,7 @@ function EditAds() {
 
           <Button variant='success' type='submit'>הוסף</Button>
         </form>
+        <Button variant='warning' onClick={deleteAds}>delete property</Button>
     </div>
   </div>
   </div>

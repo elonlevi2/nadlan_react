@@ -89,3 +89,17 @@ export async function propertiesToHome() {
     }
     
 }
+
+
+export async function axiosDeleteProperty(id) {
+    const url = `http://localhost:8000/api/property/delete?id=${id}`
+    try {
+        const response = await axios.delete(url)
+        console.assert(response.status == 200)
+        return response.data
+    } catch (error){
+        console.error("error:", error)
+    }
+    
+}
+

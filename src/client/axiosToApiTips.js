@@ -40,3 +40,15 @@ export async function GetTipToEdit(id) {
     }
     
 }
+
+export async function axiosDeleteTip(id) {
+    const url = `http://localhost:8000/api/tips/delete?id=${id}`
+    try {
+        const response = await axios.delete(url)
+        console.assert(response.status == 200)
+        return response.data
+    } catch (error){
+        console.error("error:", error)
+    }
+    
+}
