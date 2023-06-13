@@ -6,29 +6,35 @@ import { Icon } from 'leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import { addressToGeocode } from '../client/axiosGeocodeApi';
 import { propertiesToMap } from '../client/axiosToApiProperies';
+import { Button } from 'react-bootstrap';
 
 function Map() {
 
     const [properties, setProperties] = useState([])
     const [geocode, setGeocode] = useState([])
     const [change, setChange] = useState(false)
+    const [search, setSearch] = useState()
+    const [zoomMap, setZoomMap] = useState([31.774216454298205, 35.21035281594243])
 
 
 
-    const markers = [
-        {
-          geocode: [31.768056693526876, 35.21272329493379],
-          popUp: <div style={{color:"red"}}>hey</div>
-        },
-        {
-          geocode: [31.768056693526876, 35.21272329493379],
-          popUp: "Hello, I am pop up 2"
-        },
-        {
-          geocode: [31.768056696526876, 35.21282329493379],
-          popUp: "Hello, I am pop up 3"
-        }
-      ];
+    const handelsubmit = async(e)=> {
+      e.preventDefault()
+      const loc = `${search}`;
+      const zoom = await addressToGeocode(loc);
+      console.log(zoom)
+      setZoomMap([zoom.lat, zoom.lng])
+    }
+
+    // useEffect(()=>{
+    //   async function geozoom() {
+    //     const loc = `${search}`;
+    //     const zoom = await addressToGeocode(search);
+    //     console.log(zoom)
+    //   }
+    //   geozoom()
+    // },[search])
+
 
     useEffect(()=> {
       async function data() {
@@ -42,9 +48,9 @@ function Map() {
     useEffect(()=> {
       async function data() {
         for (const p of properties) {
-          const loc = `${p.location}`;
+          const loc = `${p.location}, ${p.address}`;
           const res = await addressToGeocode(loc);
-          setGeocode((prevList) => [{geocode:res, property:p}]);
+          setGeocode((prevList) => [...prevList,{geocode:res, property:p}]);
           // console.log(res);
         }      
       }
@@ -57,10 +63,19 @@ function Map() {
     iconSize: [38, 38] // size of the icon
     });
 
-  return (
-    <div style={{height:"100vh"}}>
-      <button onClick={()=>{console.log(properties, geocode)}}>gg</button>
-    <MapContainer center={[31.774216454298205, 35.21035281594243]} zoom={10}>
+  return (<>
+    <div className='div-map'>
+      <h2>מפת הנכסים</h2>
+      <br/>
+      <form onSubmit={handelsubmit}>
+        <input onChange={(e)=> {setSearch(e.target.value)}} style={{direction:"rtl"}} type='search' placeholder='חיפוש...'/>
+        <Button type='submit'>search</Button>
+      </form>
+      {search}
+    </div>
+    <br/>
+      {/* <button onClick={()=>{console.log(properties, geocode)}}>gg</button> */}
+    <MapContainer center={zoomMap} zoom={10}>
         <TileLayer
         attribution='&copy; <a href="https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Israel.svg">OpenStreetMap</a> contributors'
         url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -68,31 +83,16 @@ function Map() {
 
         {/* <MarkerClusterGroup> */}
 
-          {/* {geocode.map((g)=> {
-            const geo = [parseFloat(g.geocode.lat), parseFloat(g.geocode.lng)]
-            console.log(geo);
-            <Marker position={geo} icon={customIcon}>
-              <Popup><div>{g.property.address}</div></Popup>
-            </Marker>
-          })} */}
-
-          {geocode.map((g) => {
-            return (<Marker key={g.property.id} position={g.geocode} icon={customIcon}>
+          {geocode.map(g => <Marker position={[g.geocode.lat, g.geocode.lng]} icon={customIcon}>
               <Popup><div>{g.property.address}, {g.property.type}</div></Popup>
-            </Marker>)
-          })}
-          
-          {/* {markers.map((marker) => {
-            return (<Marker position={marker.geocode} icon={customIcon}>
-              <Popup>hg</Popup>
-            </Marker>)
-          })} */}
+            </Marker>
+          )}
 
         {/* </MarkerClusterGroup> */}
 
     </MapContainer>
-    </div>
-  )
+
+  </>)
 }
 
 export default Map

@@ -15,11 +15,11 @@ import EditAds from '../components/EditAds'
 import TipsOfUser from '../components/TipsOfUser'
 import EditTips from '../components/EditTips'
 import Brokers from '../components/Brokers'
-import Contact from '../components/Contact'
 import EditProfile from '../components/EditProfile'
 import Map from '../components/Map'
 import About from '../components/About'
 import Dashbord from '../components/Dashbord'
+import ContactPage from '../components/ContactPage'
 
 function SiteRoutes() {
     const {onlogged} = useContext(AppContext)
@@ -42,7 +42,7 @@ function SiteRoutes() {
         <Route path={'/edit-tips'} element={<EditTips/>}/>
         <Route path={'/brokers'} element={<Brokers/>}/>
         <Route path={'/edit-profile'} element={<EditProfile/>}/>
-        <Route path='/contact' element={<Contact/>}/>
+        <Route path='/contact' element={<ContactPage/>}/>
         <Route path='/map' element={<Map/>}/>
         <Route path='/dashbord' element={<Dashbord/>}/>
     </Routes>

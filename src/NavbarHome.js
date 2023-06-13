@@ -40,9 +40,9 @@ function NavbarHome() {
 
   const stylenavbar = {
     backgroundImage: path === "/" ? `url(${homePageImage})`: path === "/tips" ? `url(${tipsImage})`: path === "/properties_sale" ? `url(${propertiesSale})`: path === "/my-properties" ? `url(${propertiesSale})` :
-    path === "/add-ads" ? `url(${addAdsImage})`: path === "/properties_rent" ? `url(${propertiesSale})`: path === "/edit-ads" || "/edit-tips" ? `url(${editImage})`: path === "/my-tips" ? `url(${tipsImage})`:
+    path === "/add-ads" ? `url(${addAdsImage})`: path === "/properties_rent" ? `url(${propertiesSale})`: path === "/edit-ads" | path == "/edit-tips" ? `url(${editImage})`: path === "/my-tips" ? `url(${tipsImage})`:
     path === "/brokers" ? `url(${brokersImage})`: path === "/contact" ? `url(${contactImage})`: path === "/edit-profile" ? `url(${editprofile})`: path === "/about" ? `url(${aboutImage})`: "none",
-    height: path !== "/dashbord" && "100vh",
+    height: path !== "/dashbord" || path !== '/map' && "100vh",
     // path === "/" ? "100vh": path === "/tips" ? '100vh': path === "/properties_sale" ? '100vh': path === "/my-properties"? '100vh': path === "/add-ads"? '100vh': path === "/properties_rent" ? '100vh':
     // path === "/edit-ads" ? '100vh': path === "/my-tips" ? '100vh': path === "/edit-tips" ? '100vh': path === "/brokers" ? '100vh': path === "/contact" ? '100vh': path === "/edit-profile" ? '100' : "0",
     backgroundRepeat:"no-repeat",
@@ -57,7 +57,7 @@ function NavbarHome() {
       <Navbar key={false} bg="dark" variant='dark' expand={false} className="mb-3" style={{opacity: '0.9'}}>
         <Container fluid>
           <Navbar.Brand as={Link} to='/' ><img src={process.env.PUBLIC_URL + '/logot.png'} style={{width:"150px", height: "100px"}}/></Navbar.Brand>
-          {onlogged ? <Navbar.Brand as={Link} to='/'>שלום {username}</Navbar.Brand> : <Navbar.Brand>שלום</Navbar.Brand> }
+          {onlogged ? <Navbar.Brand as={Link} to='/'>{username} שלום</Navbar.Brand> : <Navbar.Brand>שלום</Navbar.Brand> }
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${false}`} />
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-${false}`}

@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import { Button } from 'react-bootstrap';
+import { Button, Nav } from 'react-bootstrap';
 import { addPropertyFetch, addTipFetch } from '../client/axiosToAddAds';
+import { useNavigate } from 'react-router-dom';
 
 const homePageImage = process.env.PUBLIC_URL + '/homet.jpg'
 
 function AddAds() {
+    const nav = useNavigate()
+
     const [photo, setPhoto] = useState()
 
 
@@ -44,8 +47,8 @@ function AddAds() {
         }
         
         const res = await addPropertyFetch(location, address, price, size, rooms, balcony, description, type, phone);
-        console.log(res.id)
         window.alert('הדירה נשמר בהצלחה')
+        nav('/my-properties')
         
         const fd = new FormData()
 
@@ -58,7 +61,7 @@ function AddAds() {
             method: 'POST',          
             body: fd,
         };
-        console.log(fd.keys)
+        
          
         fetch(`http://127.0.0.1:8000/api/photo?id=${res.id}`, options)
         .then((res) => {
@@ -92,7 +95,7 @@ function AddAds() {
         variant='tabs'
         >
         <Tab eventKey="add_property" title="הוספת דירה" tabClassName='tab'>
-            <Tab.Content className='tab-content'>
+            <Tab.Content className='tab-content-ads'>
                 <div className='div-main-add-property'>
                     <div className='div-form-property'>
 
@@ -142,7 +145,7 @@ function AddAds() {
             
         </Tab>
         <Tab eventKey="add_tip" title="הוספת טיפ" tabClassName='tab'>
-            <Tab.Content className='tab-content'>
+            <Tab.Content className='tab-content-ads'>
                 <div className='div-main-add-tip'>
 
                     <div className='div-form'>

@@ -8,7 +8,7 @@ import TableUsers from './TableUsers';
 function Dashbord() {
 
   return (
-    <div>
+    // <div>
         <Tabs
       defaultActiveKey="home"
       id="fill-tab-example"
@@ -22,7 +22,7 @@ function Dashbord() {
             <TableUsers/>
         </Tab>
         </Tabs>
-    </div>
+    // </div>
   )
 }
 

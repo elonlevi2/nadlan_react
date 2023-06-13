@@ -2,3 +2,26 @@
     height: 70vh;
     border: black solid 2px;
 }
+
+.div-map h2{
+    font-family:Monospace;
+    font-size: 54px;
+    direction: rtl;
+    text-align: center;
+}
+
+.div-map {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-map input {
+    height: 60px;
+    width: 30%;
+    padding: 12px;
+    border: 0.7px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}

@@ -11,8 +11,7 @@ function TableUsers() {
 
     const addUsers = async ()=> {
         const res = await brokersFetch(pagenum, 10)
-        console.log(res)
-    
+
         if (!res.has_more) {
           setHasmore(false)
         }
@@ -31,6 +30,8 @@ function TableUsers() {
         window.location = '/dashbord'
     }
 
+    useEffect(()=>{addUsers()}, [])
+
   return (<>
         <InfiniteScroll
         loadMore={addUsers}
@@ -48,7 +49,7 @@ function TableUsers() {
                         <th>#</th>
                     </tr>
                 </thead>
-                {users.map((user)=>{return <tbody>
+                {users.map((user)=>{return <tbody key={user.id}>
                     <tr>
                         <td>{user.id}</td>
                         <td>{user.first_name}</td>

@@ -24,11 +24,6 @@ function Brokers() {
       }
 
 
-
-
-
-
-
   return (<>
     <div className='main-div'>
         <InfiniteScroll

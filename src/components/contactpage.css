@@ -1,0 +1,13 @@
+.div-main-contact-page {
+    height: 90vh;
+    background-color: rgb(102, 102, 53);
+    
+}
+
+.div-main-contact-page h2{
+    text-align: center;
+    font-size: 54px;
+    font-family: 'Times New Roman', Times, serif;
+    padding-top: 3rem;
+    font-weight: bold;
+}

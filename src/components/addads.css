@@ -14,7 +14,7 @@
     background-color: green;
 }
 
-.tab-content {
+.tab-content-ads {
     height: 80vh;
     background-color:darkslategrey;
 
@@ -89,10 +89,12 @@
     border-radius: 4px;
     resize: vertical;
     background-color: black;
+    color: floralwhite;
 }
 
 .form-property-text-number:focus {
     background-color: floralwhite;
+    color: black;
 }
 
 .form-property-text-number::-webkit-input-placeholder {
@@ -107,10 +109,12 @@
     border-radius: 4px;
     resize: vertical;
     background-color: black;
+    color: floralwhite;
 }
 
 .form-property textarea:focus{
     background-color: floralwhite;
+    color: black;
 }
 
 .form-property textarea::-webkit-input-placeholder{
