@@ -70,36 +70,43 @@ function EditAds() {
 
   return (<>
   <div>
-  <div className='div-main-add-property'>
-      <div className='div-form-property'>
+  <div className='div-main-edit-property'>
+      <div className='div-form-property-edit'>
 
-        <form className='form-property' onSubmit={handelsubmitproperty}>
+        <form className='form-property-edit' onSubmit={handelsubmitproperty}>
 
-          <input type='text' placeholder='עיר' value={location} onChange={(e)=>{setLocation(e.target.value)}}></input>
-          <input type='text' placeholder='כתובת' value={address} onChange={(e)=>{setAddress(e.target.value)}}></input>
-          <input type='number' placeholder='מחיר' value={price} onChange={(e)=>{setPrice(e.target.value)}}></input>
-          <input type='number' placeholder='מ״ר' value={size} onChange={(e)=>{setSize(e.target.value)}}></input>
-          <input type='text' placeholder='חדרים' value={rooms} onChange={(e)=>{setRooms(e.target.value)}}></input>
-          <input type='tel' placeholder='פלאפון ליצירת קשר דוגמא:0501234567' value={phone} onChange={(e)=>{setPhone(e.target.value)}}
-          pattern="[0-9]{10}"></input>
-          <select value={balcony} onChange={(e)=>{setBalcony(e.target.value)}}>
-              <option value='none'>מרפסת?</option>
-              <option>yes</option>
-              <option>no</option>
-          </select>
+          <div className='div-in-form-edit'>
+            <input className='form-property-text-number-edit' type='text' placeholder='עיר' value={location} onChange={(e)=>{setLocation(e.target.value)}}></input>
+            <input className='form-property-text-number-edit' type='text' placeholder='כתובת' value={address} onChange={(e)=>{setAddress(e.target.value)}}></input>
+            <input className='form-property-text-number-edit' type='number' placeholder='מחיר' value={price} onChange={(e)=>{setPrice(e.target.value)}}></input>
+            <input className='form-property-text-number-edit' type='number' placeholder='מ״ר' value={size} onChange={(e)=>{setSize(e.target.value)}}></input>
+            <input className='form-property-text-number-edit' type='text' placeholder='חדרים' value={rooms} onChange={(e)=>{setRooms(e.target.value)}}></input>
+            <input className='form-property-text-number-edit' type='tel' placeholder='פלאפון ליצירת קשר דוגמא:0501234567' value={phone} onChange={(e)=>{setPhone(e.target.value)}}
+            pattern="[0-9]{10}"></input>
+          </div>
 
-          <textarea placeholder='עוד מידע על נכס' value={description} onChange={(e)=>{setDescription(e.target.value)}}></textarea>
-          <select value={type} onChange={(e)=>{setType(e.target.value)}}>
-              <option value='none'>סוג נכס</option>
-              <option value='sale'>מכירה</option>
-              <option value='rent'>שכירות</option>
-          </select> 
+          <div className='div-in-form-edit'>
+          <textarea className='form-property-textarea-edit' placeholder='עוד מידע על נכס' value={description} onChange={(e)=>{setDescription(e.target.value)}}></textarea>
 
-          {error && <p style={{color:'red'}}>{error}</p>}
+            <select value={balcony} onChange={(e)=>{setBalcony(e.target.value)}}>
+                <option value='none'>מרפסת?</option>
+                <option>yes</option>
+                <option>no</option>
+            </select>
 
-          <Button variant='success' type='submit'>הוסף</Button>
+            <select value={type} onChange={(e)=>{setType(e.target.value)}}>
+                <option value='none'>סוג נכס</option>
+                <option value='sale'>מכירה</option>
+                <option value='rent'>שכירות</option>
+            </select> 
+          </div>
+
+          {error && <p className='error-edit' style={{color:'red'}}>{error}</p>}
+
+        <Button className='submit-edit' variant='success' type='submit'>שמור עריכה</Button>
+        <Button className='delete-edit'  variant='danger' onClick={deleteAds}>מחיקת המודעה</Button>
         </form>
-        <Button variant='warning' onClick={deleteAds}>delete property</Button>
+
     </div>
   </div>
   </div>

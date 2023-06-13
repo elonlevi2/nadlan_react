@@ -80,7 +80,6 @@ function AddAds() {
         window.alert('הטיפ נשמר בהצלחה')            
 
     }
-    // console.log(location, address, price, size, rooms, balcony, description, type)
 
   return (<>
 
@@ -143,7 +142,7 @@ function AddAds() {
             
         </Tab>
         <Tab eventKey="add_tip" title="הוספת טיפ" tabClassName='tab'>
-            <Tab.Content style={{backgroundImage:`url(${homePageImage})`}} className='tab-content'>
+            <Tab.Content className='tab-content'>
                 <div className='div-main-add-tip'>
 
                     <div className='div-form'>

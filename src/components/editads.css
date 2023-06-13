@@ -1,0 +1,83 @@
+.div-main-edit-property {
+    direction: rtl;
+    height: 100vh;
+}
+
+
+.form-property-text-number-edit {
+    width: 50%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+/* .form-property-text-number-edit:focus {
+    background-color: floralwhite;
+} */
+.form-property-edit {
+    display:flex;
+    flex-direction: row;
+    /* gap: 0.7rem; */
+    direction: rtl;
+    padding-right: 10rem;
+    padding-top: 3rem;
+}
+
+.form-property-textarea-edit{
+    height: 200px;
+    width: 60%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.div-in-form-edit {
+    display:flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 2rem;
+}
+
+.div-form-property-edit {
+    padding: 1rem;
+}
+
+.form-property-edit select{
+    width: 20%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+
+}
+
+.submit-edit {
+    width: 30%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    position: absolute;
+    right: 37%;
+    top: 179%;
+}
+
+.delete-edit {
+    width: 30%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    position: absolute;
+    right: 37%;
+    top: 186%;
+}
+.error-edit {
+    position: absolute;
+    right: 45%;
+    top: 172%;
+    font-size: 24px;
+
+}

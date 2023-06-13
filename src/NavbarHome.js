@@ -40,7 +40,7 @@ function NavbarHome() {
 
   const stylenavbar = {
     backgroundImage: path === "/" ? `url(${homePageImage})`: path === "/tips" ? `url(${tipsImage})`: path === "/properties_sale" ? `url(${propertiesSale})`: path === "/my-properties" ? `url(${propertiesSale})` :
-    path === "/add-ads" ? `url(${addAdsImage})`: path === "/properties_rent" ? `url(${propertiesSale})`: path === "/edit-ads" ? `url(${editImage})`: path === "/my-tips" ? `url(${tipsImage})`:
+    path === "/add-ads" ? `url(${addAdsImage})`: path === "/properties_rent" ? `url(${propertiesSale})`: path === "/edit-ads" || "/edit-tips" ? `url(${editImage})`: path === "/my-tips" ? `url(${tipsImage})`:
     path === "/brokers" ? `url(${brokersImage})`: path === "/contact" ? `url(${contactImage})`: path === "/edit-profile" ? `url(${editprofile})`: path === "/about" ? `url(${aboutImage})`: "none",
     height: path !== "/dashbord" && "100vh",
     // path === "/" ? "100vh": path === "/tips" ? '100vh': path === "/properties_sale" ? '100vh': path === "/my-properties"? '100vh': path === "/add-ads"? '100vh': path === "/properties_rent" ? '100vh':

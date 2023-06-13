@@ -15,7 +15,9 @@
 }
 
 .tab-content {
-    height: 100vh;
+    height: 80vh;
+    background-color:darkslategrey;
+
 }
 
 .div-main-add-tip {
@@ -68,7 +70,7 @@
     display:flex;
     flex-direction: column;
     width: 50%;
-    gap: 1rem;
+    gap: 2rem;
     /* align-items: center; */
     /* justify-content: center; */
     /* text-align: center; */
@@ -86,6 +88,15 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
+    background-color: black;
+}
+
+.form-property-text-number:focus {
+    background-color: floralwhite;
+}
+
+.form-property-text-number::-webkit-input-placeholder {
+    color: floralwhite;
 }
 
 .form-property textarea{
@@ -95,6 +106,15 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
+    background-color: black;
+}
+
+.form-property textarea:focus{
+    background-color: floralwhite;
+}
+
+.form-property textarea::-webkit-input-placeholder{
+    color: floralwhite;
 }
 
 .form-property select{
@@ -103,13 +123,14 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
-
+    background-color: black;
+    color: floralwhite;
 
 }
 
 .files-input::file-selector-button {
     border: none;
-    background: #084cdf;
+    background: black;
     padding: 12px;
     border-radius: 10px;
     color: #fff;
@@ -129,5 +150,5 @@
     resize: vertical;
     position: absolute;
     right: 37%;
-    top: 170%;
+    top: 180%;
 }

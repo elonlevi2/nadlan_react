@@ -46,7 +46,7 @@ function EditTips() {
     }
 
   return (<>
-    <div className='div-main-add-tip'>
+    <div className='div-main-edit-tip'>
 
         <div className='div-form'>
             <form className='form' onSubmit={handelsubmittip}>
@@ -56,8 +56,9 @@ function EditTips() {
 
                 <Button variant='success' type='submit'>ערוך</Button>
             </form>
-            <Button variant='warning' onClick={deleteTip}>delete tip</Button>
+            <Button className='delete-edit-tip' variant='danger' onClick={deleteTip}>מחיקת הטיפ</Button>
         </div>
+
     </div>
   </>)
 }
