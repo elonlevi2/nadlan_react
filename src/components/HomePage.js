@@ -31,7 +31,6 @@ function HomePage() {
       for (let i = 0; i < properties.length; i++) {
         const res = await PhotoFetch(properties[i].id)
         const resJ = res.data[0].image
-        console.log(resJ)
         setItems((prev)=>[...prev ,resJ])
       }
     }

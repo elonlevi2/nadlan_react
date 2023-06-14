@@ -5,7 +5,6 @@ import { Button, Nav } from 'react-bootstrap';
 import { addPropertyFetch, addTipFetch } from '../client/axiosToAddAds';
 import { useNavigate } from 'react-router-dom';
 
-const homePageImage = process.env.PUBLIC_URL + '/homet.jpg'
 
 function AddAds() {
     const nav = useNavigate()
@@ -161,12 +160,6 @@ function AddAds() {
                 </div>
             </Tab.Content>            
         </Tab>
-        {/* <Tab eventKey="longer-tab" title="Loooonger Tab">
-            
-        </Tab>
-        <Tab eventKey="contact" title="Contact" disabled>
-            
-        </Tab> */}
         </Tabs>
 
     </div>

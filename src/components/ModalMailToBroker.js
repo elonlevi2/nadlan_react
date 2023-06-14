@@ -8,18 +8,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 function ModalMailToBroker({show, setShow, emailBroker}) {
     const handleClose = () => setShow(false);
-
-    // const [name, Setname] = useState('')
-    // const [emailbroker, setEmailBroker] = useState('')
-    // const [message, setMessage] = useState('')
     const form = useRef();
 
 
     const sendEmail = async (e) => {
       e.preventDefault();
-
-    //   const res = await addContact(name, email, message)
-    //   console.log(res)
   
       emailjs.sendForm('service_gaogezg', 'template_43gzuyf', form.current, 'Dnd0vTpr7StPYM2Fw')
         .then((result) => {
@@ -57,9 +50,6 @@ function ModalMailToBroker({show, setShow, emailBroker}) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          {/* <Button variant="primary" onClick={sendEmail}>
-            Save Changes
-          </Button> */}
         </Modal.Footer>
       </Modal>
   </>)

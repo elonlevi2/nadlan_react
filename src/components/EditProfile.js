@@ -38,9 +38,14 @@ function EditProfile() {
         }
 
         const res = await editProfileFetch(firstname, lastname, username, email, id);
-        window.alert('הפרופיל נערך בהצלחה') 
-        nav('/')
-
+        console.log(res)
+        if (res == "objects updated"){
+            nav('/')
+            window.alert('הפרופיל נערך בהצלחה') 
+        } else {
+            nav('/edit-profile')
+            window.alert(res)
+        }
     }
 
   return (

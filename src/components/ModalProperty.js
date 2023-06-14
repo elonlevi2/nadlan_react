@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap';
-// import CarouselImages from './CarouselImages';
 import { PhotoFetch, UserFetch } from '../client/axiosToApiProperies';
 import ModalMailToBroker from './ModalMailToBroker';
 
@@ -25,30 +24,17 @@ function ModalProperty({property, show, setShow, images}) {
         }
         async function fetchData() {
           const res = await PhotoFetch(property.id)
-          console.log(res.data)
           setPhoto(res.data)
         }
         User()
         fetchData()
     }, [])
 
-    // useEffect(()=>{
-    //   async function fetchData() {
-    //     const res = await PhotoFetch(property.id)
-    //     console.log(res.data)
-    //     setPhoto(res.data[0].image)}
-    //   fetchData()
-    // },[])
 
   return (
     <>
     <Modal fullscreen={true} show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton>
-        {/* <Modal.Title style={{textAlign:'center'}}>
-            <div className='div-of-title'>
-                <h3>זירת הנדלן מציגה:</h3>
-            </div>
-        </Modal.Title> */}
       </Modal.Header>
       <Modal.Body>
             <div className='div-of-title'>
@@ -82,9 +68,6 @@ function ModalProperty({property, show, setShow, images}) {
         <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
-        {/* <Button variant="primary" onClick={handleClose}>
-          Save Changes
-        </Button> */}
       </Modal.Footer>
     </Modal>
   </>

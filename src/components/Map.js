@@ -14,8 +14,7 @@ function Map() {
     const [geocode, setGeocode] = useState([])
     const [change, setChange] = useState(false)
     const [search, setSearch] = useState()
-    const [zoomMap, setZoomMap] = useState([31.774216454298205, 35.21035281594243])
-
+    const [zoomMap, setZoomMap] = useState([31.78003, 35.21873])
 
 
     const handelsubmit = async(e)=> {
@@ -23,7 +22,8 @@ function Map() {
       const loc = `${search}`;
       const zoom = await addressToGeocode(loc);
       console.log(zoom)
-      setZoomMap([zoom.lat, zoom.lng])
+      // setZoomMap([zoom.lat, zoom.lng])
+      setZoomMap(zoom)
     }
 
     // useEffect(()=>{
@@ -34,6 +34,8 @@ function Map() {
     //   }
     //   geozoom()
     // },[search])
+
+    useEffect(()=>{console.log(zoomMap)},[zoomMap])
 
 
     useEffect(()=> {
@@ -58,8 +60,8 @@ function Map() {
     },[change])
 
     const customIcon = new Icon({
-    iconUrl: "https://cdn-icons-png.flaticon.com/512/447/447031.png",
-    // iconUrl: require("./icons/placeholder.png"),
+    // iconUrl: "https://cdn-icons-png.flaticon.com/512/447/447031.png",
+    iconUrl: require("./iconLeaflet2.png"),
     iconSize: [38, 38] // size of the icon
     });
 
@@ -67,9 +69,9 @@ function Map() {
     <div className='div-map'>
       <h2>מפת הנכסים</h2>
       <br/>
-      <form onSubmit={handelsubmit}>
-        <input onChange={(e)=> {setSearch(e.target.value)}} style={{direction:"rtl"}} type='search' placeholder='חיפוש...'/>
+      <form style={{gap:'1rem'}} onSubmit={handelsubmit}>
         <Button type='submit'>search</Button>
+        <input onChange={(e)=> {setSearch(e.target.value)}} style={{direction:"rtl"}} type='search' placeholder='חיפוש...'/>
       </form>
       {search}
     </div>
@@ -81,14 +83,14 @@ function Map() {
         url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'
         />
 
-        {/* <MarkerClusterGroup> */}
+        <MarkerClusterGroup>
 
           {geocode.map(g => <Marker position={[g.geocode.lat, g.geocode.lng]} icon={customIcon}>
               <Popup><div>{g.property.address}, {g.property.type}</div></Popup>
             </Marker>
           )}
 
-        {/* </MarkerClusterGroup> */}
+        </MarkerClusterGroup>
 
     </MapContainer>
 
