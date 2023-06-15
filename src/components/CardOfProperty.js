@@ -19,7 +19,6 @@ function CardOfProperty({property}) {
   useEffect(()=>{
     async function fetchData() {
       const res = await PhotoFetch(property.id)
-      console.log(res.data)
       setImages(res.data[0].image)}
     fetchData()
   },[])
@@ -41,8 +40,8 @@ function CardOfProperty({property}) {
 
             
               <div style={{fontSize:'18px'}}>
-                דירת {property.rooms} חדרים ב{property.address}<br/>
-                מיקום:{property.location}
+                דירת {property.rooms} חדרים ב{property.location}<br/>
+                מיקום:{property.address}
               </div>
 
               <div>

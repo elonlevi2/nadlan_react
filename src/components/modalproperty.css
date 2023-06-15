@@ -21,6 +21,7 @@
 }
 
 .div-of-photo {
+    padding: 1rem;
     align-items: center;
     gap: 1rem;
     transition: transform 0.3s ease;

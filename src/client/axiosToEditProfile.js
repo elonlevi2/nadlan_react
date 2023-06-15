@@ -12,7 +12,6 @@ export async function editProfileFetch(firstname, lastname, username, email, id)
       const res = await axios.put(`http://localhost:8000/api/user/edit?id=${id}`, data);
   
       if (res.status == 200) {
-        console.log(res.data)
         return res.data;
       } else {
         window.alert("Error edited");

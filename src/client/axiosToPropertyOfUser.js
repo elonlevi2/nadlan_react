@@ -7,7 +7,6 @@ export async function propertiesOfUseraxios(page_num, page_size) {
     try {
         const response = await axios.get(url)
         console.assert(response.status == 200)
-        console.log(response.data)
         return response.data
     } catch (error){
         console.error("error:", error)

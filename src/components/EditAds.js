@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { GetPropertyToEdit, axiosDeleteProperty } from '../client/axiosToApiProperies'
 import { Button } from 'react-bootstrap'
 import { EditPropertyFetch } from '../client/axiosToAddAds'
+import Contact from './Contact'
 
 function EditAds() {
 
@@ -10,6 +11,8 @@ function EditAds() {
     const search = new URLSearchParams(locationPath.search)
     const id = search.get("id")
     const nav = useNavigate()
+    const [photo, setPhoto] = useState()
+
 
     useEffect(()=>{
       fetch = async ()=>{
@@ -58,14 +61,34 @@ function EditAds() {
         }
         
       const res = await EditPropertyFetch(location, address, price, size, rooms, balcony, description, type, phone, id);
-      nav('/my-properties')            
       window.alert('הדירה נערכה בהצלחה')
+      nav('/my-properties')
+
+      const fd = new FormData()
+
+      for (let i = 0; i < photo.length; i++) {
+          fd.append(photo[i].name, photo[i])
+        }
+      
+      const options = {
+        headers: {'Accept': 'application/json'},
+        method: 'POST',          
+        body: fd,
+      };
+      
+      fetch(`http://127.0.0.1:8000/api/photo?id=${id}`, options)
+      .then((res) => {
+          res.json().then((resJ) => {
+              console.log(resJ) }) 
+      }).catch((e)=>{window.alert(`photo save Error: ${e}`)})
+
     }
 
     const deleteAds = async ()=>{
       const res = await axiosDeleteProperty(id)
       nav('/my-properties')
       window.alert(res)
+
     }
 
   return (<>
@@ -98,7 +121,8 @@ function EditAds() {
                 <option value='none'>סוג נכס</option>
                 <option value='sale'>מכירה</option>
                 <option value='rent'>שכירות</option>
-            </select> 
+            </select>
+            <input type="file" accept='images/*' className='files-input' multiple onChange={(e) => { setPhoto(e.target.files); }} /> 
           </div>
 
           {error && <p className='error-edit' style={{color:'red'}}>{error}</p>}

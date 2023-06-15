@@ -46,7 +46,7 @@ function AddAds() {
         }
         
         const res = await addPropertyFetch(location, address, price, size, rooms, balcony, description, type, phone);
-        window.alert('הדירה נשמר בהצלחה')
+        window.alert('הדירה נשמרה בהצלחה')
         nav('/my-properties')
         
         const fd = new FormData()
