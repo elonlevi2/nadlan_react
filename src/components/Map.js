@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
 import { Icon } from 'leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
@@ -77,24 +77,36 @@ function Map() {
     </div>
     <br/>
       {/* <button onClick={()=>{console.log(properties, geocode)}}>gg</button> */}
-    <MapContainer center={zoomMap} zoom={10}>
+    <MapContainer center={zoomMap} zoom={13}>
         <TileLayer
         attribution='&copy; <a href="https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Israel.svg">OpenStreetMap</a> contributors'
         url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'
         />
 
-        <MarkerClusterGroup>
+        {/* <MarkerClusterGroup> */}
 
           {geocode.map(g => <Marker position={[g.geocode.lat, g.geocode.lng]} icon={customIcon}>
               <Popup><div>{g.property.address}, {g.property.type}</div></Popup>
             </Marker>
           )}
 
-        </MarkerClusterGroup>
+          <Searchmarker zoomMap={zoomMap} customIcon={customIcon}/>
+
+        {/* </MarkerClusterGroup> */}
 
     </MapContainer>
 
   </>)
+}
+
+const Searchmarker = (props)=> {
+  const map = useMap()
+  map.flyTo(props.zoomMap)
+  return (
+    <Marker position={props.zoomMap} icon={props.customIcon}>
+      <Popup>hhhh</Popup>
+    </Marker>
+  )
 }
 
 export default Map
