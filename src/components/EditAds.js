@@ -75,7 +75,7 @@ function EditAds() {
         method: 'POST',          
         body: fd,
       };
-      
+
       fetch(`http://127.0.0.1:8000/api/photo?id=${id}`, options)
       .then((res) => {
           res.json().then((resJ) => {
