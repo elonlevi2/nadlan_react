@@ -65,6 +65,11 @@ function Map() {
     iconSize: [38, 38] // size of the icon
     });
 
+    const customIconSearch = new Icon({
+      iconUrl: "https://cdn-icons-png.flaticon.com/512/447/447031.png",
+      iconSize: [38, 38] // size of the icon
+      });
+
   return (<>
     <div className='div-map'>
       <h2>מפת הנכסים</h2>
@@ -90,7 +95,7 @@ function Map() {
             </Marker>
           )}
 
-          <Searchmarker zoomMap={zoomMap} customIcon={customIcon}/>
+          <Searchmarker zoomMap={zoomMap} customIconSearch={customIconSearch}/>
 
         {/* </MarkerClusterGroup> */}
 
@@ -103,7 +108,7 @@ const Searchmarker = (props)=> {
   const map = useMap()
   map.flyTo(props.zoomMap)
   return (
-    <Marker position={props.zoomMap} icon={props.customIcon}>
+    <Marker position={props.zoomMap} icon={props.customIconSearch}>
       <Popup>hhhh</Popup>
     </Marker>
   )

@@ -19,10 +19,14 @@ import Map from '../components/Map'
 import About from '../components/About'
 import Dashbord from '../components/Dashbord'
 import ContactPage from '../components/ContactPage'
+import { toBeChecked } from '@testing-library/jest-dom/dist/matchers'
 
 function SiteRoutes() {
     const {onlogged} = useContext(AppContext)
     const nav = useNavigate()
+
+    const token = localStorage.key('token')
+    
   return (<>
 
     <Routes>
