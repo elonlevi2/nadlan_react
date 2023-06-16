@@ -4,6 +4,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import { Button, Nav } from 'react-bootstrap';
 import { addPropertyFetch, addTipFetch } from '../client/axiosToAddAds';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 function AddAds() {
@@ -55,18 +56,21 @@ function AddAds() {
             fd.append(photo[i].name, photo[i])
           }
        
-        const options = {
-            headers: {'Accept': 'application/json'},
-            method: 'POST',          
-            body: fd,
-        };
+        // const options = {
+        //     headers: {'Accept': 'application/json'},
+        //     method: 'POST',          
+        //     body: fd,
+        // };
         
-         
-        fetch(`http://127.0.0.1:8000/api/photo?id=${res.id}`, options)
-        .then((res) => {
-             res.json().then((resJ) => {
-                 console.log(resJ) })        
-       }).catch((e)=>{window.alert(`photo save Error: ${e}`)})
+        const upload = await axios.post(`http://127.0.0.1:8000/api/photo?id=${res.id}`, fd, {headers: {'Accept': 'application/json'}})
+        if (upload.status == 200) {
+            console.log(upload.data)
+            return upload.data;
+          } else {
+            window.alert("Error Editing");
+            console.log(upload.data)
+            return false;
+          }
 
     }
 

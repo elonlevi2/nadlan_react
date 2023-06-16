@@ -4,6 +4,7 @@ import { GetPropertyToEdit, axiosDeleteProperty } from '../client/axiosToApiProp
 import { Button } from 'react-bootstrap'
 import { EditPropertyFetch } from '../client/axiosToAddAds'
 import Contact from './Contact'
+import axios from 'axios'
 
 function EditAds() {
 
@@ -42,7 +43,7 @@ function EditAds() {
     const [error, setError] = useState(false)
 
 
-
+    useEffect(()=>{console.log(photo)},[photo])
     const handelsubmitproperty = async (e)=> {
       e.preventDefault()
       if (!location | !address | !price | !size | !rooms | balcony === "none" | !balcony | !description | type === "none" | !type | !phone) {
@@ -61,27 +62,33 @@ function EditAds() {
         }
         
       const res = await EditPropertyFetch(location, address, price, size, rooms, balcony, description, type, phone, id);
+      console.log(res.id)
       window.alert('הדירה נערכה בהצלחה')
       nav('/my-properties')
 
       const fd = new FormData()
-
-      for (let i = 0; i < photo.length; i++) {
+ 
+        for (let i = 0; i < photo.length; i++) {
           fd.append(photo[i].name, photo[i])
+          }
+
+       
+        // const options = {
+        //     headers: {'Accept': 'application/json'},
+        //     method: 'POST',          
+        //     body: fd,
+        // };
+
+        const upload = await axios.post(`http://127.0.0.1:8000/api/photo?id=${res.id}`, fd, {headers: {'Accept': 'application/json'}})
+        if (upload.status == 200) {
+          console.log(upload.data)
+          return upload.data;
+        } else {
+          window.alert("Error Editing");
+          console.log(upload.data)
+          return false;
         }
-      
-      const options = {
-        headers: {'Accept': 'application/json'},
-        method: 'POST',          
-        body: fd,
-      };
-
-      fetch(`http://127.0.0.1:8000/api/photo?id=${id}`, options)
-      .then((res) => {
-          res.json().then((resJ) => {
-              console.log(resJ) }) 
-      }).catch((e)=>{window.alert(`photo save Error: ${e}`)})
-
+  
     }
 
     const deleteAds = async ()=>{
