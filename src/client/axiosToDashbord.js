@@ -51,3 +51,14 @@ export async function axoisDeleteUser(id) {
       return false
     }
   }
+
+  export async function axoisGeneralMessages() {
+    try {
+      const res = await axios.get("http://127.0.0.1:8000/api/dashboard/messages");
+      return res.data
+    } catch (error) {
+      window.alert("Error add contact");
+      console.log(error)
+      return false
+    }
+  }

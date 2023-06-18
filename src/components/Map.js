@@ -7,14 +7,16 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 import { addressToGeocode } from '../client/axiosGeocodeApi';
 import { propertiesToMap } from '../client/axiosToApiProperies';
 import { Button } from 'react-bootstrap';
+import useGeoLocation from './useGeoLocation';
 
 function Map() {
 
     const [properties, setProperties] = useState([])
     const [geocode, setGeocode] = useState([])
     const [change, setChange] = useState(false)
-    const [search, setSearch] = useState()
-    const [zoomMap, setZoomMap] = useState([31.78003, 35.21873])
+    const [search, setSearch] = useState('')
+    const [zoomMap, setZoomMap] = useState([31.222222, 35.214567])
+    const location = useGeoLocation()
 
 
     const handelsubmit = async(e)=> {
@@ -22,18 +24,8 @@ function Map() {
       const loc = `${search}`;
       const zoom = await addressToGeocode(loc);
       console.log(zoom)
-      // setZoomMap([zoom.lat, zoom.lng])
       setZoomMap(zoom)
     }
-
-    // useEffect(()=>{
-    //   async function geozoom() {
-    //     const loc = `${search}`;
-    //     const zoom = await addressToGeocode(search);
-    //     console.log(zoom)
-    //   }
-    //   geozoom()
-    // },[search])
 
     useEffect(()=>{console.log(zoomMap)},[zoomMap])
 
@@ -50,10 +42,9 @@ function Map() {
     useEffect(()=> {
       async function data() {
         for (const p of properties) {
-          const loc = `${p.location}, ${p.address}`;
+          const loc = `${p.location}`;//+${p.address}
           const res = await addressToGeocode(loc);
           setGeocode((prevList) => [...prevList,{geocode:res, property:p}]);
-          // console.log(res);
         }      
       }
       data()
@@ -78,11 +69,12 @@ function Map() {
         <Button type='submit'>search</Button>
         <input onChange={(e)=> {setSearch(e.target.value)}} style={{direction:"rtl"}} type='search' placeholder='חיפוש...'/>
       </form>
+      {JSON.stringify(location)}
       {search}
     </div>
     <br/>
       {/* <button onClick={()=>{console.log(properties, geocode)}}>gg</button> */}
-    <MapContainer center={zoomMap} zoom={13}>
+    <MapContainer center={zoomMap} zoom={15}>
         <TileLayer
         attribution='&copy; <a href="https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Israel.svg">OpenStreetMap</a> contributors'
         url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -109,7 +101,7 @@ const Searchmarker = (props)=> {
   map.flyTo(props.zoomMap)
   return (
     <Marker position={props.zoomMap} icon={props.customIconSearch}>
-      <Popup>hhhh</Popup>
+      <Popup>הכתובת המבוקשת</Popup>
     </Marker>
   )
 }

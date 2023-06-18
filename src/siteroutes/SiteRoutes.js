@@ -25,7 +25,8 @@ function SiteRoutes() {
     const {onlogged} = useContext(AppContext)
     const nav = useNavigate()
 
-    const token = localStorage.key('token')
+    const token = localStorage.getItem('token')
+    // console.log(token)
     
   return (<>
 

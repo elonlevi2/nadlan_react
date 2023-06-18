@@ -9,6 +9,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 function ModalMailToBroker({show, setShow, emailBroker}) {
     const handleClose = () => setShow(false);
     const form = useRef();
+    const nav = useNavigate()
 
 
     const sendEmail = async (e) => {

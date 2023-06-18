@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { axoisGeneralPropertyRent, axoisGeneralPropertySale, axoisGeneralUsers } from '../client/axiosToDashbord'
+import { axoisGeneralMessages, axoisGeneralPropertyRent, axoisGeneralPropertySale, axoisGeneralUsers } from '../client/axiosToDashbord'
 
 function General() {
     const [users, setUsers] = useState('')
     const [sale, setSale] = useState('')
     const [rent, setRent] = useState('')
+    const [messages, setMessages] = useState('')
 
 
     useEffect(()=>{
@@ -15,6 +16,8 @@ function General() {
             setSale(sale)
             const rent = await axoisGeneralPropertyRent()
             setRent(rent)
+            const message = await axoisGeneralMessages()
+            setMessages(message)
         }
         axios()
     },[])
@@ -34,6 +37,10 @@ function General() {
             <div className='div-box'>
                 <h5> דירות להשכרה</h5>
                 <p>{rent}</p>
+            </div>
+            <div className='div-box'>
+                <h5> פניות למנהל האתר</h5>
+                <p>{messages}</p>
             </div>
 
         </div>

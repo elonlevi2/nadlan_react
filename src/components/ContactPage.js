@@ -20,7 +20,6 @@ function ContactPage() {
       e.preventDefault();
 
       const res = await addContact(name, email, message)
-      console.log(res)
   
       emailjs.sendForm('service_gaogezg', 'template_ykqfqtl', form.current, 'Dnd0vTpr7StPYM2Fw')
         .then((result) => {
