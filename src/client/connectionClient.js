@@ -55,6 +55,8 @@ export async function signup(username, password, email, firstname, lastname) {
       });
       if (res.data.superuser) {
         localStorage.setItem("issuperuser", res.data.superuser);
+      } else {
+        localStorage.setItem("issuperuser", false);
       }
       if (res.status == 200) {
         return res.data;

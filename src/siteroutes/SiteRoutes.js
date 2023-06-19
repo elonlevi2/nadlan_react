@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import HomePage from '../components/HomePage'
 import MyCard from '../components/MyCard'
 import Tips from '../components/Tips'
@@ -22,16 +22,23 @@ import ContactPage from '../components/ContactPage'
 import { toBeChecked } from '@testing-library/jest-dom/dist/matchers'
 import { validateToken } from '../client/connectionClient'
 
+
+function PrivatePath({path, element}) {
+  const token = localStorage.getItem('token');
+  const onlogged = token && token.length > 0;
+  const issuperuser = localStorage.getItem('issuperuser') === "true";
+
+  const location = useLocation();
+
+  if (!onlogged || ((path === "/dashbord") && !issuperuser)){
+    return <Navigate to='/login' state={{from: location.pathname}} replace />;
+  }
+
+  return element;
+  
+}
+
 function SiteRoutes() {
-    const nav = useNavigate()
-
-    function privatePath({path, element}) {
-      const token = localStorage.getItem('token')
-      const onlogged = token && token.length > 0
-      const issuperuser = localStorage.getItem('issuperuser')
-      
-    }
-
     
   return (<>
 
@@ -40,20 +47,19 @@ function SiteRoutes() {
         <Route path='/about' element={<About/>}/>
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/card' element={<MyCard/>}/>
         <Route path='/tips' element={<Tips/>}/>
         <Route path='/properties_sale' element={<PropertiesSale/>}/>
         <Route path='/properties_rent' element={<PropertiesRent/>}/>
-        <Route path={'/my-properties'} element={<PropertyOfUser/>}/>
-        <Route path={'/my-tips'} element={<TipsOfUser/>}/>
-        <Route path={'/add-ads'} element={<AddAds/>}/>
-        <Route path={'/edit-ads'} element={<EditAds/>}/>
-        <Route path={'/edit-tips'} element={<EditTips/>}/>
+        <Route path={'/my-properties'} element={<PrivatePath path='/my-properties' element={<PropertyOfUser/>}/>}/>
+        <Route path={'/my-tips'} element={<PrivatePath path='/my-tips' element={<TipsOfUser/>}/>}/>
+        <Route path={'/add-ads'} element={<PrivatePath path='/add-ads' element={<AddAds/>}/>}/>
+        <Route path={'/edit-ads'} element={<PrivatePath path='/edit-ads' element={<EditAds/>}/>}/>
+        <Route path={'/edit-tips'} element={<PrivatePath path='/edit-tips' element={<EditTips/>}/>}/>
         <Route path={'/brokers'} element={<Brokers/>}/>
-        <Route path={'/edit-profile'} element={<EditProfile/>}/>
+        <Route path={'/edit-profile'} element={<PrivatePath path='/edit-profile' element={<EditProfile/>}/>}/>
         <Route path='/contact' element={<ContactPage/>}/>
         <Route path='/map' element={<Map/>}/>
-        <Route path='/dashbord' element={<Dashbord/>}/>
+        <Route path='/dashbord' element={<PrivatePath path='/dashbord' element={<Dashbord/>}/>}/>
     </Routes>
     </>)
 }
