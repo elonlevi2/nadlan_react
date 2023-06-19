@@ -62,7 +62,6 @@ function EditAds() {
         }
         
       const res = await EditPropertyFetch(location, address, price, size, rooms, balcony, description, type, phone, id);
-      console.log(res.id)
       window.alert('הדירה נערכה בהצלחה')
       nav('/my-properties')
 
@@ -81,11 +80,9 @@ function EditAds() {
 
         const upload = await axios.post(`http://127.0.0.1:8000/api/photo?id=${res.id}`, fd, {headers: {'Accept': 'application/json'}})
         if (upload.status == 200) {
-          console.log(upload.data)
           return upload.data;
         } else {
           window.alert("Error Editing");
-          console.log(upload.data)
           return false;
         }
   

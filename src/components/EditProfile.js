@@ -38,7 +38,6 @@ function EditProfile() {
         }
 
         const res = await editProfileFetch(firstname, lastname, username, email, id);
-        console.log(res)
         if (res == "objects updated"){
             nav('/')
             window.alert('הפרופיל נערך בהצלחה') 

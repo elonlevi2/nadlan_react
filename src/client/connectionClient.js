@@ -49,7 +49,7 @@ export async function signup(username, password, email, firstname, lastname) {
   export async function validateToken() {
     const token = localStorage.getItem("token");
   
-    // try {
+    try {
       const res = await axios.get("http://localhost:8000/api/check-token", {
         headers: { Authorization: `token ${token}` },
       });
@@ -58,8 +58,9 @@ export async function signup(username, password, email, firstname, lastname) {
       } else {
         return false;
       }
-    // } catch (error) {
-    //   window.alert("Error checking token");
-    // }
+    } catch (error) {
+      return false
+      // window.alert("Error checking token");
+    }
   }
   

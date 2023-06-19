@@ -20,13 +20,12 @@ import About from '../components/About'
 import Dashbord from '../components/Dashbord'
 import ContactPage from '../components/ContactPage'
 import { toBeChecked } from '@testing-library/jest-dom/dist/matchers'
+import { validateToken } from '../client/connectionClient'
 
 function SiteRoutes() {
-    const {onlogged} = useContext(AppContext)
     const nav = useNavigate()
 
     const token = localStorage.getItem('token')
-    // console.log(token)
     
   return (<>
 
