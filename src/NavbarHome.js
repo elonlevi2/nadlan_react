@@ -97,6 +97,7 @@ function NavbarHome() {
 
                   <Button variant='outline-danger' onClick={()=>{
                   localStorage.removeItem("token");
+                  localStorage.removeItem("issuperuser");
                   setOnlogged(false);
                   setSuperUser(false)
                   nav('/login');

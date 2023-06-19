@@ -48,11 +48,14 @@ export async function signup(username, password, email, firstname, lastname) {
 
   export async function validateToken() {
     const token = localStorage.getItem("token");
-  
+
     try {
       const res = await axios.get("http://localhost:8000/api/check-token", {
         headers: { Authorization: `token ${token}` },
       });
+      if (res.data.superuser) {
+        localStorage.setItem("issuperuser", res.data.superuser);
+      }
       if (res.status == 200) {
         return res.data;
       } else {

@@ -25,7 +25,13 @@ import { validateToken } from '../client/connectionClient'
 function SiteRoutes() {
     const nav = useNavigate()
 
-    const token = localStorage.getItem('token')
+    function privatePath({path, element}) {
+      const token = localStorage.getItem('token')
+      const onlogged = token && token.length > 0
+      const issuperuser = localStorage.getItem('issuperuser')
+      
+    }
+
     
   return (<>
 
