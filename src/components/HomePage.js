@@ -10,6 +10,7 @@ import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { PhotoFetch, propertiesToHome } from '../client/axiosToApiProperies';
 import Carousel from 'react-bootstrap/Carousel';
+import ModalProperty from './ModalProperty';
 
 
 
@@ -17,6 +18,10 @@ function HomePage() {
   const handleDragStart = (e) => e.preventDefault();
   const [properties, setProperties] = useState([])
   const [items, setItems] = useState([])
+  const [show1, setShow1] = useState(false);
+  const [show2, setShow2] = useState(false);
+  const [show3, setShow3] = useState(false);
+
 
   useEffect(()=>{
     async function fetch() {
@@ -42,31 +47,8 @@ function HomePage() {
   return (
     <>
     <div className='about'>
-      {/* <img src='https://scholarlykitchen.sspnet.org/wp-content/uploads/2018/11/iStock-857146092.jpg' className='image'/>
 
-      <div className='box'>
-
-        <div>
-          <h2 className='title'>who we are?</h2>
-        </div>
-
-        <div>
-          <p className='content'>
-            ברוכים הבאים לתיווך נכסים - yonatan maor - real estate
-          </p>
-          <p className='content'>
-          תיווך דירות למכירה והשכרה / נדל"ן מסחרי / מגרשים למכירה / דירות לתקופות קצרות
-          </p>
-        </div>
-
-        <div>
-          <p className='content'>
-          פאר תיווך נכסים גאה לשווק נכסים ומגרשים ברמה גבוהה למכירה והשכרה בכל הארץ. אנו מאמינים כי עסקת נדל"ן היא בין ההחלטות המשמעותיות והמשפיעות שתקבלו בחייכם ואנחנו יודעים כיצד לתרגם את החלום שלכם לעסקה המתאימה והמדויקת ביותר עבורכם. נעניק לכם ייעוץ וליווי לאורך כל תהליך הפרויקט, תוך הקפדה על רמת אמינות ושקיפות גבוהות ומקצועיות בלתי מתפשרת, כך שתוכלו להרגיש שקטים, רגועים ושבעי רצון. אנו מזמינים אתכם לפגישת ייעוץ ללא התחייבות
-          </p>
-        </div>
-      </div> */}
-
-        <Carousel variant='dark' style={{height:"33rem", width:"75rem", position:"absolute", left:"8%", top:"120%"}}>
+        <Carousel variant='dark' style={{height:"36rem", width:"75rem", position:"absolute", left:"8%", top:"110%"}}>
         <Carousel.Item style={{paddingLeft:"12.5rem"}}>
           <Card style={{width: '50rem'}}>
           <Card.Img style={{width:'800px', height:'400px'}} variant="top" src={items && `http://localhost:8000${items[0]}`}/>
@@ -78,6 +60,11 @@ function HomePage() {
                   <div style={{fontSize:'18px'}}>
                     דירת {properties.length > 0 && properties[0].rooms} חדרים ב{properties.length > 0 && properties[0].address}<br/>
                     מיקום:{properties.length > 0 && properties[0].location}
+                    <br/>
+                    <Button variant='success' onClick={()=>{setShow1(true);}}>לעוד פרטים</Button>
+                    {properties.length > 0 && <ModalProperty show={show1} setShow={setShow1} property={properties[0]}></ModalProperty>}
+
+
                   </div>
 
                 </div>
@@ -98,6 +85,9 @@ function HomePage() {
                   <div style={{fontSize:'18px'}}>
                     דירת {properties.length > 0 && properties[1].rooms} חדרים ב{properties.length > 0 && properties[1].address}<br/>
                     מיקום:{properties.length > 0 && properties[1].location}
+                    <br/>
+                    <Button variant='success' onClick={()=>{setShow2(true);}}>לעוד פרטים</Button>
+                    {properties.length > 0 && <ModalProperty show={show2} setShow={setShow2} property={properties[1]}></ModalProperty>}
                   </div>
 
                 </div>
@@ -118,6 +108,9 @@ function HomePage() {
                   <div style={{fontSize:'18px'}}>
                     דירת {properties.length > 0 && properties[2].rooms} חדרים ב{properties.length > 0 && properties[2].address}<br/>
                     מיקום:{properties.length > 0 && properties[2].location}
+                    <br/>
+                    <Button variant='success' onClick={()=>{setShow3(true);}}>לעוד פרטים</Button>
+                    {properties.length > 0 && <ModalProperty show={show3} setShow={setShow3} property={properties[2]}></ModalProperty>}
                   </div>
 
                 </div>

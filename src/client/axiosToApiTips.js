@@ -1,9 +1,10 @@
 import axios from 'axios'
 import { validateToken } from './connectionClient'
+import { localhost } from '../config'
 
 
 export async function tipsFetch(page_num, page_size) {
-    const url = `http://127.0.0.1:8000/api/tips/pagination?page_size=${page_size}&page_num=${page_num}`
+    const url = `${localhost}tips/pagination?page_size=${page_size}&page_num=${page_num}`
     try {
         const response = await axios.get(url)
         console.assert(response.status == 200)
@@ -17,7 +18,7 @@ export async function tipsFetch(page_num, page_size) {
 
 export async function tipsOfUserAxios(page_num, page_size) {
     const user = await validateToken()
-    const url = `http://127.0.0.1:8000/api/my-tips?page_size=${page_size}&page_num=${page_num}&id=${user.id}`
+    const url = `${localhost}my-tips?page_size=${page_size}&page_num=${page_num}&id=${user.id}`
     try {
         const response = await axios.get(url)
         console.assert(response.status == 200)
@@ -30,7 +31,7 @@ export async function tipsOfUserAxios(page_num, page_size) {
 
 
 export async function GetTipToEdit(id) {
-    const url = `http://localhost:8000/api/tips/get?id=${id}`
+    const url = `${localhost}tips/get?id=${id}`
     try {
         const response = await axios.get(url)
         console.assert(response.status == 200)
@@ -42,7 +43,7 @@ export async function GetTipToEdit(id) {
 }
 
 export async function axiosDeleteTip(id) {
-    const url = `http://localhost:8000/api/tips/delete?id=${id}`
+    const url = `${localhost}tips/delete?id=${id}`
     try {
         const response = await axios.delete(url)
         console.assert(response.status == 200)

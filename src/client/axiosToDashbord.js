@@ -1,9 +1,10 @@
 import axios from "axios";
+import { localhost } from "../config";
 
 
 export async function axoisDeleteUser(id) {
     try {
-      const res = await axios.delete(`http://localhost:8000/api/user/delete?id=${id}`);
+      const res = await axios.delete(`${localhost}user/delete?id=${id}`);
   
       if (res.status == 200) {
         return res.data;
@@ -21,7 +22,7 @@ export async function axoisDeleteUser(id) {
 
   export async function axoisGeneralUsers() {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/dashboard/users");
+      const res = await axios.get(`${localhost}dashboard/users`);
       return res.data
     } catch (error) {
       window.alert("Error add contact");
@@ -32,7 +33,7 @@ export async function axoisDeleteUser(id) {
 
   export async function axoisGeneralPropertySale() {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/dashboard/property_sale");
+      const res = await axios.get(`${localhost}dashboard/property_sale`);
       return res.data
     } catch (error) {
       window.alert("Error add contact");
@@ -43,7 +44,7 @@ export async function axoisDeleteUser(id) {
 
   export async function axoisGeneralPropertyRent() {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/dashboard/property_rent");
+      const res = await axios.get(`${localhost}dashboard/property_rent`);
       return res.data
     } catch (error) {
       window.alert("Error add contact");
@@ -54,7 +55,7 @@ export async function axoisDeleteUser(id) {
 
   export async function axoisGeneralMessages() {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/dashboard/messages");
+      const res = await axios.get(`${localhost}dashboard/messages`);
       return res.data
     } catch (error) {
       window.alert("Error add contact");

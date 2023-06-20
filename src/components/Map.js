@@ -7,7 +7,7 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 import { addressToGeocode } from '../client/axiosGeocodeApi';
 import { propertiesToMap } from '../client/axiosToApiProperies';
 import { Button } from 'react-bootstrap';
-import useGeoLocation from './useGeoLocation';
+// import useGeoLocation from './useGeoLocation';
 
 function Map() {
 
@@ -15,8 +15,8 @@ function Map() {
     const [geocode, setGeocode] = useState([])
     const [change, setChange] = useState(false)
     const [search, setSearch] = useState('')
-    const [zoomMap, setZoomMap] = useState([31.222222, 35.214567])
-    const location = useGeoLocation()
+    const [zoomMap, setZoomMap] = useState([31.837682632703338, 35.06535410361823])
+    // const location = useGeoLocation()
 
 
     const handelsubmit = async(e)=> {
@@ -26,9 +26,6 @@ function Map() {
       console.log(zoom)
       setZoomMap(zoom)
     }
-
-    useEffect(()=>{console.log(zoomMap)},[zoomMap])
-
 
     useEffect(()=> {
       async function data() {
@@ -51,17 +48,17 @@ function Map() {
     },[change])
 
     const customIcon = new Icon({
-    // iconUrl: "https://cdn-icons-png.flaticon.com/512/447/447031.png",
     iconUrl: require("./iconLeaflet2.png"),
-    iconSize: [38, 38] // size of the icon
+    iconSize: [38, 38]
     });
 
     const customIconSearch = new Icon({
       iconUrl: "https://cdn-icons-png.flaticon.com/512/447/447031.png",
-      iconSize: [38, 38] // size of the icon
+      iconSize: [38, 38]
       });
 
   return (<>
+
     <div className='div-map'>
       <h2>מפת הנכסים</h2>
       <br/>
@@ -69,12 +66,11 @@ function Map() {
         <Button type='submit'>search</Button>
         <input onChange={(e)=> {setSearch(e.target.value)}} style={{direction:"rtl"}} type='search' placeholder='חיפוש...'/>
       </form>
-      {JSON.stringify(location)}
       {search}
     </div>
     <br/>
-      {/* <button onClick={()=>{console.log(properties, geocode)}}>gg</button> */}
-    <MapContainer center={zoomMap} zoom={15}>
+
+    <MapContainer center={zoomMap} zoom={10}>
         <TileLayer
         attribution='&copy; <a href="https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Israel.svg">OpenStreetMap</a> contributors'
         url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'

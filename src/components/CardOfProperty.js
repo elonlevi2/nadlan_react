@@ -62,7 +62,7 @@ function CardOfProperty({property}) {
                   <div style={{gap:'1rem'}}>
                   <Button variant='outline-success' className='link-property' onClick={()=>{setShow(true)}}>לעוד מידע</Button>
                   </div>}
-                <ModalProperty show={show} setShow={setShow} property={property} images={images}></ModalProperty>
+                <ModalProperty show={show} setShow={setShow} property={property}></ModalProperty>
 
               </div>
             </div>

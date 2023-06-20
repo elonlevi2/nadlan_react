@@ -1,4 +1,5 @@
 import axios from "axios";
+import { localhost } from "../config";
 
 
 export async function addContact(name, email, message) {
@@ -8,7 +9,7 @@ export async function addContact(name, email, message) {
       message:message
     };
     try {
-      const res = await axios.post("http://localhost:8000/api/contact/add", data);
+      const res = await axios.post(`${localhost}contact/add`, data);
   
       if (res.status == 200) {
         return res.data;

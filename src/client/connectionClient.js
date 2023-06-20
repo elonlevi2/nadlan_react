@@ -1,4 +1,5 @@
 import axios from "axios";
+import { localhost } from "../config";
 
 export async function signup(username, password, email, firstname, lastname) {
 
@@ -10,7 +11,7 @@ export async function signup(username, password, email, firstname, lastname) {
       lastname: lastname,
     };
     try {
-      const res = await axios.post("http://localhost:8000/api/signup", data);
+      const res = await axios.post(`${localhost}signup`, data);
   
       if (res.status == 200) {
         localStorage.setItem("token", res.data.token);
@@ -29,7 +30,7 @@ export async function signup(username, password, email, firstname, lastname) {
 
   export async function getLoginToken(username, password) {
     try {
-      const res = await axios.post("http://localhost:8000/api/login", {
+      const res = await axios.post(`${localhost}login`, {
         username: username,
         password: password,
       });
@@ -50,7 +51,7 @@ export async function signup(username, password, email, firstname, lastname) {
     const token = localStorage.getItem("token");
 
     try {
-      const res = await axios.get("http://localhost:8000/api/check-token", {
+      const res = await axios.get(`${localhost}check-token`, {
         headers: { Authorization: `token ${token}` },
       });
       if (res.data.superuser) {

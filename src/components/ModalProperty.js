@@ -3,7 +3,7 @@ import { Button, Modal } from 'react-bootstrap';
 import { PhotoFetch, UserFetch } from '../client/axiosToApiProperies';
 import ModalMailToBroker from './ModalMailToBroker';
 
-function ModalProperty({property, show, setShow, images}) {
+function ModalProperty({property, show, setShow}) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -22,12 +22,12 @@ function ModalProperty({property, show, setShow, images}) {
             setLastname(res.data[0].last_name)
             setEmail(res.data[0].email)
         }
-        async function fetchData() {
+        async function PhotoData() {
           const res = await PhotoFetch(property.id)
           setPhoto(res.data)
         }
         User()
-        fetchData()
+        PhotoData()
     }, [])
 
 

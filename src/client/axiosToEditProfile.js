@@ -1,4 +1,5 @@
 import axios from "axios";
+import { localhost } from "../config";
 
 export async function editProfileFetch(firstname, lastname, username, email, id) {
     const data = {
@@ -9,7 +10,7 @@ export async function editProfileFetch(firstname, lastname, username, email, id)
 
     };
     try {
-      const res = await axios.put(`http://localhost:8000/api/user/edit?id=${id}`, data);
+      const res = await axios.put(`${localhost}user/edit?id=${id}`, data);
   
       if (res.status == 200) {
         return res.data;

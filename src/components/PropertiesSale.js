@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import '../client/axiosToApiProperies'
-import { PhotoFetch, propertiesSaleFetch, propertiesSaleFetchRooms, propertiesSaleFilterFetch } from '../client/axiosToApiProperies'
+import { propertiesSaleFetch } from '../client/axiosToApiProperies'
 import CardOfProperty from './CardOfProperty'
 import { Button } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
+
 
 function PropertiesSale() {
     const [properties, setProperties] = useState([])
@@ -46,10 +46,6 @@ function PropertiesSale() {
         addProperties()
       }, [filter])
 
-      useEffect(()=>{
-        console.log(balcony)
-      }, [balcony])
-
       const resetfilter = ()=> {
         setProperties([])
         setPagenum(0)
@@ -77,7 +73,7 @@ function PropertiesSale() {
             <input className='input-filter' type='number' placeholder='מספר חדרים דוגמא 4' onChange={(e)=>{
               setRooms(e.target.value === '' ? null : e.target.value);              
             }}/>
-            {rooms}
+
             <input className='input-filter' type='text' placeholder='עיר' onChange={(e)=>{
               setCity(e.target.value === '' ? null : e.target.value);
             }}/>
@@ -86,16 +82,12 @@ function PropertiesSale() {
               <option value="yes">כן</option>
               <option value="no">לא</option>
             </select>
-            {city}
 
             <Button style={{width:"20%"}} variant='danger' type='submit'>החל</Button>
           </form>
           <br/>
           <Button variant='success' onClick={resetfilter}>איפוס הסינון</Button>
 
-          {/* <select name="days" id="days">
-            <option value="#">שכונה?</option>
-          </select> */}
         </div>
 
         

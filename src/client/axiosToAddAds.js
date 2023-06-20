@@ -1,5 +1,6 @@
 import axios from "axios";
 import { validateToken } from "./connectionClient"
+import { localhost } from '../config'
 
 export async function addTipFetch(title, content) {
     const user = await validateToken()
@@ -10,7 +11,7 @@ export async function addTipFetch(title, content) {
       real_estate: user.id[0]
     };
     try {
-      const res = await axios.post("http://localhost:8000/api/tips/add", data);
+      const res = await axios.post(`${localhost}tips/add`, data);
   
       if (res.status == 200) {
         return res.data;
@@ -35,7 +36,7 @@ export async function addTipFetch(title, content) {
       real_estate: user.id[0]
     };
     try {
-      const res = await axios.put(`http://localhost:8000/api/tips/edit?id=${id}`, data);
+      const res = await axios.put(`${localhost}tips/edit?id=${id}`, data);
   
       if (res.status == 200) {
         return res.data;
@@ -58,7 +59,7 @@ export async function addTipFetch(title, content) {
       location:location,
       address:address,
       price:price,
-      size:price,
+      size:size,
       rooms:rooms,
       balcony:balcony,
       description:description,
@@ -67,7 +68,7 @@ export async function addTipFetch(title, content) {
       real_estate: user.id[0]
     };
     try {
-      const res = await axios.post("http://localhost:8000/api/property/add", data);
+      const res = await axios.post(`${localhost}property/add`, data);
   
       if (res.status == 200) {
         return res.data;
@@ -100,7 +101,7 @@ export async function addTipFetch(title, content) {
       real_estate: user.id[0]
     };
     try {
-      const res = await axios.put(`http://localhost:8000/api/property/edit?id=${id}`, data);
+      const res = await axios.put(`${localhost}property/edit?id=${id}`, data);
   
       if (res.status == 200) {
         return res.data;

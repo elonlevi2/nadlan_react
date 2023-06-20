@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import '../client/axiosToApiProperies'
 import { PhotoFetch, propertiesRentFetch, propertiesSaleFetch, propertiesSaleFetchRooms } from '../client/axiosToApiProperies'
 import CardOfProperty from './CardOfProperty'
 import { Button } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
 
 function PropertiesRent() {
     const [properties, setProperties] = useState([])
@@ -72,11 +71,11 @@ function PropertiesRent() {
             <input className='input-filter' type='number' placeholder='מספר חדרים דוגמא 4' onChange={(e)=>{
               setRooms(e.target.value === '' ? null : e.target.value);              
             }}/>
-            {rooms}
+
             <input className='input-filter' type='text' placeholder='עיר' onChange={(e)=>{
               setCity(e.target.value === '' ? null : e.target.value);
             }}/>
-            {city}
+
             <select style={{width:"60%"}} className='input-filter' onChange={(e)=> {setBalcony(e.target.value === '' ? null : e.target.value)}} name="balcony" id="balcony">
               <option value="null">מרפסת?</option>
               <option value="yes">כן</option>
@@ -88,9 +87,6 @@ function PropertiesRent() {
           <br/>
           <Button variant='success' onClick={resetfilter}>איפוס הסינון</Button>
 
-          {/* <select name="days" id="days">
-            <option value="#">שכונה?</option>
-          </select> */}
         </div>
 
         
