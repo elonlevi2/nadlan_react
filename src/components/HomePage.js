@@ -59,7 +59,7 @@ function HomePage() {
 
                   <div style={{fontSize:'18px'}}>
                     דירת {properties.length > 0 && properties[0].rooms} חדרים ב{properties.length > 0 && properties[0].address}<br/>
-                    מיקום:{properties.length > 0 && properties[0].location}
+                    מיקום: {properties.length > 0 && properties[0].location}
                     <br/>
                     <Button variant='success' onClick={()=>{setShow1(true);}}>לעוד פרטים</Button>
                     {properties.length > 0 && <ModalProperty show={show1} setShow={setShow1} property={properties[0]}></ModalProperty>}

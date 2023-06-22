@@ -24,7 +24,7 @@ function NavbarHome() {
   const nav = useNavigate()
   const location = useLocation()
   const path = location.pathname
-  const {username, onlogged, setOnlogged, superuser, setSuperUser} = useContext(AppContext)
+  const {setUsername, username, onlogged, setOnlogged, superuser, setSuperUser} = useContext(AppContext)
 
 
   useEffect(()=>{
@@ -48,6 +48,12 @@ function NavbarHome() {
     backgroundSize:"cover",
     backgroundPosition:"center center",
   }
+  const [menuOpen, setMenuOpen] = useState(false)
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen)
+  }
+
+  const handleClose = () => setMenuOpen(false)
  
 
   return (
@@ -57,11 +63,14 @@ function NavbarHome() {
         <Container fluid>
           <Navbar.Brand as={Link} to='/' ><img src={process.env.PUBLIC_URL + '/logot.png'} style={{width:"150px", height: "100px"}}/></Navbar.Brand>
           {onlogged ? <Navbar.Brand as={Link} to='/'>{username} שלום</Navbar.Brand> : <Navbar.Brand>שלום</Navbar.Brand> }
-          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${false}`} />
+          <Navbar.Toggle onClick={toggleMenu} aria-controls={`offcanvasNavbar-expand-${false}`} />
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-${false}`}
             aria-labelledby={`offcanvasNavbarLabel-expand-${false}`}
             placement="end"
+            restoreFocus={false}
+            show={menuOpen}
+            onHide={handleClose}
             style={{backgroundColor: "black", color: "white", opacity:'0.8'}}
           >
             <Offcanvas.Header closeButton closeVariant='white' className='title-offcanvas'>
@@ -71,15 +80,15 @@ function NavbarHome() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3" style={{direction:'rtl'}}>
-                <Nav.Link className='link-mains' as={Link} to='/about'>אודות</Nav.Link>
-                <Nav.Link className='link-mains' as={Link} to='/properties_sale'>נכסים למכירה</Nav.Link>
-                <Nav.Link className='link-mains' as={Link} to='/properties_rent'>נכסים לשכירות</Nav.Link>
-                <Nav.Link className='link-mains' as={Link} to='/map'>מפת נכסים</Nav.Link>
-                <Nav.Link className='link-mains' as={Link} to='/tips' >טיפים לרכישת נכס</Nav.Link>
-                <Nav.Link className='link-mains' as={Link} to='/brokers' >השותפים שלנו</Nav.Link>
-                <Nav.Link className='link-mains' as={Link} to='/contact'>יצירת קשר</Nav.Link>
+                <Nav.Link className='link-mains' as={Link} to='/about' onClick={toggleMenu}>אודות</Nav.Link>
+                <Nav.Link className='link-mains' as={Link} to='/properties_sale' onClick={toggleMenu}>נכסים למכירה</Nav.Link>
+                <Nav.Link className='link-mains' as={Link} to='/properties_rent' onClick={toggleMenu}>נכסים לשכירות</Nav.Link>
+                <Nav.Link className='link-mains' as={Link} to='/map' onClick={toggleMenu}>מפת נכסים</Nav.Link>
+                <Nav.Link className='link-mains' as={Link} to='/tips' onClick={toggleMenu}>טיפים לרכישת נכס</Nav.Link>
+                <Nav.Link className='link-mains' as={Link} to='/brokers' onClick={toggleMenu}>השותפים שלנו</Nav.Link>
+                <Nav.Link className='link-mains' as={Link} to='/contact' onClick={toggleMenu}>יצירת קשר</Nav.Link>
 
-                {superuser && <Nav.Link className='link-mains' as={Link} to='/dashbord'>דשבורד מנהל</Nav.Link>}
+                {superuser && <Nav.Link className='link-mains' as={Link} to='/dashbord' onClick={toggleMenu}>דשבורד מנהל</Nav.Link>}
 
                 {onlogged ? 
                   <>
@@ -88,22 +97,24 @@ function NavbarHome() {
                   id={`offcanvasNavbarDropdown-expand-${false}`}
                   style={{color: 'darkgreen', direction:"rtl"}}
                   >
-                  <NavDropdown.Item className="link-dropdown" as={Link} to='/my-properties'>הדירות שלי</NavDropdown.Item>
-                  <NavDropdown.Item className="link-dropdown" as={Link} to='/my-tips'>הטיפים שלי</NavDropdown.Item>
-                  <NavDropdown.Item className="link-dropdown" as={Link} to='/add-ads'>העלאת מודעה</NavDropdown.Item>
-                  <NavDropdown.Item className="link-dropdown" as={Link} to='/edit-profile'>עריכת הפרופיל שלי</NavDropdown.Item>
+                  <NavDropdown.Item className="link-dropdown" as={Link} to='/my-properties' onClick={toggleMenu}>הדירות שלי</NavDropdown.Item>
+                  <NavDropdown.Item className="link-dropdown" as={Link} to='/my-tips' onClick={toggleMenu}>הטיפים שלי</NavDropdown.Item>
+                  <NavDropdown.Item className="link-dropdown" as={Link} to='/add-ads' onClick={toggleMenu}>העלאת מודעה</NavDropdown.Item>
+                  <NavDropdown.Item className="link-dropdown" as={Link} to='/edit-profile' onClick={toggleMenu}>עריכת הפרופיל שלי</NavDropdown.Item>
                   </NavDropdown>
 
                   <Button variant='outline-danger' onClick={()=>{
                   localStorage.removeItem("token");
                   localStorage.removeItem("issuperuser");
                   setOnlogged(false);
-                  setSuperUser(false)
+                  setSuperUser(false);
+                  setUsername('')
                   nav('/login');
-                  nav('/login');}}>logout</Button>
+                  nav('/login');
+                  toggleMenu();}}>logout</Button>
                   </> 
                   :
-                  <Button variant='success' onClick={()=>{nav('/login')}}>login</Button>
+                  <Button variant='success' onClick={()=>{nav('/login'); toggleMenu()}}>login</Button>
                   }
 
               </Nav>

@@ -41,7 +41,7 @@ function CardOfProperty({property}) {
             
               <div style={{fontSize:'18px'}}>
                 דירת {property.rooms} חדרים ב{property.location}<br/>
-                מיקום:{property.address}
+                מיקום: {property.address}
               </div>
 
               <div>

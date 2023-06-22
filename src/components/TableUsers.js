@@ -38,15 +38,15 @@ function TableUsers() {
         hasMore={hasmore}
         loader={<div key={0}>loading...</div>}
         >
-            <Table striped bordered hover variant="dark">
+            <Table striped bordered hover variant="dark" style={{direction:'rtl'}}>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th>מספר שותף</th>
+                        <th>שם פרטי</th>
+                        <th>שם משפחה</th>
                         <th>Username</th>
                         <th>Email</th>
-                        <th>#</th>
+                        <th>מחיקה</th>
                     </tr>
                 </thead>
                 {users.map((user)=>{return <tbody key={user.id}>
