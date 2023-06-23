@@ -6,7 +6,6 @@ import { BsFillEnvelopeAtFill, BsFillGeoAltFill, BsInstagram } from "react-icons
 import { AiOutlinePhone } from "react-icons/ai";
 import { CiFacebook } from "react-icons/ci";
 import Contact from './Contact';
-import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { PhotoFetch, propertiesToHome } from '../client/axiosToApiProperies';
 import Carousel from 'react-bootstrap/Carousel';

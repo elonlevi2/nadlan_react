@@ -24,36 +24,36 @@ function NavbarHome() {
   const nav = useNavigate()
   const location = useLocation()
   const path = location.pathname
-  const {setUsername, username, onlogged, setOnlogged, superuser, setSuperUser} = useContext(AppContext)
+  const {setUsername, username, onlogged, setOnlogged} = useContext(AppContext)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const superuser = localStorage.getItem('issuperuser') === 'true'
 
-
-  useEffect(()=>{
-    validateToken().then((response)=>{
-      if (response.superuser){
-        setSuperUser(true)
-      } else {
-        setSuperUser(false)
-      }
-    })
-  },[])
 
   const stylenavbar = {
     backgroundImage: path === "/" ? `url(${homePageImage})`: path === "/tips" ? `url(${tipsImage})`: path === "/properties_sale" ? `url(${propertiesSale})`: path === "/my-properties" ? `url(${propertiesSale})` :
     path === "/add-ads" ? `url(${addAdsImage})`: path === "/properties_rent" ? `url(${propertiesSale})`: path === "/edit-ads" | path == "/edit-tips" ? `url(${editImage})`: path === "/my-tips" ? `url(${tipsImage})`:
     path === "/brokers" ? `url(${brokersImage})`: path === "/contact" ? `url(${contactImage})`: path === "/edit-profile" ? `url(${editprofile})`: path === "/about" ? `url(${aboutImage})`: "none",
-    height: path !== "/dashbord" && path !== "/map" && path !== "/login" && path !== "/signup" &&'100vh',
+    height: path !== "/dashbord" && path !== "/map" && path !== "/login" && '100vh',
     // path === "/" ? "100vh": path === "/tips" ? '100vh': path === "/properties_sale" ? '100vh': path === "/my-properties"? '100vh': path === "/add-ads"? '100vh': path === "/properties_rent" ? '100vh':
     // path === "/edit-ads" ? '100vh': path === "/my-tips" ? '100vh': path === "/edit-tips" ? '100vh': path === "/brokers" ? '100vh': path === "/contact" ? '100vh': path === "/edit-profile" ? '100' : "0",
     backgroundRepeat:"no-repeat",
     backgroundSize:"cover",
     backgroundPosition:"center center",
   }
-  const [menuOpen, setMenuOpen] = useState(false)
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
   }
 
   const handleClose = () => setMenuOpen(false)
+
+  const logout = ()=>{
+    localStorage.removeItem("token");
+    localStorage.removeItem("issuperuser");
+    setOnlogged(false);
+    setUsername('')
+    nav('/login');
+    nav('/login');
+    toggleMenu();}
  
 
   return (
@@ -103,15 +103,7 @@ function NavbarHome() {
                   <NavDropdown.Item className="link-dropdown" as={Link} to='/edit-profile' onClick={toggleMenu}>עריכת הפרופיל שלי</NavDropdown.Item>
                   </NavDropdown>
 
-                  <Button variant='outline-danger' onClick={()=>{
-                  localStorage.removeItem("token");
-                  localStorage.removeItem("issuperuser");
-                  setOnlogged(false);
-                  setSuperUser(false);
-                  setUsername('')
-                  nav('/login');
-                  nav('/login');
-                  toggleMenu();}}>logout</Button>
+                  <Button variant='outline-danger' onClick={logout}>logout</Button>
                   </> 
                   :
                   <Button variant='success' onClick={()=>{nav('/login'); toggleMenu()}}>login</Button>

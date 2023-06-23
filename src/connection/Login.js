@@ -25,12 +25,6 @@ function Login() {
             const data = await validateToken();
             setIduser(data.id)
             setUsername(data.user);
-            if (data.superuser){
-                setSuperUser(true)
-            } else {
-                setSuperUser(false)
-            }
-
             nav("/");
           } else {
             window.alert('error at login');

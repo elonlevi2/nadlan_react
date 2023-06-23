@@ -13,10 +13,6 @@ function App() {
   const [onlogged, setOnlogged] = useState(localStorage.token && localStorage.token !== 'undefined' ? true : false )
   const [username, setUsername] = useState('')
   const [idUser, setIduser] = useState()
-  const[superuser, setSuperUser] = useState(false)
-
-
-  const nav = useNavigate()
 
   useEffect(()=>{
     validateToken().then((response)=>{
@@ -35,7 +31,7 @@ function App() {
   },[])
 
   return (<>
-  <AppContext.Provider value={{onlogged, setOnlogged, setUsername, username, idUser, setIduser, superuser, setSuperUser}}>
+  <AppContext.Provider value={{onlogged, setOnlogged, setUsername, username, idUser, setIduser}}>
       <NavbarHome/>
       <SiteRoutes/>
   </AppContext.Provider>
