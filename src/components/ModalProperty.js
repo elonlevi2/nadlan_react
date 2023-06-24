@@ -41,7 +41,7 @@ function ModalProperty({property, show, setShow}) {
                 <h3>זירת הנדלן מציגה:</h3>
             </div>
             <div className='div-of-details'>
-                <p>דירת {property.rooms} חדרים ל{property.type === 'sale' ? 'מכירה': 'להשכרה'} ב{property.location} </p>
+                <p>דירת {property.rooms} חדרים ל{property.type === 'sale' ? 'מכירה': 'השכרה'} ב{property.location} </p>
                 <p>כתובת: {property.address}</p>
                 <p>{property.size} מ״ר</p>
                 <p>{property.description}</p>

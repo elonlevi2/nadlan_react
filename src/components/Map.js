@@ -7,6 +7,7 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 import { addressToGeocode } from '../client/axiosGeocodeApi';
 import { propertiesToMap } from '../client/axiosToApiProperies';
 import { Button } from 'react-bootstrap';
+import ModalProperty from './ModalProperty';
 // import useGeoLocation from './useGeoLocation';
 
 function Map() {
@@ -16,6 +17,7 @@ function Map() {
     const [change, setChange] = useState(false)
     const [search, setSearch] = useState('')
     const [zoomMap, setZoomMap] = useState([31.837682632703338, 35.06535410361823])
+    const [show, setShow] = useState(false);
     // const location = useGeoLocation()
 
 
@@ -39,7 +41,7 @@ function Map() {
     useEffect(()=> {
       async function data() {
         for (const p of properties) {
-          const loc = `${p.location}`;//+${p.address}
+          const loc = `${p.address}`;//+${p.address}
           const res = await addressToGeocode(loc);
           setGeocode((prevList) => [...prevList,{geocode:res, property:p}]);
         }      
@@ -66,7 +68,6 @@ function Map() {
         <Button type='submit'>search</Button>
         <input onChange={(e)=> {setSearch(e.target.value)}} style={{direction:"rtl"}} type='search' placeholder='חיפוש...'/>
       </form>
-      {search}
     </div>
     <br/>
 
@@ -79,7 +80,21 @@ function Map() {
         {/* <MarkerClusterGroup> */}
 
           {geocode.map(g => <Marker position={[g.geocode.lat, g.geocode.lng]} icon={customIcon}>
-              <Popup><div>{g.property.address}, {g.property.type}</div></Popup>
+              <Popup>
+                {/* <div>{g.property.address}, {g.property.type}</div> */}
+                <div style={{fontSize:'14px', direction:'rtl', textAlign:'right'}}>
+                דירת {g.property.rooms} חדרים ב{g.property.location}<br/>
+                מיקום: {g.property.address}
+                <br/>
+                {g.property.size} מ״ר
+
+                </div>
+                <br/>
+                <Button variant='outline-success' className='link-property' onClick={()=>{setShow(true)}}>לעוד מידע</Button>
+                <ModalProperty show={show} setShow={setShow} property={g.property}></ModalProperty>
+
+
+                </Popup>
             </Marker>
           )}
 

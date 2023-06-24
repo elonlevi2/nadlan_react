@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import NavbarHome from "./NavbarHome";
 import HomePage from "./components/HomePage";
-import MyCard from "./components/MyCard";
 import SiteRoutes from "./siteroutes/SiteRoutes";
 import { validateToken } from "./client/connectionClient";
 import { useNavigate } from "react-router-dom";

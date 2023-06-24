@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import HomePage from '../components/HomePage'
-import MyCard from '../components/MyCard'
 import Tips from '../components/Tips'
 import PropertiesSale from '../components/PropertiesSale'
 import Signup from '../connection/Signup'

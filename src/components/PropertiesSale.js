@@ -13,11 +13,12 @@ function PropertiesSale() {
     const [rooms, setRooms] = useState(null)
     const [city, setCity] = useState(null)
     const [balcony, setBalcony] = useState(null)
+    const [price, setPrice] = useState(null)
     const [filter, setFilter] = useState(false)
 
     
     const addProperties = async ()=> {
-        const res = await propertiesSaleFetch(pagenum, 10, rooms, city, balcony)
+        const res = await propertiesSaleFetch(pagenum, 10, rooms, city, balcony, price)
         if (!res.has_more) {
             setHasmore(false)
         }
@@ -52,6 +53,7 @@ function PropertiesSale() {
         setRooms(null)
         setCity(null)
         setBalcony(null)
+        setPrice(null)
         if (filter) {
           setFilter(false)
         } else {
@@ -82,6 +84,10 @@ function PropertiesSale() {
               <option value="yes">כן</option>
               <option value="no">לא</option>
             </select>
+
+            <input className='input-filter' type='number' placeholder='מחיר עד:' onChange={(e)=>{
+              setPrice(e.target.value === '' ? null : e.target.value);   
+            }}/>
 
             <Button style={{width:"20%"}} variant='danger' type='submit'>החל</Button>
           </form>

@@ -2,8 +2,8 @@ import axios from 'axios'
 import { localhost } from '../config'
 
 
-export async function propertiesSaleFetch(page_num, page_size, rooms, city, balcony) {
-    const url = `${localhost}properties_sale/sale/${rooms}/${city}/${balcony}?page_size=${page_size}&page_num=${page_num}`
+export async function propertiesSaleFetch(page_num, page_size, rooms, city, balcony,price) {
+    const url = `${localhost}properties_sale/sale/${rooms}/${city}/${balcony}/${price}?page_size=${page_size}&page_num=${page_num}`
     try {
         const response = await axios.get(url)
         console.assert(response.status == 200)
@@ -15,8 +15,8 @@ export async function propertiesSaleFetch(page_num, page_size, rooms, city, balc
 }
 
 
-export async function propertiesRentFetch(page_num, page_size, rooms, city, balcony) {
-    const url = `${localhost}properties_sale/rent/${rooms}/${city}/${balcony}?page_size=${page_size}&page_num=${page_num}`
+export async function propertiesRentFetch(page_num, page_size, rooms, city, balcony, price) {
+    const url = `${localhost}properties_sale/rent/${rooms}/${city}/${balcony}/${price}?page_size=${page_size}&page_num=${page_num}`
     try {
         const response = await axios.get(url)
         console.assert(response.status == 200)
