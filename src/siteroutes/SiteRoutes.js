@@ -20,6 +20,7 @@ import Dashbord from '../components/Dashbord'
 import ContactPage from '../components/ContactPage'
 import { toBeChecked } from '@testing-library/jest-dom/dist/matchers'
 import { validateToken } from '../client/connectionClient'
+import PropertiesSaleNew from '../components/PropertySaleNew'
 
 
 function PrivatePath({path, element}) {
@@ -47,7 +48,7 @@ function SiteRoutes() {
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/tips' element={<Tips/>}/>
-        <Route path='/properties_sale' element={<PropertiesSale/>}/>
+        <Route path='/properties_sale' element={<PropertiesSaleNew/>}/>
         <Route path='/properties_rent' element={<PropertiesRent/>}/>
         <Route path={'/my-properties'} element={<PrivatePath path='/my-properties' element={<PropertyOfUser/>}/>}/>
         <Route path={'/my-tips'} element={<PrivatePath path='/my-tips' element={<TipsOfUser/>}/>}/>
