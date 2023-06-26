@@ -71,7 +71,7 @@ function Map() {
     </div>
     <br/>
 
-    <MapContainer center={zoomMap} zoom={10}>
+    <MapContainer center={zoomMap} zoom={10} scrollWheelZoom={false}>
         <TileLayer
         attribution='&copy; <a href="https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Israel.svg">OpenStreetMap</a> contributors'
         url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'
@@ -79,7 +79,7 @@ function Map() {
 
         {/* <MarkerClusterGroup> */}
 
-          {geocode.map(g => <Marker position={[g.geocode.lat, g.geocode.lng]} icon={customIcon}>
+          {geocode.map(g => <Marker key={g.property.id} position={[g.geocode.lat, g.geocode.lng]} icon={customIcon}>
               <Popup>
                 {/* <div>{g.property.address}, {g.property.type}</div> */}
                 <div style={{fontSize:'14px', direction:'rtl', textAlign:'right'}}>

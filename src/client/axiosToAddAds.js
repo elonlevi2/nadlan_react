@@ -92,7 +92,7 @@ export async function addTipFetch(title, content) {
       location:location,
       address:address,
       price:price,
-      size:price,
+      size:size,
       rooms:rooms,
       balcony:balcony,
       description:description,
