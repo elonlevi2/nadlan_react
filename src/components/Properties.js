@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import '../client/axiosToApiProperies'
-import { propertiesSaleFetch, propertiesSaleFetchNew } from '../client/axiosToApiProperies'
+import { propertiesRentFetchNew, propertiesSaleFetchNew } from '../client/axiosToApiProperies'
 import CardOfProperty from './CardOfProperty'
 import { Button } from 'react-bootstrap'
+import { useLocation } from 'react-router-dom'
 
 
-function PropertiesSaleNew() {
+function Properties() {
+
+    const location = useLocation()
+    const path = location.pathname
+
     const [properties, setProperties] = useState([])
     const [pagenum, setPagenum] = useState(0)
     const [hasmore, setHasmore] = useState(true)
@@ -16,11 +21,28 @@ function PropertiesSaleNew() {
     const [price, setPrice] = useState(null)
     const [filter, setFilter] = useState(false)
 
-    
+      
     const addProperties = async ()=> {
-        const res = await propertiesSaleFetchNew(pagenum, 10, rooms, city, balcony, price)
+      if (path === "/properties_sale") {
+        const res = await propertiesSaleFetchNew(pagenum, 10, rooms, city, balcony, price) 
+
         if (!res.has_more) {
-            setHasmore(false)
+          setHasmore(false)
+        }
+
+        setPagenum((prev) => {
+          return prev + 1;
+        });
+
+        const newProperties = [...properties, ...res.data]
+
+        setProperties(newProperties)
+
+      } else if (path === "/properties_rent") {
+        const res = await propertiesRentFetchNew(pagenum, 10, rooms, city, balcony, price) 
+
+        if (!res.has_more) {
+          setHasmore(false)
         }
         setPagenum((prev) => {
           return prev + 1;
@@ -30,6 +52,8 @@ function PropertiesSaleNew() {
 
         setProperties(newProperties)
       }
+
+      } 
 
       const handelsubmit = async (e)=> {
         e.preventDefault()
@@ -46,6 +70,10 @@ function PropertiesSaleNew() {
       useEffect(()=>{
         addProperties()
       }, [filter])
+
+      useEffect(()=>{
+        resetfilter()
+      }, [path])
 
       const resetfilter = ()=> {
         setProperties([])
@@ -126,4 +154,4 @@ function PropertiesSaleNew() {
     </>)
 }
 
-export default PropertiesSaleNew
+export default Properties

@@ -2,18 +2,6 @@ import axios from 'axios'
 import { localhost } from '../config'
 
 
-export async function propertiesSaleFetch(page_num, page_size, rooms, city, balcony, price) {
-    const url = `${localhost}properties_sale/sale/${rooms}/${city}/${balcony}/${price}?page_size=${page_size}&page_num=${page_num}`
-    try {
-        const response = await axios.get(url)
-        console.assert(response.status == 200)
-        return response.data
-    } catch (error){
-        console.error("error:", error)
-    }
-    
-}
-
 export async function propertiesSaleFetchNew(page_num, page_size, rooms, city, balcony, price) {
     const url = `${localhost}properties_sale/sale?page_size=${page_size}&page_num=${page_num}`
     try {
@@ -30,10 +18,13 @@ export async function propertiesSaleFetchNew(page_num, page_size, rooms, city, b
 }
 
 
-export async function propertiesRentFetch(page_num, page_size, rooms, city, balcony, price) {
-    const url = `${localhost}properties_sale/rent/${rooms}/${city}/${balcony}/${price}?page_size=${page_size}&page_num=${page_num}`
+export async function propertiesRentFetchNew(page_num, page_size, rooms, city, balcony, price) {
+    const url = `${localhost}properties_sale/rent?page_size=${page_size}&page_num=${page_num}`
     try {
-        const response = await axios.get(url)
+        const response = await axios.post(url, {
+            headers:{'Content-Type': 'application/json'},
+            filter: {rooms: rooms, city:city, balcony:balcony, price:price}
+        })
         console.assert(response.status == 200)
         return response.data
     } catch (error){

@@ -1,14 +1,12 @@
-import React, { useContext } from 'react'
-import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import React from 'react'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import HomePage from '../components/HomePage'
 import Tips from '../components/Tips'
-import PropertiesSale from '../components/PropertiesSale'
 import Signup from '../connection/Signup'
 import Login from '../connection/Login'
 import PropertyOfUser from '../components/PropertyOfUser'
 import { AppContext } from '../App'
 import AddAds from '../components/AddAds'
-import PropertiesRent from '../components/PropertyRent'
 import EditAds from '../components/EditAds'
 import TipsOfUser from '../components/TipsOfUser'
 import EditTips from '../components/EditTips'
@@ -18,9 +16,7 @@ import Map from '../components/Map'
 import About from '../components/About'
 import Dashbord from '../components/Dashbord'
 import ContactPage from '../components/ContactPage'
-import { toBeChecked } from '@testing-library/jest-dom/dist/matchers'
-import { validateToken } from '../client/connectionClient'
-import PropertiesSaleNew from '../components/PropertySaleNew'
+import Properties from '../components/Properties'
 
 
 function PrivatePath({path, element}) {
@@ -48,8 +44,8 @@ function SiteRoutes() {
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/tips' element={<Tips/>}/>
-        <Route path='/properties_sale' element={<PropertiesSaleNew/>}/>
-        <Route path='/properties_rent' element={<PropertiesRent/>}/>
+        <Route path='/properties_sale' element={<Properties/>}/>
+        <Route path='/properties_rent' element={<Properties/>}/>
         <Route path={'/my-properties'} element={<PrivatePath path='/my-properties' element={<PropertyOfUser/>}/>}/>
         <Route path={'/my-tips'} element={<PrivatePath path='/my-tips' element={<TipsOfUser/>}/>}/>
         <Route path={'/add-ads'} element={<PrivatePath path='/add-ads' element={<AddAds/>}/>}/>

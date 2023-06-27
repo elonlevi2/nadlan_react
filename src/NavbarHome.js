@@ -57,7 +57,7 @@ function NavbarHome() {
  
 
   return (
-    <div  style={stylenavbar}>
+    <div  style={stylenavbar} className='in-phone'>
 
       <Navbar key={false} bg="dark" variant='dark' expand={false} className="mb-3" style={{opacity: '0.9'}}>
         <Container fluid>

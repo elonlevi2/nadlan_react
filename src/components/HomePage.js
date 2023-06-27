@@ -45,12 +45,12 @@ function HomePage() {
 
   return (
     <>
-    <div className='about'>
+    <div className='div-carousel'>
 
-        <Carousel variant='dark' style={{height:"36rem", width:"75rem", position:"absolute", left:"8%", top:"110%"}}>
-        <Carousel.Item style={{paddingLeft:"12.5rem"}}>
-          <Card style={{width: '50rem'}}>
-          <Card.Img style={{width:'800px', height:'400px'}} variant="top" src={items && `http://localhost:8000${items[0]}`}/>
+        <Carousel className='carousel' variant='dark'>
+        <Carousel.Item className='carousel-item'>
+          <Card className='card'>
+          <Card.Img className='card-img' variant="top" src={items && `http://localhost:8000${items[0]}`}/>
           <Card.Body>
               <Card.Text>
                 
@@ -73,9 +73,9 @@ function HomePage() {
           </Card>
         </Carousel.Item>
 
-        <Carousel.Item style={{paddingLeft:"12.5rem"}}>
-        <Card style={{width: '50rem'}}>
-          <Card.Img style={{width:'800px', height:'400px'}} variant="top" src={items && `http://localhost:8000${items[1]}`}/>
+        <Carousel.Item className='carousel-item'>
+        <Card className='card'>
+          <Card.Img className='card-img' variant="top" src={items && `http://localhost:8000${items[1]}`}/>
           <Card.Body>
               <Card.Text>
                 
@@ -96,9 +96,9 @@ function HomePage() {
           </Card>
         </Carousel.Item>
 
-        <Carousel.Item style={{paddingLeft:"12.5rem"}}>
-        <Card style={{width: '50rem'}}>
-          <Card.Img style={{width:'800px', height:'400px'}} variant="top" src={items && `http://localhost:8000${items[1]}`}/>
+        <Carousel.Item className='carousel-item'>
+        <Card className='card'>
+          <Card.Img className='card-img' variant="top" src={items && `http://localhost:8000${items[1]}`}/>
           <Card.Body>
               <Card.Text>
                 
@@ -126,13 +126,13 @@ function HomePage() {
       <h2 className='title-sending-to-the-site'>What Are You Looking For...?</h2>
 
       <div className='div-button-to-site'>
-        <Button variant='outline-dark' size='lg' as={Link} to={"/properties_sale"} style={{width:"330px"}} >נכסים למכירה</Button>
-        <Button variant='outline-dark' size='lg' as={Link} to={"/properties_rent"} style={{width:"330px"}}>נכסים להשכרה</Button>
-        <Button variant='outline-dark' size='lg' as={Link} to={"/tips"} style={{width:"330px"}}>טיפים לרכישת דירה</Button>
+        <Button variant='outline-dark' size='lg' as={Link} to={"/properties_sale"} className='button-on-div'>נכסים למכירה</Button>
+        <Button variant='outline-dark' size='lg' as={Link} to={"/properties_rent"} className='button-on-div'>נכסים להשכרה</Button>
+        <Button variant='outline-dark' size='lg' as={Link} to={"/tips"} className='button-on-div'>טיפים לרכישת דירה</Button>
       </div>
       <div className='div-button-to-site'>
-        <Button variant='outline-dark' size='lg' as={Link} to={"/brokers"} style={{width:"330px"}} >השותפים שלנו</Button>
-        <Button variant='outline-dark' size='lg' as={Link} to={"/contact"} style={{width:"330px"}}>יצירת קשר</Button>
+        <Button variant='outline-dark' size='lg' as={Link} to={"/brokers"} className='button-on-div'>השותפים שלנו</Button>
+        <Button variant='outline-dark' size='lg' as={Link} to={"/contact"} className='button-on-div'>יצירת קשר</Button>
       </div>
 
       

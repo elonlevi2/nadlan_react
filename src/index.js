@@ -4,7 +4,7 @@ import {BrowserRouter} from 'react-router-dom';
 import "./navbar.css"
 import "./components/homepage.css"
 import "./components/tips.css"
-import "./components/propertiessale.css"
+import "./components/properties.css"
 import "./connection/signup.css"
 import "./connection/login.css"
 import "./components/addads.css"
