@@ -18,7 +18,6 @@
 .div-of-title h2{
     font-family:Monospace;
     font-size: 54px;
-    /* font-weight: bold; */
     direction: rtl;
 
 }
@@ -53,4 +52,68 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
+}
+
+.buttom-applied-filter {
+    width: 20%;
+}
+
+
+@media screen and (max-width: 450px) {
+
+    .div-of-filter {
+        background-color: black;
+        width: 40%;
+    }
+
+    .div-of-title-properites {
+        width: 60%;
+    }
+
+    .input-filter {
+        width: 60%;
+        height: 40%;
+        /* padding: 5px; */
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    }
+
+    .div-all-options{
+        color: white;
+        padding: 1rem;
+    }
+    
+    .div-all-options p{
+        font-size: 16px;
+    }
+    
+    .div-all-options select{
+        font-size: 17px;
+        width: 300px;
+    }
+
+    .div-of-all-properties {
+        direction: ltr;
+        padding-left: 1.5rem;
+    }
+
+    .div-of-title h2{
+        font-family:Monospace;
+        font-size: 34px;
+        /* font-weight: bold; */
+        direction: rtl;
+    
+    }
+
+    .div-of-title {
+        text-align: center ;
+        padding: 2.7rem;
+    
+    }
+
+    .buttom-applied-filter {
+        width: 40%;
+    }
+
 }

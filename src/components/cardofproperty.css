@@ -3,3 +3,30 @@
     text-decoration: none;
     
 }
+
+.card-property {
+    width: 15rem; 
+    display: inline-table;
+    margin-inline: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.card-img-property {
+    width:250px;
+    height:250px;
+}
+
+
+@media screen and (max-width: 450px) {
+    .card-property {
+        width: 2rem; 
+        display: inline-table;
+        margin-inline: 1rem;
+        /* margin-bottom: 3rem; */
+    }
+    
+    .card-img-property {
+        width:150px;
+        height:150px;
+    }
+}

@@ -12,13 +12,9 @@
     resize: vertical;
 }
 
-/* .form-property-text-number-edit:focus {
-    background-color: floralwhite;
-} */
 .form-property-edit {
     display:flex;
     flex-direction: row;
-    /* gap: 0.7rem; */
     direction: rtl;
     padding-right: 10rem;
     padding-top: 3rem;
@@ -79,5 +75,91 @@
     right: 45%;
     top: 172%;
     font-size: 24px;
+
+}
+
+
+@media screen and (max-width: 450px) {
+    .div-main-edit-property {
+        direction: rtl;
+        height: 170vh;
+    }
+    
+    
+    .form-property-text-number-edit {
+        width: 80%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    }
+    
+    .form-property-edit {
+        display:flex;
+        flex-direction: column;
+        /* gap: 0.7rem; */
+        direction: rtl;
+        padding-right: 5rem;
+        padding-top: 3rem;
+        gap: 1.5rem;
+    }
+    
+    .form-property-textarea-edit{
+        height: 200px;
+        width: 60%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    }
+    
+    .div-in-form-edit {
+        display:flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 2rem;
+    }
+    
+    .div-form-property-edit {
+        padding: 0rem;
+    }
+    
+    .form-property-edit select{
+        width: 40%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    
+    }
+    
+    .submit-edit {
+        width: 30%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+        position: absolute;
+        right: 37%;
+        top: 215%;
+    }
+    
+    .delete-edit {
+        width: 30%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+        position: absolute;
+        right: 37%;
+        top: 221%;
+    }
+    .error-edit {
+        position: absolute;
+        right: 38%;
+        top: 210%;
+        font-size: 18px;
+    
+    }
 
 }

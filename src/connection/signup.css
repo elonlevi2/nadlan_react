@@ -54,3 +54,25 @@
     justify-content: center;
     align-items: center;  
 }
+
+@media screen and (max-width: 450px) {
+    .div-all-page {
+        height: 230vh;
+        background-size: cover;
+    }
+    
+    .div-of-card-form {
+        width: 400px;
+        height: 600px;
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color:darkgrey;
+        border-radius: 20px;
+        direction: rtl;
+        opacity: 0.8;
+        text-align: center;
+    
+    }
+}

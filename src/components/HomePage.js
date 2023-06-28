@@ -1,5 +1,4 @@
 import React, {useEffect, useState } from 'react'
-import './Home.css'
 import { Button, Card} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { BsFillEnvelopeAtFill, BsFillGeoAltFill, BsInstagram } from "react-icons/bs";
@@ -171,17 +170,6 @@ function HomePage() {
         <div className='div-details-contact-icons'>
           <Link className='links' to="/properties_sale">נכסים למכירה</Link>
           <Link className='links' to="/properties_rent">נכסים לשכירות</Link>
-
-          {/* <div className='dropdown'>
-            <Link className='dropbtn'>נכסים</Link>
-            <br/>
-            <div className="dropdown-content">
-              <Link to="/properties_sale">נכסים למכירה</Link>
-              <Link to="/properties_rent">נכסים לשכירות</Link>
-            </div>
-          </div> */}
-
-
 
         </div>
       </div>

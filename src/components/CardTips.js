@@ -28,9 +28,6 @@ function CardTips({tip}) {
       <Card.Header as="h5">הטיפ של {realEstate}</Card.Header>
       <Card.Body>
         <Card.Title>{tip.title}</Card.Title>
-        {/* <Card.Text>
-          {tip.content}
-        </Card.Text> */}
 
         <div style={{display:'flex', justifyContent:'space-between' , gap:'1rem'}}>
           <Button variant="outline-success" onClick={()=>{setShow(true)}}>ראה עוד</Button>

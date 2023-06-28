@@ -30,3 +30,38 @@
     right: 35.1%;
     top: 147%;
 }
+
+@media screen and (max-width: 450px) {
+    .div-main {
+        padding: 2rem;
+        height: 80vh;
+    }
+    
+    .form-user {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        direction: rtl;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .form-user-input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    }
+    
+    .user-submit {
+        width: 30%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+        position: absolute;
+        right: 35.1%;
+        top: 137%;
+    }
+}

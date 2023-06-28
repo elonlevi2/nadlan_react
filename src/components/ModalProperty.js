@@ -57,7 +57,6 @@ function ModalProperty({property, show, setShow}) {
 
             <div className='div-of-photo'>
             {photo && photo.map((p)=>{return <img key={p.id} style={{width:"200px", height:"200px"}} src={`http://127.0.0.1:8000${p.image}`}/>})}
-                {/* <CarouselImages property_id={property.id}/> */}
             </div>
             <br/>
 

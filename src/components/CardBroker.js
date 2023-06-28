@@ -11,13 +11,10 @@ function CardBroker({broker}) {
      backgroundColor:"black", color:"white" }}>
       <Card.Body>
         <Card.Title>{broker.first_name} {broker.last_name}</Card.Title>
-        {/* <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle> */}
         <Card.Text>
           {broker.email}
         </Card.Text>
         <Button variant='light' onClick={()=>{setShow(true)}}>send mail</Button>
-        {/* <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link> */}
       </Card.Body>
     </Card>
     <ModalMailToBroker show={show} setShow={setShow} emailBroker={broker.email}/>

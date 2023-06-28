@@ -71,13 +71,6 @@ function EditAds() {
           fd.append(photo[i].name, photo[i])
           }
 
-       
-        // const options = {
-        //     headers: {'Accept': 'application/json'},
-        //     method: 'POST',          
-        //     body: fd,
-        // };
-
         const upload = await axios.post(`http://127.0.0.1:8000/api/photo?id=${res.id}`, fd, {headers: {'Accept': 'application/json'}})
         if (upload.status == 200) {
           return upload.data;

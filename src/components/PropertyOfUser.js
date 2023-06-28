@@ -8,8 +8,6 @@ function PropertyOfUser() {
     const [properties, setProperties] = useState([])
     const [pagenum, setPagenum] = useState(0)
     const [hasmore, setHasmore] = useState(true)
-    const [rooms, setRooms] = useState("")
-
 
     const addProperties = async ()=> {
         const res = await propertiesOfUseraxios(pagenum, 10)
@@ -33,22 +31,6 @@ function PropertyOfUser() {
 
 
       <div className='div-of-filter'>
-
-        {/* <div className='div-all-options'>
-          <p>חיפוש נכס:</p>
-          <form>
-            <input type='number' placeholder='מספר חדרים דוגמא 4' onChange={(e)=>{setRooms(e.target.value)}}/>
-            {rooms}
-            <br/>
-
-            <Button variant='danger' type='submit'>החל</Button>
-          </form>
-          <select name="days" id="days">
-            <option value="#">שכונה?</option>
-          </select>
-        </div> */}
-
-        
 
       </div>
 

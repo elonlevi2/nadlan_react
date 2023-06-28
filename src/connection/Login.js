@@ -32,7 +32,7 @@ function Login() {
     }
   return (<>
     
-    <div className='div-all-page' style={{backgroundImage: `url(${backgroundimage})`}}>
+    <div className='div-all-page' style={{backgroundImage: `url(${backgroundimage})`}} >
         <div className='div-of-card-form-login'>
 
             <div className='div-title-card-form-login'>

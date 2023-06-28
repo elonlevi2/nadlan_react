@@ -156,7 +156,7 @@
     height: 400px;
 }
 
-@media screen and (max-width: 395px) {
+@media screen and (max-width: 450px) {
     .carousel {
         height: 36rem;
         width: 22rem;

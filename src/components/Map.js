@@ -25,7 +25,6 @@ function Map() {
       e.preventDefault()
       const loc = `${search}`;
       const zoom = await addressToGeocode(loc);
-      console.log(zoom)
       setZoomMap(zoom)
     }
 

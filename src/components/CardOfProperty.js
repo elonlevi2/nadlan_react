@@ -24,8 +24,8 @@ function CardOfProperty({property}) {
   },[])
     
   return (<>
-      <Card style={{width: '15rem' , display:'inline-table', marginInline:'1.5rem', marginBottom:'3rem'}}>
-      <Card.Img style={{width:'250px', height:'250px'}} variant="top" src={`http://127.0.0.1:8000${images}`}/>
+      <Card className='card-property'>
+      <Card.Img className='card-img-property' variant="top" src={`http://127.0.0.1:8000${images}`}/>
       <Card.Body>
           <Card.Title>
             <div style={{height: "35px", padding:'0.5rem', backgroundColor:'black', color: 'white', display:'inline-block', width:'100%', fontFamily:'ariel', textAlign:'center'}}>
@@ -68,7 +68,6 @@ function CardOfProperty({property}) {
             </div>
             
           </Card.Text>
-          {/* <Button variant="primary">Go somewhere</Button> */}
       </Card.Body>
       </Card>
             

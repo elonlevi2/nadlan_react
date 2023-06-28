@@ -117,7 +117,7 @@ function Properties() {
               setPrice(e.target.value === '' ? null : e.target.value);   
             }}/>
 
-            <Button style={{width:"20%"}} variant='danger' type='submit'>החל</Button>
+            <Button className='buttom-applied-filter' variant='danger' type='submit'>החל</Button>
           </form>
           <br/>
           <Button variant='success' onClick={resetfilter}>איפוס הסינון</Button>
