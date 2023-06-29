@@ -5,9 +5,9 @@
 
 .div-of-card-form-login {
     width: 1000px;
-    height: 600px;
+    height: 550px;
     position: absolute;
-    top: 58%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color:rgb(151, 217, 235);
