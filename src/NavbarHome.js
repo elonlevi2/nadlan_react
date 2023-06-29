@@ -38,6 +38,7 @@ function NavbarHome() {
     backgroundSize:"cover",
     backgroundPosition:"center center",
   }
+  
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
   }
