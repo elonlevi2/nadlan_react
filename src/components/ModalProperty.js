@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Modal } from 'react-bootstrap';
 import { PhotoFetch, UserFetch } from '../client/axiosToApiProperies';
 import ModalMailToBroker from './ModalMailToBroker';
+import { s3Url } from '../config';
 
 function ModalProperty({property, show, setShow}) {
     const handleClose = () => setShow(false);
@@ -56,7 +57,7 @@ function ModalProperty({property, show, setShow}) {
             </div>
 
             <div className='div-of-photo'>
-            {photo && photo.map((p)=>{return <img key={p.id} style={{width:"200px", height:"200px"}} src={`http://127.0.0.1:8000${p.image}`}/>})}
+            {photo && photo.map((p)=>{return <img key={p.id} style={{width:"200px", height:"200px"}} src={`${s3Url}${p.image}`}/>})}
             </div>
             <br/>
 

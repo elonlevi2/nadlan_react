@@ -8,7 +8,7 @@ import '../client/axiosToApiProperies'
 import { PhotoFetch } from '../client/axiosToApiProperies';
 import { Link, useLocation } from 'react-router-dom';
 import ModalProperty from './ModalProperty';
-
+import { s3Url } from '../config';
 
 function CardOfProperty({property}) {
   const location = useLocation()
@@ -25,7 +25,7 @@ function CardOfProperty({property}) {
     
   return (<>
       <Card className='card-property'>
-      <Card.Img className='card-img-property' variant="top" src={`http://127.0.0.1:8000${images}`}/>
+      <Card.Img className='card-img-property' variant="top" src={`${s3Url}${images}`}/>
       <Card.Body>
           <Card.Title>
             <div style={{height: "35px", padding:'0.5rem', backgroundColor:'black', color: 'white', display:'inline-block', width:'100%', fontFamily:'ariel', textAlign:'center'}}>
@@ -50,7 +50,6 @@ function CardOfProperty({property}) {
                 <div style={{display:'flex', justifyContent:'space-between'}}>
                   <span><TbHomeQuestion style={{fontSize:'35px'}}/><div style={{fontSize:"15px"}}>{property.size} מ״ר</div></span>
                   <span><MdOutlineBed style={{fontSize:'35px'}}/><div style={{fontSize:"15px"}}>{property.rooms}</div></span>
-                  {/* <TbHomeQuestion style={{fontSize:'25px'}}/> */}
                   
                 </div>
                 {path === '/my-properties' ? 

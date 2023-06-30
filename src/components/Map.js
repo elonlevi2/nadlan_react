@@ -80,13 +80,13 @@ function Map() {
 
           {geocode.map(g => <Marker key={g.property.id} position={[g.geocode.lat, g.geocode.lng]} icon={customIcon}>
               <Popup>
-                {/* <div>{g.property.address}, {g.property.type}</div> */}
                 <div style={{fontSize:'14px', direction:'rtl', textAlign:'right'}}>
                 דירת {g.property.rooms} חדרים ב{g.property.location}<br/>
                 מיקום: {g.property.address}
                 <br/>
                 {g.property.size} מ״ר
-
+                <br/>
+                סוג נכס: {g.property.type === 'sale' ? 'מכירה' : 'שכירות'}
                 </div>
                 <br/>
                 <Button variant='outline-success' className='link-property' onClick={()=>{setShow(true)}}>לעוד מידע</Button>

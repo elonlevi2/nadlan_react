@@ -155,6 +155,14 @@
     width: 800px;
     height: 400px;
 }
+.title-db-empty {
+    text-align: center;
+    font-family:Monospace;
+    position: absolute;
+    top: 120%;
+    left: 28%;
+    font-size: 45px;
+}
 
 @media screen and (max-width: 450px) {
     .carousel {
@@ -229,6 +237,15 @@
         display: flex;
         flex-direction: column;
         gap: 2rem;
+    }
+
+    .title-db-empty {
+        text-align: center;
+        font-family:Monospace;
+        position: absolute;
+        top: 120%;
+        left: 10%;
+        font-size: 32px;
     }
     
   } 
