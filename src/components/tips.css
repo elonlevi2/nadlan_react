@@ -1,12 +1,13 @@
 .div-about-the-page {
     height: 40vh;
-    background-color:rgba(156, 156, 11, 0.581);
+    background-color:black;
 }
 
 .div-title-about-the-page {
     flex-direction: column;
     text-align: center;
     padding: 4rem;
+    color: floralwhite;
 }
 
 .div-title-about-the-page h2 {
@@ -23,11 +24,11 @@
 
 .div-context-about-the-page p {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+    color: floralwhite;
 }
 
 .div-of-all-cards{
     text-align: center;
-    background-color:darkslategray;
+    background-color:floralwhite;
     padding: 2rem;
 }

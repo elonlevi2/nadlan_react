@@ -25,8 +25,8 @@ function CardTips({tip}) {
 
   return (<>
     <Card style={{backgroundColor: "floralwhite" , width:"18rem", display:'inline-table', marginInline:'5rem', marginBottom:'3rem', border:'black solid 2px'}}>
-      <Card.Header as="h5">הטיפ של {realEstate}</Card.Header>
       <Card.Body>
+      <Card.Title as="h5">הטיפ של {realEstate}</Card.Title>
         <Card.Title>{tip.title}</Card.Title>
 
         <div style={{display:'flex', justifyContent:'space-between' , gap:'1rem'}}>
