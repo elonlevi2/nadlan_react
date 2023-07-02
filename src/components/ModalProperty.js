@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Carousel, Modal } from 'react-bootstrap';
 import { PhotoFetch, UserFetch } from '../client/axiosToApiProperies';
 import ModalMailToBroker from './ModalMailToBroker';
 import { s3Url } from '../config';
@@ -57,7 +57,16 @@ function ModalProperty({property, show, setShow}) {
             </div>
 
             <div className='div-of-photo'>
-            {photo && photo.map((p)=>{return <img key={p.id} style={{width:"200px", height:"200px"}} src={`${s3Url}${p.image}`}/>})}
+            <Carousel className='carousel_modal' variant='dark'>
+                {photo.map((image)=> {
+              return <Carousel.Item className='carousel-item'>
+                      <img
+                        className="carousel_img"
+                        src={`${s3Url}${image.image}`}
+                        alt="First slide"
+                      />
+                </Carousel.Item> })}
+            </Carousel> 
             </div>
             <br/>
 

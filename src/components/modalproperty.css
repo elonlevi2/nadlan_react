@@ -21,13 +21,53 @@
 }
 
 .div-of-photo {
-    padding: 1rem;
     align-items: center;
     gap: 1rem;
-    transition: transform 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 }
 
-.div-of-photo img:hover{
-    transform: scale(2.2);    
+
+.carousel_modal {
+    height: 25rem;
+    width: 55rem;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 18%;
+    top: 85%;
+}
+
+.carousel_img {
+    height: 300px;
+    width: 500px;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+@media screen and (max-width: 450px) {
+
+    .carousel_modal {
+        height: 25rem;
+        width: 21rem;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: 11%;
+        top: 60%;
+    }
+    
+    .carousel_img {
+        height: 150px;
+        width: 223px;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
 }
