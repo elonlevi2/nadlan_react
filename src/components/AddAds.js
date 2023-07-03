@@ -5,6 +5,7 @@ import { Button, Nav } from 'react-bootstrap';
 import { addPropertyFetch, addTipFetch } from '../client/axiosToAddAds';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { localhost } from '../config';
 
 
 function AddAds() {
@@ -56,7 +57,7 @@ function AddAds() {
             fd.append(photo[i].name, photo[i])
           }
         
-        const upload = await axios.post(`http://127.0.0.1:8000/api/photo?id=${res.id}`, fd, {headers: {'Accept': 'application/json'}})
+        const upload = await axios.post(`${localhost}photo?id=${res.id}`, fd, {headers: {'Accept': 'application/json'}})
         if (upload.status == 200) {
             console.log(upload.data)
             return upload.data;

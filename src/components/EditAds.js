@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap'
 import { EditPropertyFetch } from '../client/axiosToAddAds'
 import Contact from './Contact'
 import axios from 'axios'
+import { localhost } from '../config'
 
 function EditAds() {
 
@@ -71,7 +72,7 @@ function EditAds() {
           fd.append(photo[i].name, photo[i])
           }
 
-        const upload = await axios.post(`http://127.0.0.1:8000/api/photo?id=${res.id}`, fd, {headers: {'Accept': 'application/json'}})
+        const upload = await axios.post(`${localhost}photo?id=${res.id}`, fd, {headers: {'Accept': 'application/json'}})
         if (upload.status == 200) {
           return upload.data;
         } else {
