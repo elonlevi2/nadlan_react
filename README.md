@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+Real Estate Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a real estate website built using Django and React. The website allows registered users to manage their properties for sale or rent, while visitors can browse listings, contact the real estate agent, and more. The project utilizes the Django Rest Framework for the API and React for the client-side.
 
-## Available Scripts
+Features
+•	User Registration and Authentication: Users can create accounts and log in to access additional features.
+•	Property Management: Registered users can add, edit, and delete their property listings.
+•	Property Search: Visitors can search for properties based on various criteria such as location, price range, and property type.
+•	Contact Form: Visitors can send inquiries to the real estate agent via a contact form.
+•	AWS Infrastructure: The website is hosted on AWS, utilizing the AWS EC2 server for the Django server, AWS RDS for the PostgreSQL database, and AWS S3 for storing static files.
 
-In the project directory, you can run:
+Installation
+To run the project locally, follow these steps:
+1.	Clone the repository: git clone https://github.com/elonlevi2/nadlan_react.git
+2.	Install backend dependencies: pip install -r requirements.txt
+3.	Install frontend dependencies: cd frontend && npm install
+4.	Set up the database: Create a PostgreSQL database and configure the database settings in settings.py.
+5.	Apply database migrations: python manage.py migrate
+6.	Start the backend server: python manage.py runserver
+7.	Start the frontend development server: cd frontend && npm start
 
-### `npm start`
+   Make sure you have Python, Node.js, and PostgreSQL installed on your system.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Configuration
+To configure the project, you may need to update some settings:
+•	Django settings: Update the database configuration, AWS S3 settings, and any other relevant settings in the settings.py file.
+•	AWS credentials: Set up your AWS credentials on your local machine or provide them through environment variables.
+•	Django REST Framework: Configure the API endpoints and permissions according to your requirements.
+•	Gunicorn: Configure Gunicorn settings, such as the number of workers, bind address, etc., in the gunicorn.conf.py file.
+•	Nginx: Configure Nginx settings, including server blocks, proxy_pass, SSL certificates, etc., in the Nginx configuration files.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+Deployment
+To deploy the website with Gunicorn and Nginx, you can follow these general steps:
+1.	Set up an EC2 instance: Launch an EC2 instance on AWS with the appropriate configuration for your project.
+2.	Install required software: Install Python, PostgreSQL, Nginx, and any other necessary dependencies on the EC2 instance.
+3.	Transfer project files: Transfer your project files to the EC2 instance using SCP or any other preferred method.
+4.	Configure the web server: Set up Nginx as the reverse proxy server and configure it to pass requests to Gunicorn.
+5.	Set up PostgreSQL: Install and configure PostgreSQL on the EC2 instance and import your database.
+6.	Set up AWS S3: Create an S3 bucket on AWS and configure your Django settings to use it for storing static files.
+7.	Start Gunicorn: Configure Gunicorn to run your Django application and start it as a background process.
+8.	Start Nginx: Start Nginx to listen for incoming requests and forward them to Gunicorn.
+9.	Configure domain and DNS: Set up a domain name for your website and configure DNS settings to point to your EC2 instance's IP address.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Please note that these steps provide a high-level overview and may require further research and customization based on your specific AWS setup and requirements.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Contributing
+Contributions to this project are welcome. If you find any issues or have suggestions for improvements, please open a new issue or submit a pull request.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Acknowledgments
+•	Django
+•	Django Rest Framework
+•	React
+•	AWS
