@@ -26,8 +26,6 @@ function Login() {
             setIduser(data.id)
             setUsername(data.user);
             nav("/");
-          } else {
-            window.alert('error at login');
           }
     }
   return (<>
