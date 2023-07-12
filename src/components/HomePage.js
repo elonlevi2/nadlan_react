@@ -26,6 +26,7 @@ function HomePage() {
 
   return (
     <>
+    <div className='main-home-page'>
     <div className='div-carousel'>
       {properties.length > 0 ? 
       <Carousel className='carousel' variant='dark'>
@@ -91,6 +92,7 @@ function HomePage() {
         </div>
       </div>
 
+    </div>
     </div>
 
     </>

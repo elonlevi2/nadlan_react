@@ -24,50 +24,38 @@
     align-items: center;
     gap: 1rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    
+    justify-content: center;    
 }
 
 
 .carousel_modal {
-    height: 25rem;
-    width: 55rem;
-    position: absolute;
+    height: 25%;
+    width: 65%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    left: 18%;
-    top: 85%;
+}
+
+.carousel-item-modal {
+    padding-left: 0%;
 }
 
 .carousel_img {
-    height: 300px;
-    width: 500px;
-    justify-content: center;
-    align-items: center;
-    
+    width: 100%;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 750px) {
 
     .carousel_modal {
-        height: 25rem;
-        width: 21rem;
-        position: absolute;
+        height: 35%;
+        width: 100%;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        left: 11%;
-        top: 60%;
+    }
+    
+    .carousel-item-modal {
+        padding-left: 0%;
     }
     
     .carousel_img {
-        height: 150px;
-        width: 223px;
-        justify-content: center;
-        align-items: center;
-        
+        width: 100%;
     }
 
 }

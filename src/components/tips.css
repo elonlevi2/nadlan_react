@@ -1,5 +1,4 @@
 .div-about-the-page {
-    height: 40vh;
     background-color:black;
 }
 
@@ -20,6 +19,7 @@
 .div-context-about-the-page {
     text-align: center;
     direction: rtl;
+    padding: 2%;
 }
 
 .div-context-about-the-page p {
@@ -31,4 +31,12 @@
     text-align: center;
     background-color:floralwhite;
     padding: 2rem;
+}
+
+@media screen and (max-width: 750px) {
+    .div-of-all-cards{
+        text-align: center;
+        background-color:floralwhite;
+        padding: 6%;
+    }
 }

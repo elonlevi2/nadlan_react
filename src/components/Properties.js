@@ -100,22 +100,21 @@ function Properties() {
         <div className='div-all-options'>
           <p>חיפוש נכס:</p>
           <form style={{display:"flex", flexDirection:"column" ,gap:"0.5rem"}} onSubmit={handelsubmit}>
-            <input className='input-filter' type='number' placeholder='מספר חדרים דוגמא 4' onChange={(e)=>{
+            <input className='input-filter' type='number' placeholder='מספר חדרים' onChange={(e)=>{
               setRooms(e.target.value === '' ? null : e.target.value);              
             }}/>
 
             <input className='input-filter' type='text' placeholder='עיר' onChange={(e)=>{
               setCity(e.target.value === '' ? null : e.target.value);
             }}/>
+            <input className='input-filter' type='number' placeholder='מחיר עד:' onChange={(e)=>{
+              setPrice(e.target.value === '' ? null : e.target.value);   
+            }}/>
             <select style={{width:"60%"}} className='input-filter' onChange={(e)=> {setBalcony(e.target.value === '' ? null : e.target.value)}} name="balcony" id="balcony">
               <option value="null">מרפסת?</option>
               <option value="yes">כן</option>
               <option value="no">לא</option>
             </select>
-
-            <input className='input-filter' type='number' placeholder='מחיר עד:' onChange={(e)=>{
-              setPrice(e.target.value === '' ? null : e.target.value);   
-            }}/>
 
             <Button className='buttom-applied-filter' variant='danger' type='submit'>החל</Button>
           </form>

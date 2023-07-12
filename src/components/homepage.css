@@ -1,6 +1,12 @@
 .div-carousel {
     display: flex;
-    height: 100vh;
+    justify-content: center;
+}
+
+.main-home-page{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .about {
@@ -35,7 +41,6 @@
 }
 
 .sending-to-the-site {
-    height: 70vh;
     background-color: darkslategray;
 }
 
@@ -59,7 +64,6 @@
 }
 
 .div-details {
-    height: 80vh;
     direction: rtl;
     background-color: black;
     display: flex;
@@ -136,25 +140,23 @@
 
 
 .carousel {
-    height: 36rem;
-    width: 75rem;
-    position: absolute;
-    left: 8%;
-    top: 110%;
+    height: 97%;
+    width: 84%;
+    padding: 6%;
 }
 
 .carousel-item {
-    padding-left: 12.5rem;
+    padding-left: 17%;
 }
 
 .card {
-    width: 50rem;
+    width: 80%;
 }
 
 .card-img {
-    width: 800px;
-    height: 400px;
+    width: 100%;
 }
+
 .title-db-empty {
     text-align: center;
     font-family:Monospace;
@@ -164,31 +166,27 @@
     font-size: 45px;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 750px) {
     .carousel {
-        height: 36rem;
-        width: 22rem;
-        position: absolute;
-        left: 8%;
-        top: 110%;
+        height: 100%;
+        width: 100%;
+        padding: 6%;
     }
     
     .carousel-item {
-        padding-left: 3.5rem;
+        padding-left: 0%;
     }
     
     .card {
-        width: 15rem;
+        width: 100%;
     }
     
     .card-img {
-        width: 240px;
-        height: 300px;
+        width: 100%;
     }
 
     .div-carousel {
         display: flex;
-        height: 80vh;
     }
 
     .div-button-to-site {

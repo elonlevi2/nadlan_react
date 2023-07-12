@@ -71,9 +71,8 @@
     }
 
     .input-filter {
-        width: 60%;
+        width: 100%;
         height: 40%;
-        /* padding: 5px; */
         border: 1px solid #ccc;
         border-radius: 4px;
         resize: vertical;
@@ -101,7 +100,6 @@
     .div-of-title h2{
         font-family:Monospace;
         font-size: 34px;
-        /* font-weight: bold; */
         direction: rtl;
     
     }

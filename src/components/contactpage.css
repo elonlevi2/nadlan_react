@@ -1,6 +1,8 @@
 .div-main-contact-page {
-    height: 90vh;
     background-color: rgb(102, 102, 53);
+    justify-content: center;
+    align-items: center;
+    padding: 3%;
     
 }
 

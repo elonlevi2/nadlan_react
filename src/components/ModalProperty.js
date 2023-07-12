@@ -35,8 +35,6 @@ function ModalProperty({property, show, setShow}) {
   return (
     <>
     <Modal fullscreen={true} show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
-      <Modal.Header closeButton>
-      </Modal.Header>
       <Modal.Body>
             <div className='div-of-title'>
                 <h3>זירת הנדלן מציגה:</h3>
@@ -59,7 +57,7 @@ function ModalProperty({property, show, setShow}) {
             <div className='div-of-photo'>
             <Carousel className='carousel_modal' variant='dark'>
                 {photo.map((image)=> {
-              return <Carousel.Item className='carousel-item'>
+              return <Carousel.Item className='carousel-item-modal'>
                       <img
                         className="carousel_img"
                         src={`${s3Url}${image.image}`}
