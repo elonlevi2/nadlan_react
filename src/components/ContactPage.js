@@ -21,14 +21,14 @@ function ContactPage() {
 
       const res = await addContact(name, email, message)
   
-      emailjs.sendForm('service_gaogezg', 'template_ykqfqtl', form.current, 'Dnd0vTpr7StPYM2Fw')
+      emailjs.sendForm('service_przwbds', 'template_ykqfqtl', form.current, 'Dnd0vTpr7StPYM2Fw')
         .then((result) => {
             console.log(result.text);
             setShowToast(true)
             nav('/contact')
-            // window.alert("המייל נשלח")
         }, (error) => {
             console.log(error.text);
+            window.alert('בעיה בשליחת האמייל')
         })
     };
 

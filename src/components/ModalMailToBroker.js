@@ -15,14 +15,16 @@ function ModalMailToBroker({show, setShow, emailBroker}) {
     const sendEmail = async (e) => {
       e.preventDefault();
   
-      emailjs.sendForm('service_gaogezg', 'template_43gzuyf', form.current, 'Dnd0vTpr7StPYM2Fw')
+      emailjs.sendForm('service_przwbds', 'template_43gzuyf', form.current, 'Dnd0vTpr7StPYM2Fw')
         .then((result) => {
             console.log(result.text);
             if (result.text) {
+              handleClose()
               window.alert("המייל נשלח")
             }
         }, (error) => {
             console.log(error.text);
+            window.alert('בעיה בשליחת האמייל')
         });
     };
 

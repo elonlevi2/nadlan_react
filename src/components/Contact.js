@@ -2,12 +2,14 @@ import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import styled from "styled-components";
 import { addContact } from '../client/axiosToContact';
+import { useNavigate } from 'react-router-dom';
 
 function Contact() {
     const [name, Setname] = useState('')
     const [email, setEmail] = useState('')
     const [message, setMessage] = useState('')
     const form = useRef();
+    const nav = useNavigate()
 
 
     const sendEmail = async (e) => {
@@ -16,11 +18,14 @@ function Contact() {
       const res = await addContact(name, email, message)
       console.log(res)
   
-      emailjs.sendForm('service_gaogezg', 'template_ykqfqtl', form.current, 'Dnd0vTpr7StPYM2Fw')
+      emailjs.sendForm('service_przwbds', 'template_ykqfqtl', form.current, 'Dnd0vTpr7StPYM2Fw')
         .then((result) => {
             console.log(result.text);
+            window.alert('המייל נשלח בהצלחה')
         }, (error) => {
             console.log(error.text);
+            window.alert('בעיה בשליחת האמייל')
+
         });
     };
 
