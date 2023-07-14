@@ -4,6 +4,9 @@ import Modal from 'react-bootstrap/Modal';
 import emailjs from '@emailjs/browser';
 import styled from "styled-components";
 import { useLocation, useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { notify, notifyError } from '../config';
 
 
 function ModalMailToBroker({show, setShow, emailBroker}) {
@@ -19,12 +22,12 @@ function ModalMailToBroker({show, setShow, emailBroker}) {
         .then((result) => {
             console.log(result.text);
             if (result.text) {
+              notify("המייל נשלח בהצלחה");
               handleClose()
-              window.alert("המייל נשלח")
             }
         }, (error) => {
             console.log(error.text);
-            window.alert('בעיה בשליחת האמייל')
+            notifyError("בעיה בשליחת המייל");
         });
     };
 
@@ -55,6 +58,7 @@ function ModalMailToBroker({show, setShow, emailBroker}) {
           </Button>
         </Modal.Footer>
       </Modal>
+      <ToastContainer/>
   </>)
 }
 

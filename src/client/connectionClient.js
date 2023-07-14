@@ -43,7 +43,7 @@ export async function signup(username, password, email, firstname, lastname) {
         return false;
       }
     } catch (error) {
-      window.alert("Error at login");
+      return false
     }
   }
 
@@ -66,7 +66,6 @@ export async function signup(username, password, email, firstname, lastname) {
       }
     } catch (error) {
       return false
-      // window.alert("Error checking token");
     }
   }
   

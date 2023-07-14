@@ -3,6 +3,10 @@ import emailjs from '@emailjs/browser';
 import styled from "styled-components";
 import { addContact } from '../client/axiosToContact';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { notify, notifyError } from '../config';
+
 
 function Contact() {
     const [name, Setname] = useState('')
@@ -21,10 +25,10 @@ function Contact() {
       emailjs.sendForm('service_przwbds', 'template_ykqfqtl', form.current, 'Dnd0vTpr7StPYM2Fw')
         .then((result) => {
             console.log(result.text);
-            window.alert('המייל נשלח בהצלחה')
+            notify("המייל נשלח בהצלחה")
         }, (error) => {
             console.log(error.text);
-            window.alert('בעיה בשליחת האמייל')
+            notifyError("בעיה בשליחת המייל")
 
         });
     };
@@ -42,6 +46,7 @@ function Contact() {
       <input type="submit" value="Send" />
     </form>
     </StyledContactForm>
+    <ToastContainer/>
     </div>
   </>)
 }

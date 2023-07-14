@@ -4,6 +4,9 @@ import { AppContext } from '../App'
 import { Button } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { getLoginToken, validateToken } from '../client/connectionClient'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { notify, notifyError } from '../config'
 
 const backgroundimage = process.env.PUBLIC_URL + '/login.jpg'
 
@@ -18,15 +21,20 @@ function Login() {
 
     const handelsubmit = async (e)=> {
         e.preventDefault()
+
         const token = await getLoginToken(username, password)
 
         if (token) {
+            notify("ברוכים הבאים")
             setOnlogged(true);
             const data = await validateToken();
             setIduser(data.id)
             setUsername(data.user);
             nav("/");
+          } else {
+            notifyError('בעיה בהתחברות')
           }
+
     }
   return (<>
     
@@ -48,6 +56,7 @@ function Login() {
                 <br/>
                 <br/>
                 <Link to='/signup' variant="danger" className='link-login-to-signup'>רשום? לחץ כאן להרשמה</Link>
+                <ToastContainer/>
             </form>
 
         </div>

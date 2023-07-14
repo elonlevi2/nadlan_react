@@ -4,7 +4,9 @@ import styled from "styled-components";
 import { addContact } from '../client/axiosToContact';
 import { useNavigate } from 'react-router-dom';
 import { Toast } from 'react-bootstrap';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { notify, notifyError } from '../config';
 
 
 function ContactPage() {
@@ -23,12 +25,13 @@ function ContactPage() {
   
       emailjs.sendForm('service_przwbds', 'template_ykqfqtl', form.current, 'Dnd0vTpr7StPYM2Fw')
         .then((result) => {
+            notify("המייל נשלח בהצלחה");
             console.log(result.text);
             setShowToast(true)
             nav('/contact')
         }, (error) => {
             console.log(error.text);
-            window.alert('בעיה בשליחת האמייל')
+            notifyError("בעיה בשליחת המייל");
         })
     };
 
@@ -46,23 +49,7 @@ function ContactPage() {
         <input type="submit" value="Send" />
         </form>
     </StyledContactForm>
-    <Toast
-    onClose={() => setShowToast(false)}
-    show={showToast}
-    delay={3000}
-    autohide
-    style={{
-        position: 'absolute',
-        top: '100%',
-        left: '86%',
-        transform: 'translate(-50%, -50%)',
-    }}
-    >
-    <Toast.Header>
-        <strong className="me-auto" style={{direction:"rtl"}}>success</strong>
-    </Toast.Header>
-    <Toast.Body style={{direction:"rtl"}} >המייל נשלח בהצלחה</Toast.Body>
-    </Toast>
+    <ToastContainer/>
     </div>
   </>)
 }
