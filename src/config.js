@@ -6,7 +6,6 @@ export const localhost = 'http://18.194.173.51/django/api/'
 export const s3Url = 'https://nadlans3.s3.eu-central-1.amazonaws.com/properties/'
 
 
-
 export const notify = (msg) => toast.success(msg, {
     position: "top-right",
     autoClose: 5000,

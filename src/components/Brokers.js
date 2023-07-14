@@ -30,6 +30,7 @@ function Brokers() {
         loadMore={addBroker}
         hasMore={hasmore}
         loader={<div key={0}>loading...</div>}
+        className='ifinscroll'
         >
         {brokers && brokers.map((b)=>{return <CardBroker key={b.id} broker={b}/>})}
 
