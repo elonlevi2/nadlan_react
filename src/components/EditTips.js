@@ -3,6 +3,10 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { GetTipToEdit, axiosDeleteTip } from '../client/axiosToApiTips'
 import { Button } from 'react-bootstrap'
 import { addTipFetch, editTipFetch } from '../client/axiosToAddAds'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { notifyError } from '../config';
+
 
 function EditTips() {
     const locationPath = useLocation()
@@ -34,15 +38,42 @@ function EditTips() {
             setError(false)
         }
         const res = await editTipFetch(title, content, id);
-        nav('/my-tips')
-        window.alert('הטיפ נערך בהצלחה')            
-
+        if (res) {
+          toast.success('הטיפ נערך בהצלחה', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            onClose: () => {
+              nav('/my-tips');
+            }
+            });
+        } else {
+          notifyError("בעיה בעריכת הטיפ");
+        }
     }
 
     const deleteTip = async ()=>{
       const res = await axiosDeleteTip(id)
-      nav('/my-tips')
-      window.alert(res)
+      if (res) {
+        toast.success('הטיפ נמחק בהצלחה', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          onClose: () => {
+            nav('/my-tips');
+          }
+          });
+      }
     }
 
   return (<>
@@ -60,6 +91,8 @@ function EditTips() {
         </div>
 
     </div>
+    <ToastContainer/>
+
   </>)
 }
 

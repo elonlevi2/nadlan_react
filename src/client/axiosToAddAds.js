@@ -13,15 +13,13 @@ export async function addTipFetch(title, content) {
     try {
       const res = await axios.post(`${localhost}tips/add`, data);
   
-      if (res.status == 200) {
-        return res.data;
+      if (res.status === 200) {
+        return true;
       } else {
-        window.alert("Error adding");
         console.log(res.data)
         return false;
       }
     } catch (error) {
-      window.alert("Error add tip");
       console.log(error)
       return false
     }
@@ -38,15 +36,13 @@ export async function addTipFetch(title, content) {
     try {
       const res = await axios.put(`${localhost}tips/edit?id=${id}`, data);
   
-      if (res.status == 200) {
-        return res.data;
+      if (res.status === 200) {
+        return true;
       } else {
-        window.alert("Error edited");
         console.log(res.data)
         return false;
       }
     } catch (error) {
-      window.alert("Error edited tip");
       console.log(error)
       return false
     }
@@ -70,15 +66,13 @@ export async function addTipFetch(title, content) {
     try {
       const res = await axios.post(`${localhost}property/add`, data);
   
-      if (res.status == 200) {
-        return res.data;
+      if (res.status === 200) {
+        return true
       } else {
-        window.alert("Error adding");
         console.log(res.data)
         return false;
       }
     } catch (error) {
-      window.alert("Error add property");
       console.log(error)
       return false
     }
@@ -103,15 +97,13 @@ export async function addTipFetch(title, content) {
     try {
       const res = await axios.put(`${localhost}property/edit?id=${id}`, data);
   
-      if (res.status == 200) {
-        return res.data;
+      if (res.status === 200) {
+        return true;
       } else {
-        window.alert("Error edited");
         console.log(res.data)
         return false;
       }
     } catch (error) {
-      window.alert("Error edited property");
       console.log(error)
       return false
     }

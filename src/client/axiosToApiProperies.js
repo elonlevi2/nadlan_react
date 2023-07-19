@@ -104,7 +104,7 @@ export async function axiosDeleteProperty(id) {
         console.assert(response.status == 200)
         return response.data
     } catch (error){
-        console.error("error:", error)
+        return false
     }
     
 }

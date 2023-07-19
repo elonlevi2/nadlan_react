@@ -4,6 +4,10 @@ import { UserFetch } from '../client/axiosToApiProperies'
 import { validateToken } from '../client/connectionClient'
 import { editProfileFetch } from '../client/axiosToEditProfile'
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { notifyError } from '../config';
+
 
 function EditProfile() {
     const nav = useNavigate()
@@ -38,12 +42,31 @@ function EditProfile() {
         }
 
         const res = await editProfileFetch(firstname, lastname, username, email, id);
-        if (res == "objects updated"){
-            nav('/')
-            window.alert('הפרופיל נערך בהצלחה') 
-        } else if (res.includes('Enter a valid username')) {
-            setError('הזן שם חוקי ללא רווחים')
+        if (res.msg === "success") {
+          console.log(res)
+          toast.success('הפרופיל נערך בהצלחה', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            onClose: () => {
+              nav('/');
+            }
+            });
+          } else if (res.msg === "error") {
+            console.log(res.data);
+            if (res.data['email']){
+              setError('האימייל לא חוקי')
+            }
+            notifyError("בעיה בעריכת הפרופיל");
             return;
+          } 
+          else {
+            notifyError("בעיה בעריכת הפרופיל");
         }
     }
 
@@ -52,7 +75,7 @@ function EditProfile() {
         <form className='form-user' onSubmit={handelsubmit}>
             <input className='form-user-input' type='text' placeholder='שם פרטי' value={firstname} onChange={(e)=> {setFirstname(e.target.value)}}/>
             <input className='form-user-input' type='text' placeholder='שם משפחה' value={lastname} onChange={(e)=> {setLastname(e.target.value)}}/>
-            <input className='form-user-input' type='text' placeholder='username' value={username} onChange={(e)=> {setUsername(e.target.value)}} pattern='/[\p{Hebrew}][a-zA-Z][0-9]+$/u'/>
+            <input disabled className='form-user-input' type='text' placeholder='username' value={username} onChange={(e)=> {setUsername(e.target.value)}}/>
             <input className='form-user-input' type='email' placeholder='Email' value={email} onChange={(e)=> {setEmail(e.target.value)}}/>
             {error && <> <p style={{color:'red'}}>{error}</p></>}
 
@@ -60,6 +83,7 @@ function EditProfile() {
         </form>
         <br/>
         <br/>
+        <ToastContainer/>
 
     </div>
   )

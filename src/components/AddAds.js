@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import { Button, Nav } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { addPropertyFetch, addTipFetch } from '../client/axiosToAddAds';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { localhost } from '../config';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { notifyError } from '../config';
 
 
 function AddAds() {
@@ -14,7 +17,6 @@ function AddAds() {
     const [photo, setPhoto] = useState()
 
 
-    const [active, setActive] = useState('add_property')
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [error, setError] = useState(false)
@@ -48,8 +50,24 @@ function AddAds() {
         }
         
         const res = await addPropertyFetch(location, address, price, size, rooms, balcony, description, type, phone);
-        window.alert('הדירה נשמרה בהצלחה')
-        nav('/my-properties')
+        if (res) {
+            toast.success('הדירה נשמרה בהצלחה', {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              onClose: () => {
+                nav('/my-properties');
+              }
+              });
+            
+          } else {
+            notifyError("בעיה בשמירת הדירה");
+          }
         
         const fd = new FormData()
 
@@ -58,11 +76,12 @@ function AddAds() {
           }
         
         const upload = await axios.post(`${localhost}photo?id=${res.id}`, fd, {headers: {'Accept': 'application/json'}})
-        if (upload.status == 200) {
+        if (upload.status === 200) {
             console.log(upload.data)
             return upload.data;
           } else {
-            window.alert("Error Editing");
+            // window.alert("Error Editing");
+            notifyError("בעיה בהעלאת הדירה");
             console.log(upload.data)
             return false;
           }
@@ -78,8 +97,24 @@ function AddAds() {
             setError(false)
         }
         const res = await addTipFetch(title, content);
-        window.alert('הטיפ נשמר בהצלחה')            
-
+        if (res) {
+            toast.success('הטיפ נשמרה בהצלחה', {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              onClose: () => {
+                nav('/my-tips');
+              }
+              });
+            
+          } else {
+            notifyError("בעיה בשמירת הטיפ");
+          }
     }
 
   return (<>
@@ -137,6 +172,7 @@ function AddAds() {
                         </form>
                         
                     </div>
+                    <ToastContainer/>
 
                 </div>
             </Tab.Content>
@@ -157,6 +193,8 @@ function AddAds() {
                         </form>
                     </div>
                 </div>
+                <ToastContainer/>
+
             </Tab.Content>            
         </Tab>
         </Tabs>

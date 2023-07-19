@@ -3,9 +3,11 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { GetPropertyToEdit, axiosDeleteProperty } from '../client/axiosToApiProperies'
 import { Button } from 'react-bootstrap'
 import { EditPropertyFetch } from '../client/axiosToAddAds'
-import Contact from './Contact'
 import axios from 'axios'
 import { localhost } from '../config'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { notifyError } from '../config';
 
 function EditAds() {
 
@@ -63,8 +65,24 @@ function EditAds() {
         }
         
       const res = await EditPropertyFetch(location, address, price, size, rooms, balcony, description, type, phone, id);
-      window.alert('הדירה נערכה בהצלחה')
-      nav('/my-properties')
+      if (res) {
+        toast.success('הדירה נערכה בהצלחה', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          onClose: () => {
+            nav('/my-properties');
+          }
+          });
+        
+      } else {
+        notifyError("בעיה בעריכת הדירה");
+      }
 
       const fd = new FormData()
  
@@ -73,19 +91,35 @@ function EditAds() {
           }
 
         const upload = await axios.post(`${localhost}photo?id=${res.id}`, fd, {headers: {'Accept': 'application/json'}})
-        if (upload.status == 200) {
+        if (upload.status === 200) {
           return upload.data;
         } else {
-          window.alert("Error Editing");
+          notifyError("בעיה בהעלאת התמונה")
           return false;
         }
+  
+
   
     }
 
     const deleteAds = async ()=>{
       const res = await axiosDeleteProperty(id)
-      nav('/my-properties')
-      window.alert(res)
+
+      if (res) {
+        toast.success('הדירה נמחקה בהצלחה', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          onClose: () => {
+            nav('/my-properties');
+          }
+          });
+      }
 
     }
 
@@ -127,11 +161,15 @@ function EditAds() {
 
         <Button className='submit-edit' variant='success' type='submit'>שמור עריכה</Button>
         <Button className='delete-edit'  variant='danger' onClick={deleteAds}>מחיקת המודעה</Button>
+        {/* <ToastContainer/> */}
         </form>
 
     </div>
+    <ToastContainer/>
+
   </div>
   </div>
+
   </>)
 }
 

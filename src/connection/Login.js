@@ -56,11 +56,10 @@ function Login() {
                 <br/>
                 <br/>
                 <Link to='/signup' variant="danger" className='link-login-to-signup'>רשום? לחץ כאן להרשמה</Link>
-                <ToastContainer/>
             </form>
 
         </div>
-
+        <ToastContainer/>
     
     </div>
     </>)
