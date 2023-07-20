@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
 import styled from "styled-components";
-import { addContact } from '../client/axiosToContact';
+import { addContact, sendMail } from '../client/axiosToContact';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,17 +19,15 @@ function Contact() {
       e.preventDefault();
 
       const res = await addContact(name, email, message)
-      console.log(res)
-  
-      emailjs.sendForm('service_przwbds', 'template_ykqfqtl', form.current, 'Dnd0vTpr7StPYM2Fw')
-        .then((result) => {
-            console.log(result.text);
-            notify("המייל נשלח בהצלחה")
-        }, (error) => {
-            console.log(error.text);
-            notifyError("בעיה בשליחת המייל")
+      const send = await sendMail(name, email, message)
+      
+      if (send.status == "success"){
+        notify("המייל נשלח בהצלחה")
+      }
+      else if (send.status == "error"){
+        notifyError('בעיה בשליחת המייל')
+      }
 
-        });
     };
 
   return (<>

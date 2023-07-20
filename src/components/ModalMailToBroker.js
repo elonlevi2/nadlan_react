@@ -1,35 +1,37 @@
 import React, { useRef, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import emailjs from '@emailjs/browser';
 import styled from "styled-components";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { notify, notifyError } from '../config';
+import { sendMailBroker } from '../client/axiosToContact';
 
 
 function ModalMailToBroker({show, setShow, emailBroker}) {
     const handleClose = () => setShow(false);
+    const [name, Setname] = useState('')
+    const [email, setEmail] = useState('')
+    const [message, setMessage] = useState('')
     const form = useRef();
     const nav = useNavigate()
 
 
     const sendEmail = async (e) => {
       e.preventDefault();
-  
-      emailjs.sendForm('service_przwbds', 'template_43gzuyf', form.current, 'Dnd0vTpr7StPYM2Fw')
-        .then((result) => {
-            console.log(result.text);
-            if (result.text) {
-              notify("המייל נשלח בהצלחה");
-              handleClose()
-            }
-        }, (error) => {
-            console.log(error.text);
-            notifyError("בעיה בשליחת המייל");
-        });
+
+      const send = await sendMailBroker(name, emailBroker, email, message)
+      
+      if (send.status == "success"){
+        notify("המייל נשלח בהצלחה")
+      }
+      else if (send.status == "error"){
+        notifyError('בעיה בשליחת המייל')
+      }
+
     };
+
 
   return (<>
     <Modal show={show} onHide={handleClose}>
@@ -40,13 +42,13 @@ function ModalMailToBroker({show, setShow, emailBroker}) {
             <StyledContactForm>
                 <form ref={form} onSubmit={sendEmail}>
                 <label>Name</label>
-                <input type="text" name="username"/>
+                <input type="text" name="username" onChange={(e)=>{Setname(e.target.value)}} />
                 <label>Email broker</label>
-                <input type="email" name="emailbroker" defaultValue={emailBroker} />
+                <input disabled type="email" name="emailbroker" defaultValue={emailBroker} />
                 <label>Email</label>
-                <input type="email" name="useremail"/>
+                <input type="email" name="useremail" onChange={(e)=>{setEmail(e.target.value)}} />
                 <label>Message</label>
-                <textarea name="message"/>
+                <textarea name="message" onChange={(e)=>{setMessage(e.target.value)}} />
                 <input type="submit" value="Send" />
                 </form>
             </StyledContactForm>

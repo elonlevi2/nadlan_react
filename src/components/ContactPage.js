@@ -1,9 +1,7 @@
 import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
 import styled from "styled-components";
-import { addContact } from '../client/axiosToContact';
+import { addContact, sendMail } from '../client/axiosToContact';
 import { useNavigate } from 'react-router-dom';
-import { Toast } from 'react-bootstrap';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { notify, notifyError } from '../config';
@@ -13,7 +11,6 @@ function ContactPage() {
     const [name, Setname] = useState('')
     const [email, setEmail] = useState('')
     const [message, setMessage] = useState('')
-    const [showToast, setShowToast] = useState(false);
     const form = useRef();
     const nav = useNavigate()
 
@@ -22,17 +19,16 @@ function ContactPage() {
       e.preventDefault();
 
       const res = await addContact(name, email, message)
+
+      const send = await sendMail(name, email, message)
+      
+      if (send.status == "success"){
+        notify("המייל נשלח בהצלחה")
+      }
+      else if (send.status == "error"){
+        notifyError('בעיה בשליחת המייל')
+      }
   
-      emailjs.sendForm('service_przwbds', 'template_ykqfqtl', form.current, 'Dnd0vTpr7StPYM2Fw')
-        .then((result) => {
-            notify("המייל נשלח בהצלחה");
-            console.log(result.text);
-            setShowToast(true)
-            nav('/contact')
-        }, (error) => {
-            console.log(error.text);
-            notifyError("בעיה בשליחת המייל");
-        })
     };
 
   return (<>

@@ -14,12 +14,52 @@ export async function addContact(name, email, message) {
       if (res.status == 200) {
         return res.data;
       } else {
-        window.alert("Error adding");
         console.log(res.data)
         return false;
       }
     } catch (error) {
-      window.alert("Error add contact");
+      console.log(error)
+      return false
+    }
+  }
+
+  export async function sendMail(name, email, message) {
+    const option = {
+      headers:{'Content-Type': 'application/json'},
+      data: {name: name, email:email, message:message}
+    };
+    try {
+      const res = await axios.post(`${localhost}sendmail/contact`, option);
+
+      if (res.status == 200) {
+        console.log(res.data)
+        return res.data;
+      } else {
+        console.log(res.data)
+        return false;
+      }
+    } catch (error) {
+      console.log(error)
+      return false
+    }
+  }
+
+  export async function sendMailBroker(name, emailBroker, email, message) {
+    const option = {
+      headers:{'Content-Type': 'application/json'},
+      data: {name: name, emailBroker:emailBroker, email:email, message:message}
+    };
+    try {
+      const res = await axios.post(`${localhost}sendmail/broker`, option);
+
+      if (res.status == 200) {
+        console.log(res.data)
+        return res.data;
+      } else {
+        console.log(res.data)
+        return false;
+      }
+    } catch (error) {
       console.log(error)
       return false
     }
