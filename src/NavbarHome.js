@@ -33,7 +33,7 @@ function NavbarHome() {
     backgroundImage: path === "/" ? `url(${homePageImage})`: path === "/tips" ? `url(${tipsImage})`: path === "/properties_sale" ? `url(${propertiesSale})`: path === "/my-properties" ? `url(${propertiesSale})` :
     path === "/add-ads" ? `url(${addAdsImage})`: path === "/properties_rent" ? `url(${propertiesSale})`: path === "/edit-ads" | path == "/edit-tips" ? `url(${editImage})`: path === "/my-tips" ? `url(${tipsImage})`:
     path === "/brokers" ? `url(${brokersImage})`: path === "/contact" ? `url(${contactImage})`: path === "/edit-profile" ? `url(${editprofile})`: path === "/about" ? `url(${aboutImage})`: "none",
-    height: path === '/login' ? '0vh' : path === '/signup' ? '0vh' : path !== "/dashbord" && path !== "/map" && '100vh',
+    height: path === '/t' ? '30vh' : path === '/login' ? '0vh' : path === '/signup' ? '0vh' : path !== "/dashbord" && path !== "/map" && '100vh',
     backgroundRepeat:"no-repeat",
     backgroundSize:"cover",
     backgroundPosition:"center center",

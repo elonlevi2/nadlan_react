@@ -17,6 +17,7 @@ import "./components/editprofile.css"
 import "./components/dashbord.css"
 import "./components/map.css"
 import "./components/contactpage.css"
+import "./components/searchinput.css"
 import "react-alice-carousel/lib/alice-carousel.css";
 
 
