@@ -1,41 +1,17 @@
-.App {
-    font-family: sans-serif;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .search-container {
-    width: 280px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .dropdown {
+  .dropdown-city {
     background-color: white;
     display: flex;
     flex-direction: column;
     border: 1px solid gray;
-    width: 20%;
+    width: 40%;
   }
   
-  .dropdown:empty {
+  .dropdown-city:empty {
     border: none;
   }
   
-  .dropdown-row {
+  .dropdown-city-row {
     cursor: pointer;
     text-align: start;
-    margin: 2px 0;
-    width: 30%;
-  }
-  
-  input {
-    width: 220px;
-  }
-  
-  .search-inner {
-    display: flex;
   }
   

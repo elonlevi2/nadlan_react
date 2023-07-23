@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { Button } from 'react-bootstrap';
@@ -9,6 +9,7 @@ import { localhost } from '../config';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { notifyError } from '../config';
+import { city } from '../client/axiosGeocodeApi';
 
 
 function AddAds() {
@@ -31,6 +32,16 @@ function AddAds() {
     const [description, setDescription] = useState()
     const [type, setType] = useState()
     const [phone, setPhone] = useState()
+
+    const [allCity, setAllCity] = useState([]) 
+
+    useEffect(()=> {
+        async function data() {
+            const res = await city()
+            setAllCity([...res.result.records])
+        }
+        data()
+    },[])
 
     const handelsubmitproperty = async (e)=> {
         e.preventDefault()
@@ -137,7 +148,18 @@ function AddAds() {
                             <div className='div-main-in-form-property'>
 
                                 <div className='div-in-form-property'>
-                                    <input className='form-property-text-number' type='text' placeholder='עיר' onChange={(e)=>{setLocation(e.target.value)}}></input>
+                                    <input className='form-property-text-number' type='text' placeholder='עיר' value={location} onChange={(e) => setLocation(e.target.value)}/>
+                                    <div className='dropdown-city'>
+                                        {allCity.filter(line => {
+                                            const searchTerm = location
+                                            const city = line.שם_ישוב
+
+                                            return searchTerm && city.startsWith(searchTerm) && city !== searchTerm
+                                        })
+                                        .slice(0, 10)
+                                        .map((line)=> {return <div key={line._id} onClick={()=>{setLocation(line.שם_ישוב)}} className='dropdown-city-row'>{line.שם_ישוב}</div>
+                                        })}
+                                    </div>
                                     <input className='form-property-text-number' type='text' placeholder='כתובת' onChange={(e)=>{setAddress(e.target.value)}}></input>
                                     <input className='form-property-text-number' type='number' placeholder='מחיר' onChange={(e)=>{setPrice(e.target.value)}}></input>
                                     <input className='form-property-text-number' type='number' placeholder='מ״ר' onChange={(e)=>{setSize(e.target.value)}}></input>

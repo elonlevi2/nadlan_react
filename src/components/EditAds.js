@@ -8,6 +8,7 @@ import { localhost } from '../config'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { notifyError } from '../config';
+import { city } from '../client/axiosGeocodeApi'
 
 function EditAds() {
 
@@ -16,6 +17,7 @@ function EditAds() {
     const id = search.get("id")
     const nav = useNavigate()
     const [photo, setPhoto] = useState()
+    const [allCity, setAllCity] = useState([]) 
 
 
     useEffect(()=>{
@@ -30,6 +32,8 @@ function EditAds() {
         setDescription(res.description)
         setType(res.type)
         setPhone(res.phone)
+        const res2 = await city()
+        setAllCity([...res2.result.records])
       }
     fetch()
     },[])
@@ -131,7 +135,18 @@ function EditAds() {
         <form className='form-property-edit' onSubmit={handelsubmitproperty}>
 
           <div className='div-in-form-edit'>
-            <input className='form-property-text-number-edit' type='text' placeholder='עיר' value={location} onChange={(e)=>{setLocation(e.target.value)}}></input>
+          <input className='form-property-text-number-edit' type='text' placeholder='עיר' value={location} onChange={(e)=>{setLocation(e.target.value)}}></input>
+              <div className='dropdown-city'>
+                  {allCity.filter(line => {
+                      const searchTerm = location
+                      const city = line.שם_ישוב
+
+                      return searchTerm && city.startsWith(searchTerm) && city !== searchTerm
+                  })
+                  .slice(0, 10)
+                  .map((line)=> {return <div key={line._id} onClick={()=>{setLocation(line.שם_ישוב)}} className='dropdown-city-row'>{line.שם_ישוב}</div>
+                  })}
+              </div>
             <input className='form-property-text-number-edit' type='text' placeholder='כתובת' value={address} onChange={(e)=>{setAddress(e.target.value)}}></input>
             <input className='form-property-text-number-edit' type='number' placeholder='מחיר' value={price} onChange={(e)=>{setPrice(e.target.value)}}></input>
             <input className='form-property-text-number-edit' type='number' placeholder='מ״ר' value={size} onChange={(e)=>{setSize(e.target.value)}}></input>

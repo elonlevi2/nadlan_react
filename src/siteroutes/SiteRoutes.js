@@ -17,7 +17,6 @@ import About from '../components/About'
 import Dashbord from '../components/Dashbord'
 import ContactPage from '../components/ContactPage'
 import Properties from '../components/Properties'
-import SearchInput from '../components/SearchInput'
 
 
 function PrivatePath({path, element}) {
@@ -57,7 +56,6 @@ function SiteRoutes() {
         <Route path='/contact' element={<ContactPage/>}/>
         <Route path='/map' element={<Map/>}/>
         <Route path='/dashbord' element={<PrivatePath path='/dashbord' element={<Dashbord/>}/>}/>
-        <Route path='/t' element={<SearchInput/>}/>
     </Routes>
     </>)
 }
