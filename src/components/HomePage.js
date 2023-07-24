@@ -34,7 +34,7 @@ function HomePage() {
         return  <Carousel.Item className='carousel-item'>
           <CardPropertyHome properties={property}/>
         </Carousel.Item> })}
-      </Carousel> 
+      </Carousel>
       : <h2 className='title-db-empty'>אין עדיין נכסים באתר</h2>}
 
     </div>
