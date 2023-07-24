@@ -41,13 +41,13 @@ function ModalMailToBroker({show, setShow, emailBroker}) {
         <Modal.Body>
             <StyledContactForm>
                 <form ref={form} onSubmit={sendEmail}>
-                <label>Name</label>
+                <label>שם</label>
                 <input type="text" name="username" onChange={(e)=>{Setname(e.target.value)}} />
                 <label>Email broker</label>
                 <input disabled type="email" name="emailbroker" defaultValue={emailBroker} />
                 <label>Email</label>
                 <input type="email" name="useremail" onChange={(e)=>{setEmail(e.target.value)}} />
-                <label>Message</label>
+                <label>הודעה</label>
                 <textarea name="message" onChange={(e)=>{setMessage(e.target.value)}} />
                 <input type="submit" value="Send" />
                 </form>

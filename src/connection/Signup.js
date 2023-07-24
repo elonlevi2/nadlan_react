@@ -14,7 +14,6 @@ function Signup() {
     const {username, setUsername, onlogged, setOnlogged} = useContext(AppContext)
 
     const [firstname, setFirstname] = useState('')
-    // const [username, setUsername] = useState('')
     const [lastname, setLastname] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -50,15 +49,6 @@ function Signup() {
             setOnlogged(true)
             nav('/')
         }
-
-
-        // if (username == "") {
-        //     setErrorusername("חובה להזין שם")
-        //     setShowerrorusername(true)
-        //     return
-        // } else {
-        //     setShowerrorusername(false)
-        // }
 
     }
 

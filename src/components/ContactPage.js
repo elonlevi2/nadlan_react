@@ -36,11 +36,11 @@ function ContactPage() {
         <h2>יצירת קשר</h2>
     <StyledContactForm className='form-contact-page' style={{direction:"rtl"}}>
         <form className='form-contact-page' ref={form} onSubmit={sendEmail}>
-        <label>Name</label>
+        <label>שם</label>
         <input type="text" name="username" onChange={(e)=>{Setname(e.target.value)}} />
         <label>Email</label>
         <input type="email" name="useremail" onChange={(e)=>{setEmail(e.target.value)}} />
-        <label>Message</label>
+        <label>הודעה</label>
         <textarea name="message" onChange={(e)=>{setMessage(e.target.value)}} />
         <input type="submit" value="Send" />
         </form>

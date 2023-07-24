@@ -34,11 +34,11 @@ function Contact() {
   <div style={{direction:"rtl"}}>
   <StyledContactForm style={{direction:"rtl"}}>
     <form ref={form} onSubmit={sendEmail}>
-      <label>Name</label>
+      <label>שם</label>
       <input type="text" name="username" onChange={(e)=>{Setname(e.target.value)}} />
       <label>Email</label>
       <input type="email" name="useremail" onChange={(e)=>{setEmail(e.target.value)}} />
-      <label>Message</label>
+      <label>הודעה</label>
       <textarea name="message" onChange={(e)=>{setMessage(e.target.value)}} />
       <input type="submit" value="Send" />
     </form>
