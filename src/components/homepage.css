@@ -160,9 +160,6 @@
 .title-db-empty {
     text-align: center;
     font-family:Monospace;
-    position: absolute;
-    top: 120%;
-    left: 28%;
     font-size: 45px;
 }
 
@@ -240,10 +237,7 @@
     .title-db-empty {
         text-align: center;
         font-family:Monospace;
-        position: absolute;
-        top: 120%;
-        left: 10%;
-        font-size: 32px;
+        font-size: 22px;
     }
     
   } 

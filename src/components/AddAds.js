@@ -160,7 +160,7 @@ function AddAds() {
                                         .map((line)=> {return <div key={line._id} onClick={()=>{setLocation(line.שם_ישוב)}} className='dropdown-city-row'>{line.שם_ישוב}</div>
                                         })}
                                     </div>
-                                    <input className='form-property-text-number' type='text' placeholder='כתובת' onChange={(e)=>{setAddress(e.target.value)}}></input>
+                                    <input className='form-property-text-number' type='text' placeholder='כתובת' value={address} onChange={(e)=>{setAddress(e.target.value)}}></input>
                                     <input className='form-property-text-number' type='number' placeholder='מחיר' onChange={(e)=>{setPrice(e.target.value)}}></input>
                                     <input className='form-property-text-number' type='number' placeholder='מ״ר' onChange={(e)=>{setSize(e.target.value)}}></input>
                                     <input className='form-property-text-number' type='text' placeholder='חדרים' onChange={(e)=>{setRooms(e.target.value)}}></input>

@@ -28,14 +28,17 @@ function HomePage() {
     <>
     <div className='main-home-page'>
     <div className='div-carousel'>
-      {properties.length > 0 ? 
+      {properties.length > 0 ?
       <Carousel className='carousel' variant='dark'>
            {properties.map((property)=> {
         return  <Carousel.Item className='carousel-item'>
           <CardPropertyHome properties={property}/>
         </Carousel.Item> })}
       </Carousel>
-      : <h2 className='title-db-empty'>אין עדיין נכסים באתר</h2>}
+      :
+       <div>
+          <h2 className='title-db-empty'>אין עדיין נכסים באתר</h2>
+       </div>}
 
     </div>
     <div className='sending-to-the-site'>
