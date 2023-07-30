@@ -109,7 +109,7 @@ function AddAds() {
         }
         const res = await addTipFetch(title, content);
         if (res) {
-            toast.success('הטיפ נשמרה בהצלחה', {
+            toast.success('הטיפ נשמר בהצלחה', {
               position: "top-right",
               autoClose: 3000,
               hideProgressBar: false,
