@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { GetTipToEdit, axiosDeleteTip } from '../client/axiosToApiTips'
 import { Button } from 'react-bootstrap'
-import { addTipFetch, editTipFetch } from '../client/axiosToAddAds'
+import { editTipFetch } from '../client/axiosToAddAds'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { notifyError } from '../config';

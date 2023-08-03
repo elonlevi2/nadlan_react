@@ -1,7 +1,7 @@
 import React, {useEffect, useState } from 'react'
 import { Button, Card} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { BsFillEnvelopeAtFill, BsFillGeoAltFill, BsInstagram } from "react-icons/bs";
+import { BsFillEnvelopeAtFill, BsInstagram } from "react-icons/bs";
 import { AiOutlinePhone } from "react-icons/ai";
 import { CiFacebook } from "react-icons/ci";
 import Contact from './Contact';

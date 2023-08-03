@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Alert, Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import { UserFetch } from '../client/axiosToApiProperies'
 import { validateToken } from '../client/connectionClient'
 import { editProfileFetch } from '../client/axiosToEditProfile'

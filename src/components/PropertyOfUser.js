@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import CardOfProperty from './CardOfProperty'
-import { Button } from 'react-bootstrap'
 import { propertiesOfUseraxios } from '../client/axiosToPropertyOfUser'
 
 function PropertyOfUser() {
