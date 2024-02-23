@@ -43,7 +43,8 @@ function Map() {
           const loc = `${p.address}`;//+${p.address}
           const res = await addressToGeocode(loc);
           setGeocode((prevList) => [...prevList,{geocode:res, property:p}]);
-        }      
+        }
+        console.log(properties)      
       }
       data()
     },[change])

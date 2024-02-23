@@ -135,6 +135,8 @@ function Properties() {
         </div>
         <div className='div-of-all-properties'>
 
+          {properties.length == 0 && <h2 className='div-of-title'>אין נכסים במאגר</h2>}
+
         <InfiniteScroll
           loadMore={addProperties}
           hasMore={hasmore}
